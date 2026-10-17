@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Step 1: Watch</title>
+<!-- Google Fonts: Quicksand & Readex Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-dim": "#ded8e2",
+            "tertiary-fixed-dim": "#e2c545",
+            "accent-pressed": "#7159A9",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-background": "#1d1a21",
+            "on-tertiary-container": "#4b3f00",
+            "on-surface": "#1d1a21",
+            "on-secondary": "#ffffff",
+            "tertiary": "#6f5d00",
+            "surface-container-high": "#ede6f0",
+            "danger": "#DC2626",
+            "primary-fixed-dim": "#d1bcff",
+            "outline-variant": "#cbc3d4",
+            "on-error": "#ffffff",
+            "surface-bright": "#fef7ff",
+            "error": "#ba1a1a",
+            "surface": "#FFFFFF",
+            "outline": "#7a7483",
+            "on-secondary-container": "#7a412f",
+            "text-secondary": "#4B4360",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#ffb199",
+            "text-primary": "#120C1F",
+            "surface-container-highest": "#e7e0ea",
+            "primary-container": "#8260cd",
+            "secondary": "#8a4e3b",
+            "tertiary-fixed": "#ffe263",
+            "surface-container-low": "#f8f1fb",
+            "on-tertiary-fixed": "#221b00",
+            "surface-container-lowest": "#ffffff",
+            "border-divider": "#E6E1F2",
+            "inverse-surface": "#322f37",
+            "inverse-primary": "#d1bcff",
+            "on-surface-variant": "#494552",
+            "primary": "#6947b2",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#fffbff",
+            "on-secondary-fixed-variant": "#6e3826",
+            "text-tertiary": "#857D99",
+            "background": "#F6F4FC",
+            "on-primary-fixed": "#24005b",
+            "on-secondary-fixed": "#370e02",
+            "accent-fill": "#8165C0",
+            "on-tertiary-fixed-variant": "#534600",
+            "secondary-fixed": "#ffdbd0",
+            "primary-fixed": "#eaddff",
+            "secondary-fixed-dim": "#ffb59e",
+            "tertiary-container": "#c5aa2a",
+            "surface-variant": "#e7e0ea",
+            "surface-container": "#f2ecf6",
+            "success": "#16A34A",
+            "accent-tint": "#F1ECFC",
+            "surface-tint": "#6b49b5",
+            "inverse-on-surface": "#f5eef8",
+            "on-primary-fixed-variant": "#532f9b",
+            "warning": "#D97706"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem"
+          },
+          fontFamily: {
+            "title": ["Readex Pro", "sans-serif"],
+            "display": ["Quicksand", "sans-serif"],
+            "body": ["Readex Pro", "sans-serif"],
+            "label": ["Readex Pro", "sans-serif"],
+            "caption": ["Readex Pro", "sans-serif"]
+          },
+          fontSize: {
+            "title": [
+              "22px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "34px",
+              {
+                "lineHeight": "42px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body": [
+              "17px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "label": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "14px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "500"
+              }
+            ]
+          },
+          boxShadow: {
+            'ambient': '0 1px 2px rgba(18,12,31,0.05), 0 8px 24px rgba(18,12,31,0.07)',
+            'ambient-sm': '0 2px 8px rgba(18,12,31,0.04)',
+            'ambient-lg': '0 4px 6px rgba(18,12,31,0.04), 0 12px 32px rgba(18,12,31,0.09)'
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary antialiased min-h-screen flex justify-center selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Device Container (393px width constraint) -->
+<main class="w-full max-w-[393px] min-h-[852px] bg-background flex flex-col justify-between relative shadow-ambient-lg overflow-x-hidden">
+<!-- Top Safe Area & Screen Header -->
+<header class="w-full pt-12 pb-3 px-5 flex flex-col gap-3">
+<!-- Status bar gap + Header items -->
+<div class="flex items-center justify-between">
+<!-- Close (Exit Lesson) Circular Button -->
+<button aria-label="Exit lesson" class="w-12 h-12 rounded-full bg-surface shadow-ambient flex items-center justify-center text-text-secondary hover:text-text-primary active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-accent-fill" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<!-- Current Lesson Context Pill Badge -->
+<div class="px-3.5 py-1.5 rounded-full bg-surface shadow-ambient-sm flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="text-caption font-caption text-text-secondary tracking-normal">Colors • Los Colores</span>
+</div>
+<!-- Audio Volume / Sound Toggle Button -->
+<button aria-label="Sound settings" class="w-12 h-12 rounded-full bg-surface shadow-ambient flex items-center justify-center text-text-secondary hover:text-text-primary active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-accent-fill" type="button">
+<span class="material-symbols-outlined text-[24px]">volume_up</span>
+</button>
+</div>
+<!-- Step Pills Row: Watch • Play • Talk -->
+<nav aria-label="Lesson progression" class="grid grid-cols-3 gap-2 mt-1">
+<!-- Step 1: Watch (Active) -->
+<div class="h-11 rounded-full bg-accent-fill text-on-primary flex items-center justify-center gap-1.5 shadow-ambient px-2">
+<span class="material-symbols-outlined fill-icon text-[18px]">play_circle</span>
+<span class="text-caption font-caption font-semibold">Watch</span>
+</div>
+<!-- Step 2: Play (Upcoming / Inactive) -->
+<div class="h-11 rounded-full bg-surface border-2 border-border-divider text-text-tertiary flex items-center justify-center gap-1.5 px-2 opacity-90">
+<span class="material-symbols-outlined text-[18px]">sports_esports</span>
+<span class="text-caption font-caption font-medium">Play</span>
+</div>
+<!-- Step 3: Talk (Upcoming / Inactive) -->
+<div class="h-11 rounded-full bg-surface border-2 border-border-divider text-text-tertiary flex items-center justify-center gap-1.5 px-2 opacity-90">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+<span class="text-caption font-caption font-medium">Talk</span>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas Area -->
+<div class="flex-1 px-5 flex flex-col gap-3.5 justify-start">
+<!-- Video Player Card Container -->
+<section class="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden bg-surface shadow-ambient border-2 border-surface group">
+<!-- Actual Video Visual Feed -->
+<img alt="Maestra Luna holding up a bright red apple in a warm Montessori classroom" class="w-full h-full object-cover object-center select-none" src="https://lh3.googleusercontent.com/aida/AEtjO1VIWosbwf6kOPgRhq05RFPaPwOXm03rfjiECUmQgekxrbOQmkgysAJApkNYOo0h2rGnxo5JkGB5Id847RRCIiQHHYyyc5V5qKVJ7Vji9Jq5iaDOv-wSHn_k4D2oNM9BrazVtneAEqVCx7Si44H-wL3RfgZgT2TaACuVhxicnExcT_ddaYLdjKkTimyFMW46J-OXZdb8l8jlH7BMi3HLtOn8rFKafdks9gobF-fI0VzkYUGK6HkeGwSxBdc"/>
+<!-- Soft Vignette Gradient Overlay for readability of chips -->
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/40 via-transparent to-text-primary/25 pointer-events-none"></div>
+<!-- Top Left: Teacher Profile Badge -->
+<div class="absolute top-3.5 left-3.5 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="text-caption font-caption font-medium text-text-primary text-[13px] leading-tight">Maestra Luna</span>
+<span class="material-symbols-outlined fill-icon text-accent-fill text-[15px]">verified</span>
+</div>
+<!-- Top Right: Language Chip -->
+<div class="absolute top-3.5 right-3.5 flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary-container/95 text-text-primary backdrop-blur-md font-semibold text-caption font-caption text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[14px]">translate</span>
+<span>Español</span>
+</div>
+<!-- Center Interactive Tap-To-Pause Indicator (Atmospheric touch) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-14 h-14 rounded-full bg-surface/30 backdrop-blur-sm border border-surface/50 flex items-center justify-center text-surface opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+<span class="material-symbols-outlined fill-icon text-[32px]">pause</span>
+</div>
+</div>
+<!-- Bottom Right: HD Badge -->
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded-md bg-text-primary/70 backdrop-blur-xs text-surface font-caption text-[11px] font-semibold tracking-wider">
+          HD Clip
+        </div>
+</section>
+<!-- Bilingual Caption & Word Highlight Card -->
+<article class="w-full bg-surface rounded-[24px] p-4 shadow-ambient flex flex-col gap-2 relative">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<!-- Word Highlight Display -->
+<div class="flex items-baseline gap-2.5 flex-wrap">
+<span class="font-display text-[32px] leading-tight font-bold text-accent-fill tracking-tight">¡Rojo!</span>
+<span class="font-display text-title text-text-primary font-bold">Red</span>
+<span class="font-display text-body text-text-tertiary font-semibold">(Roh-hoh)</span>
+</div>
+<!-- Pronunciation / Interactive Prompt -->
+<div class="flex items-center gap-1.5 mt-1 text-text-secondary">
+<span class="material-symbols-outlined text-accent-fill text-[18px]">record_voice_over</span>
+<p class="text-caption font-caption text-text-secondary">Listen carefully and say it aloud!</p>
+</div>
+</div>
+<!-- Pronounce audio button + Star bookmark -->
+<div class="flex items-center gap-1.5">
+<button aria-label="Listen to audio pronunciation" class="w-11 h-11 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center hover:bg-accent-fill hover:text-on-primary transition-colors duration-150 active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined fill-icon text-[22px]">volume_up</span>
+</button>
+<button aria-label="Save word to favorites" class="w-11 h-11 rounded-full bg-surface-container-low text-tertiary-fixed-dim hover:text-warning flex items-center justify-center active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined fill-icon text-[22px]">stars</span>
+</button>
+</div>
+</div>
+<!-- Phonics Accent Bar -->
+<div class="mt-1 pt-2 border-t border-border-divider/60 flex items-center justify-between text-caption font-caption text-text-tertiary text-[13px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-accent-fill">auto_awesome</span>
+            Vocab: <strong class="text-text-primary font-semibold">El Color</strong>
+</span>
+<span class="bg-surface-container-low px-2 py-0.5 rounded-full text-text-secondary font-medium">Repetition 2 of 3</span>
+</div>
+</article>
+<!-- Player Controls Deck -->
+<section class="w-full bg-surface rounded-[24px] p-4 shadow-ambient flex flex-col gap-3">
+<!-- Scrubber Progress Bar -->
+<div class="w-full flex flex-col gap-1.5">
+<div class="relative w-full h-3 bg-accent-tint rounded-full cursor-pointer flex items-center">
+<!-- Active Progress Track (~58%) -->
+<div class="h-full bg-gradient-to-r from-accent-fill to-primary-container rounded-full" style="width: 58%;"></div>
+<!-- Peach Scrubber Knob with tactile shadow -->
+<div class="absolute left-[58%] -translate-x-1/2 w-5 h-5 rounded-full bg-secondary-container border-2 border-surface shadow-ambient active:scale-125 transition-transform"></div>
+</div>
+<!-- Time Stamps -->
+<div class="flex justify-between items-center px-0.5 font-display text-caption text-text-tertiary font-bold">
+<span class="text-accent-fill">1:12</span>
+<span>2:05</span>
+</div>
+</div>
+<!-- Buttons Row: Replay 10s • Play/Pause (64px) • Speed (1x) -->
+<div class="flex items-center justify-between px-2 pt-1">
+<!-- Replay 10s -->
+<button aria-label="Replay 10 seconds" class="w-12 h-12 rounded-full bg-accent-tint text-accent-fill hover:bg-surface-container-high active:scale-95 transition-all duration-150 flex items-center justify-center shadow-ambient-sm" type="button">
+<span class="material-symbols-outlined text-[24px]">replay_10</span>
+</button>
+<!-- Main Play / Pause Button (64px Touch Target) -->
+<button aria-label="Pause playback" class="w-16 h-16 rounded-full bg-gradient-to-tr from-accent-fill to-[#9D7BEA] text-on-primary active:bg-accent-pressed active:scale-95 transition-all duration-150 flex items-center justify-center shadow-ambient focus:outline-none focus:ring-4 focus:ring-accent-tint" type="button">
+<span class="material-symbols-outlined fill-icon text-[34px]">pause</span>
+</button>
+<!-- Speed Control -->
+<button aria-label="Playback speed" class="h-12 px-4 rounded-full bg-surface-container-low text-text-primary hover:bg-accent-tint hover:text-accent-fill active:scale-95 transition-all duration-150 flex items-center justify-center font-display font-bold text-caption shadow-ambient-sm border border-border-divider/50" type="button">
+            1.0x
+          </button>
+</div>
+</section>
+</div>
+<!-- Bottom Action Area (Respecting Safe Area & No Tab Bar) -->
+<footer class="w-full px-5 pt-3 pb-8 flex flex-col items-center gap-2">
+<!-- Next: Play CTA Button (Disabled state until video finishes) -->
+<button aria-disabled="true" class="w-full h-14 rounded-full bg-gradient-to-r from-[#9D7BEA] to-secondary-container text-on-primary font-display font-bold text-body tracking-wide flex items-center justify-center gap-2 opacity-40 cursor-not-allowed shadow-none select-none" disabled="" type="button">
+<span>Next: Play</span>
+<span class="material-symbols-outlined text-[22px]">arrow_forward</span>
+</button>
+<!-- Helper microcopy underneath -->
+<p class="text-caption font-caption text-text-tertiary flex items-center gap-1.5 text-[13px]">
+<span>Finish watching to unlock Play</span>
+<span class="text-sm">🎮</span>
+</p>
+<!-- iPhone Home Indicator Spacer Area -->
+<div class="w-32 h-1 bg-outline-variant/50 rounded-full mt-2"></div>
+</footer>
+</main>
+</body></html>

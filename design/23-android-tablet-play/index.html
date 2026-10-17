@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Step - Color Car Drive (Android Tablet)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Quicksand', 'sans-serif'],
+            sans: ['Readex Pro', 'sans-serif'],
+          },
+          colors: {
+            lavender: {
+              DEFAULT: '#9D7BEA',
+              fill: '#8165C0',
+              tint: '#F1ECFC',
+              pressed: '#7159A9',
+            },
+            peach: {
+              DEFAULT: '#FFB199',
+              light: '#FFEBE5',
+            },
+            ink: {
+              primary: '#120C1F',
+              secondary: '#4B4360',
+              tertiary: '#857D99',
+            },
+            borderSubtle: '#E6E1F2',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Readex Pro', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1721;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Tablet 1280x800 canvas container */
+    .tablet-screen {
+      width: 1280px;
+      height: 800px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #E6DCFC 0%, #F5E8F3 40%, #FFEBE5 75%, #FFF5ED 100%);
+      box-shadow: 0 25px 60px -15px rgba(18, 12, 31, 0.4);
+    }
+
+    /* Bobbing / rolling animation for playful vector world */
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes carBounce {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(-1deg); }
+    }
+    @keyframes targetGlow {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 6px 14px rgba(59, 130, 246, 0.35)); }
+      50% { transform: scale(1.04); filter: drop-shadow(0 10px 22px rgba(59, 130, 246, 0.55)); }
+    }
+    @keyframes laneDash {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 60; }
+    }
+
+    .float-item {
+      animation: gentleFloat 3s ease-in-out infinite;
+    }
+    .car-bounce {
+      animation: carBounce 0.7s ease-in-out infinite;
+    }
+    .target-highlight {
+      animation: targetGlow 2s ease-in-out infinite;
+    }
+    .road-lines {
+      stroke-dasharray: 20 20;
+      animation: laneDash 1.2s linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Android Tablet Landscape Screen -->
+  <div class="tablet-screen flex flex-col justify-between">
+
+    <!-- 1. Android Status Bar (Landscape Tablet) -->
+    <div class="w-full h-8 px-6 pt-1.5 flex justify-between items-center z-50 text-ink-primary font-medium text-xs select-none">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wide">10:00</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <!-- Wi-Fi -->
+        <svg class="w-4 h-4 text-ink-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.32c3.78 0 7.21 1.48 9.77 3.91L12 18.91 2.23 11.23C4.79 8.8 8.22 7.32 12 7.32z"/>
+        </svg>
+        <!-- Cell Signal -->
+        <svg class="w-4 h-4 text-ink-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M2 22h20V2L2 22z"/>
+        </svg>
+        <!-- Battery with 95% -->
+        <div class="flex items-center gap-1">
+          <span class="font-semibold text-[11px]">95%</span>
+          <svg class="w-5 h-3 text-ink-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16 4h-2V2h-4v2H8C6.9 4 6 4.9 6 6v14c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H8V6h8v14z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Top Header HUD Bar -->
+    <div class="w-full px-8 pt-1 pb-2 flex items-center justify-between z-40 relative">
+      <!-- Left: Exit Button + Lesson Step Pills -->
+      <div class="flex items-center gap-4">
+        <!-- Close / Exit button -->
+        <button class="w-12 h-12 rounded-full bg-white/90 backdrop-blur border border-borderSubtle shadow-sm flex items-center justify-center text-ink-secondary active:scale-95 transition-transform" title="Exit lesson">
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Lesson Step Pills (Watch done, Play active, Talk outline) -->
+        <div class="flex items-center bg-white/85 backdrop-blur p-1.5 rounded-full border border-borderSubtle shadow-sm gap-1.5">
+          <!-- Step 1: Watch (Done) -->
+          <div class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-50 text-emerald-600 font-sans font-semibold text-sm">
+            <svg class="w-4 h-4 stroke-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>1. Watch</span>
+          </div>
+
+          <!-- Step 2: Play (Active) -->
+          <div class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-lavender-fill text-white font-sans font-bold text-sm shadow-sm">
+            <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
+              <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+            </svg>
+            <span>2. Play</span>
+          </div>
+
+          <!-- Step 3: Talk (Upcoming / Outline) -->
+          <div class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-transparent text-ink-tertiary font-sans font-medium text-sm">
+            <svg class="w-4 h-4 stroke-ink-tertiary" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+            <span>3. Talk</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center-Right: Target Instruction Banner ("Drive to the azul one!") -->
+      <div class="flex items-center bg-white/95 backdrop-blur px-6 py-2.5 rounded-full border-2 border-lavender/30 shadow-md gap-3 transform -translate-x-4">
+        <!-- Speaker Audio Button -->
+        <button class="w-10 h-10 rounded-full bg-lavender-tint text-lavender-fill flex items-center justify-center hover:bg-lavender/20 active:scale-95 transition-all" title="Listen again">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+        </button>
+
+        <div class="flex items-baseline gap-2">
+          <span class="text-ink-secondary text-base font-semibold">Drive to the</span>
+          <span class="font-display font-bold text-2xl text-blue-600 underline decoration-blue-300 decoration-wavy underline-offset-4 tracking-wide">
+            ¡Azul!
+          </span>
+          <span class="text-ink-tertiary text-sm font-medium">(Blue)</span>
+        </div>
+      </div>
+
+      <!-- Right: Stars Score "4 / 8" + Pause -->
+      <div class="flex items-center gap-3">
+        <!-- Score Card with Star Progress -->
+        <div class="flex items-center bg-white/90 backdrop-blur px-5 py-2.5 rounded-full border border-borderSubtle shadow-sm gap-2.5">
+          <div class="flex items-center gap-1 text-amber-400">
+            <!-- Filled Gold Star -->
+            <svg class="w-6 h-6 fill-amber-400 drop-shadow-sm" viewBox="0 0 24 24">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+          </div>
+          <div class="flex items-baseline gap-1 font-display font-bold text-ink-primary text-xl">
+            <span>4</span>
+            <span class="text-ink-tertiary text-sm font-normal">/</span>
+            <span class="text-ink-tertiary text-base font-semibold">8</span>
+          </div>
+        </div>
+
+        <!-- Pause Button -->
+        <button class="w-12 h-12 rounded-full bg-white/90 backdrop-blur border border-borderSubtle shadow-sm flex items-center justify-center text-ink-secondary active:scale-95 transition-transform" title="Pause Game">
+          <svg class="w-5 h-5 fill-ink-secondary" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. Full-Width Flat 2D Vector Game Scene (Sky, Clouds, Rolling Hills, 3-Lane Road, Target Items, Car) -->
+    <div class="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+
+      <!-- Fluffy 2D Vector Clouds -->
+      <svg class="absolute top-12 left-16 w-36 h-20 text-white/70" viewBox="0 0 120 60" fill="currentColor">
+        <path d="M20 50h80a15 15 0 0 0 0-30 25 25 0 0 0-48-8 18 18 0 0 0-32 18 15 15 0 0 0 0 20z"/>
+      </svg>
+      <svg class="absolute top-8 right-44 w-48 h-24 text-white/60" viewBox="0 0 120 60" fill="currentColor">
+        <path d="M20 50h80a15 15 0 0 0 0-30 25 25 0 0 0-48-8 18 18 0 0 0-32 18 15 15 0 0 0 0 20z"/>
+      </svg>
+      <svg class="absolute top-24 left-1/3 w-28 h-16 text-white/50" viewBox="0 0 120 60" fill="currentColor">
+        <path d="M20 50h80a15 15 0 0 0 0-30 25 25 0 0 0-48-8 18 18 0 0 0-32 18 15 15 0 0 0 0 20z"/>
+      </svg>
+
+      <!-- Soft Distant Lavender Mountains / Foothills -->
+      <svg class="absolute top-44 left-0 w-full h-44" viewBox="0 0 1280 200" preserveAspectRatio="none">
+        <path d="M0,120 Q320,60 640,110 T1280,80 L1280,200 L0,200 Z" fill="#D8CCF2" opacity="0.6"/>
+      </svg>
+
+      <!-- Rolling Green Hills (Midground) -->
+      <svg class="absolute top-56 left-0 w-full h-64" viewBox="0 0 1280 260" preserveAspectRatio="none">
+        <!-- Far green hill -->
+        <path d="M0,140 C280,70 520,130 800,90 C1050,50 1180,110 1280,80 L1280,260 L0,260 Z" fill="#A8E490"/>
+        <!-- Soft flowers / trees on far hill -->
+        <circle cx="210" cy="115" r="14" fill="#88D46F"/>
+        <circle cx="210" cy="112" r="10" fill="#FFE58F"/>
+        <circle cx="890" cy="85" r="16" fill="#88D46F"/>
+        <circle cx="1120" cy="95" r="12" fill="#FFB199"/>
+        <!-- Near bright vibrant green hill -->
+        <path d="M0,170 C360,110 720,180 1280,120 L1280,260 L0,260 Z" fill="#8FD972"/>
+      </svg>
+
+      <!-- Perspective Flat 2D Road (3 Lanes) -->
+      <svg class="absolute top-72 left-0 w-full h-[520px]" viewBox="0 0 1280 520" preserveAspectRatio="none">
+        <!-- Road Shoulder Grass Trim -->
+        <polygon points="530,0 750,0 1160,520 120,520" fill="#78C65A" />
+        
+        <!-- Main Road Surface (Gentle Lavender-tinted Grey-Purple) -->
+        <polygon points="545,0 735,0 1120,520 160,520" fill="#584D70" />
+
+        <!-- Lane 1 / Lane 2 Divider (Dashed White) -->
+        <line x1="608" y1="0" x2="480" y2="520" stroke="#FFF" stroke-width="8" stroke-linecap="round" class="road-lines" opacity="0.85" />
+
+        <!-- Lane 2 / Lane 3 Divider (Dashed White) -->
+        <line x1="672" y1="0" x2="800" y2="520" stroke="#FFF" stroke-width="8" stroke-linecap="round" class="road-lines" opacity="0.85" />
+
+        <!-- Road Curbs (Bright Peach / White curb segments) -->
+        <polygon points="545,0 553,0 180,520 160,520" fill="#FFB199" />
+        <polygon points="727,0 735,0 1120,520 1100,520" fill="#FFB199" />
+      </svg>
+    </div>
+
+    <!-- 4. Interactive Lane Items (Red Apple, Blue Ball, Yellow Star) & Car Placement -->
+    <div class="relative w-full h-[470px] z-20 flex flex-col justify-between px-12 pointer-events-none mt-16">
+      
+      <!-- Top Portion of Road: The 3 Target Items in Their Respective Lanes -->
+      <div class="w-full flex justify-center items-start pt-8">
+        <div class="w-[840px] flex justify-between items-center px-4">
+          
+          <!-- LANE 1 (LEFT): Red Apple (Manzana Roja) -->
+          <div class="flex flex-col items-center float-item" style="animation-delay: 0.2s;">
+            <!-- Lane Label Pill -->
+            <div class="mb-2 px-3 py-1 rounded-full bg-white/90 border border-red-200 shadow-sm text-red-600 font-bold text-xs">
+              Rojo
+            </div>
+
+            <!-- Flat 2D Vector Red Apple -->
+            <div class="w-28 h-28 relative flex items-center justify-center">
+              <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                <!-- Leaf & Stem -->
+                <path d="M50 25 C50 15 54 8 57 5" stroke="#795548" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M55 18 C65 14 74 20 70 26 C62 28 56 22 55 18 Z" fill="#66BB6A"/>
+                <!-- Apple Body -->
+                <path d="M50 30 C32 15 8 28 14 58 C18 78 38 92 50 85 C62 92 82 78 86 58 C92 28 68 15 50 30 Z" fill="#EF4444"/>
+                <!-- Apple Highlight -->
+                <path d="M26 36 C22 42 22 52 25 58" stroke="#FCA5A5" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <!-- Cute Face -->
+                <circle cx="42" cy="52" r="3" fill="#1E293B"/>
+                <circle cx="58" cy="52" r="3" fill="#1E293B"/>
+                <path d="M46 60 Q50 64 54 60" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <!-- Cheeks -->
+                <circle cx="36" cy="56" r="3.5" fill="#DC2626" opacity="0.6"/>
+                <circle cx="64" cy="56" r="3.5" fill="#DC2626" opacity="0.6"/>
+              </svg>
+            </div>
+            <span class="text-white font-display font-bold text-base mt-1 drop-shadow">Apple</span>
+          </div>
+
+          <!-- LANE 2 (CENTER): Blue Ball (Pelota Azul) -> TARGET ITEM! -->
+          <div class="flex flex-col items-center float-item target-highlight" style="animation-delay: 0s;">
+            <!-- Target Badge / Prompt indicator -->
+            <div class="mb-2 px-4 py-1 rounded-full bg-blue-600 text-white font-bold text-xs shadow-lg flex items-center gap-1.5 ring-4 ring-blue-300/60 animate-bounce">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>¡Azul aquí!</span>
+            </div>
+
+            <!-- Flat 2D Vector Blue Ball with Stars -->
+            <div class="w-32 h-32 relative flex items-center justify-center">
+              <svg viewBox="0 0 100 100" class="w-full h-full">
+                <!-- Base Circle -->
+                <circle cx="50" cy="50" r="44" fill="#2563EB"/>
+                <!-- Cyan Swirl Stripe -->
+                <path d="M12 36 Q50 68 88 36 C80 20 65 10 50 10 C35 10 20 20 12 36 Z" fill="#38BDF8" opacity="0.9"/>
+                <!-- Ball Highlight curve -->
+                <path d="M22 28 Q44 14 68 20" stroke="#BAE6FD" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <!-- Cute Face -->
+                <circle cx="42" cy="52" r="3.5" fill="#FFFFFF"/>
+                <circle cx="58" cy="52" r="3.5" fill="#FFFFFF"/>
+                <circle cx="42" cy="52" r="1.8" fill="#0F172A"/>
+                <circle cx="58" cy="52" r="1.8" fill="#0F172A"/>
+                <path d="M46 62 Q50 67 54 62" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <!-- Rosy Cheeks -->
+                <circle cx="34" cy="57" r="4" fill="#60A5FA"/>
+                <circle cx="66" cy="57" r="4" fill="#60A5FA"/>
+              </svg>
+            </div>
+            <span class="text-white font-display font-bold text-lg mt-1 drop-shadow-md">Ball • Pelota</span>
+          </div>
+
+          <!-- LANE 3 (RIGHT): Yellow Star (Estrella Amarilla) -->
+          <div class="flex flex-col items-center float-item" style="animation-delay: 0.4s;">
+            <!-- Lane Label Pill -->
+            <div class="mb-2 px-3 py-1 rounded-full bg-white/90 border border-amber-200 shadow-sm text-amber-600 font-bold text-xs">
+              Amarillo
+            </div>
+
+            <!-- Flat 2D Vector Yellow Star -->
+            <div class="w-28 h-28 relative flex items-center justify-center">
+              <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                <!-- Star polygon -->
+                <polygon points="50,6 64,36 96,39 71,61 79,93 50,75 21,93 29,61 4,39 36,36" fill="#FBBF24"/>
+                <!-- Highlight line on left arm -->
+                <polygon points="50,14 60,36 86,39 66,57 71,81 50,67" fill="#FDE047" opacity="0.6"/>
+                <!-- Cute Face -->
+                <circle cx="43" cy="50" r="3" fill="#78350F"/>
+                <circle cx="57" cy="50" r="3" fill="#78350F"/>
+                <path d="M47 58 Q50 62 53 58" stroke="#78350F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <!-- Cheeks -->
+                <circle cx="36" cy="54" r="3" fill="#F59E0B" opacity="0.7"/>
+                <circle cx="64" cy="54" r="3" fill="#F59E0B" opacity="0.7"/>
+              </svg>
+            </div>
+            <span class="text-white font-display font-bold text-base mt-1 drop-shadow">Star</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Lower Portion of Road: The Cute Smiling Steering Car -->
+      <!-- Positioned in center lane (or transitioning towards blue target) -->
+      <div class="w-full flex justify-center items-center pb-2">
+        <div class="relative car-bounce flex flex-col items-center">
+          
+          <!-- Car Vector (Viewed from rear 3/4 angle, cute smiling bumper) -->
+          <div class="w-56 h-36 relative">
+            <svg viewBox="0 0 220 150" class="w-full h-full drop-shadow-2xl">
+              <!-- Soft Ground Shadow -->
+              <ellipse cx="110" cy="140" rx="90" ry="10" fill="#120C1F" opacity="0.45" />
+
+              <!-- Left Tire -->
+              <rect x="22" y="102" width="28" height="34" rx="10" fill="#261E38" />
+              <rect x="26" y="108" width="14" height="22" rx="6" fill="#4B4360" />
+
+              <!-- Right Tire -->
+              <rect x="170" y="102" width="28" height="34" rx="10" fill="#261E38" />
+              <rect x="180" y="108" width="14" height="22" rx="6" fill="#4B4360" />
+
+              <!-- Main Car Body (Lavender #9D7BEA with Peach #FFB199 Accents) -->
+              <path d="M30 115 C30 85 45 80 55 75 L70 35 C74 25 85 20 100 20 L120 20 C135 20 146 25 150 35 L165 75 C175 80 190 85 190 115 C190 128 180 132 165 132 L55 132 C40 132 30 128 30 115 Z" fill="#9D7BEA" />
+
+              <!-- Roof & Windshield -->
+              <path d="M68 70 L80 34 C82 28 88 26 98 26 L122 26 C132 26 138 28 140 34 L152 70 Z" fill="#F1ECFC" />
+              <!-- Windshield Glare Line -->
+              <path d="M85 36 L135 36 L128 42 L80 42 Z" fill="#FFFFFF" opacity="0.7"/>
+
+              <!-- Happy Driver Maestra Luna / Kid Mascot Eyes peeking from windshield -->
+              <circle cx="100" cy="50" r="4" fill="#120C1F" />
+              <circle cx="120" cy="50" r="4" fill="#120C1F" />
+              <circle cx="101" cy="49" r="1.5" fill="#FFFFFF" />
+              <circle cx="121" cy="49" r="1.5" fill="#FFFFFF" />
+              <path d="M107 56 Q110 59 113 56" stroke="#FF8A65" stroke-width="2" stroke-linecap="round" fill="none" />
+
+              <!-- Peach Accent Lower Trim / Bumper -->
+              <path d="M34 112 C34 105 45 102 58 102 L162 102 C175 102 186 105 186 112 C186 124 175 128 162 128 L58 128 C45 128 34 124 34 112 Z" fill="#FFB199" />
+
+              <!-- Rear Lights (Heart/Oval Cute Tail Lights) -->
+              <ellipse cx="50" cy="112" rx="9" ry="7" fill="#EF4444" />
+              <ellipse cx="50" cy="112" rx="5" ry="4" fill="#FCA5A5" />
+
+              <ellipse cx="170" cy="112" rx="9" ry="7" fill="#EF4444" />
+              <ellipse cx="170" cy="112" rx="5" ry="4" fill="#FCA5A5" />
+
+              <!-- Cute Smiling Mouth on Rear License/Bumper -->
+              <path d="M96 116 Q110 126 124 116" stroke="#8165C0" stroke-width="4" stroke-linecap="round" fill="none" />
+              <!-- Cheeks -->
+              <circle cx="88" cy="116" r="4" fill="#FF8A65" />
+              <circle cx="132" cy="116" r="4" fill="#FF8A65" />
+
+              <!-- License Plate: "LEO" / "HOLA" -->
+              <rect x="94" y="94" width="32" height="15" rx="4" fill="#FFFFFF" />
+              <text x="110" y="105" font-family="Quicksand" font-size="10" font-weight="bold" fill="#8165C0" text-anchor="middle">¡HOLA!</text>
+
+              <!-- Cute Little Antenna with Yellow Star Top -->
+              <line x1="140" y1="20" x2="148" y2="4" stroke="#8165C0" stroke-width="2.5" stroke-linecap="round" />
+              <polygon points="148,0 150,4 154,5 151,8 152,12 148,10 144,12 145,8 142,5 146,4" fill="#FBBF24" />
+            </svg>
+          </div>
+
+          <!-- Active Steering Prompt -->
+          <div class="mt-1 px-4 py-1 rounded-full bg-white/90 backdrop-blur border border-lavender/30 shadow-sm flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="text-xs font-bold text-lavender-fill uppercase tracking-wider">Steering in Center Lane</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 5. Bottom Large Steering Controls for Small Hands (Left & Right Corners) -->
+    <div class="w-full px-10 pb-8 flex justify-between items-end z-40 pointer-events-auto">
+      
+      <!-- LEFT STEERING PAD (Touch Target: 104x104px circle) -->
+      <div class="flex flex-col items-center gap-2">
+        <button class="w-28 h-28 rounded-full bg-white/95 backdrop-blur border-4 border-lavender shadow-xl flex flex-col items-center justify-center text-lavender-fill active:bg-lavender active:text-white active:scale-95 transition-all cursor-pointer group" aria-label="Turn Left">
+          <svg class="w-12 h-12 stroke-current transform group-active:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span class="font-display font-bold text-xs uppercase tracking-wider mt-0.5">Izquierda</span>
+        </button>
+        <span class="text-xs font-semibold text-ink-secondary bg-white/70 px-3 py-0.5 rounded-full shadow-xs">Turn Left</span>
+      </div>
+
+      <!-- CENTER INFO HINT PILL -->
+      <div class="mb-2 px-6 py-2 rounded-full bg-white/85 backdrop-blur border border-borderSubtle shadow-sm flex items-center gap-3">
+        <span class="text-2xl">🚗</span>
+        <div class="text-sm">
+          <span class="font-bold text-ink-primary">Tap steering pads</span>
+          <span class="text-ink-secondary"> to guide the car into the blue ball!</span>
+        </div>
+      </div>
+
+      <!-- RIGHT STEERING PAD (Touch Target: 104x104px circle) -->
+      <div class="flex flex-col items-center gap-2">
+        <button class="w-28 h-28 rounded-full bg-white/95 backdrop-blur border-4 border-lavender shadow-xl flex flex-col items-center justify-center text-lavender-fill active:bg-lavender active:text-white active:scale-95 transition-all cursor-pointer group" aria-label="Turn Right">
+          <svg class="w-12 h-12 stroke-current transform group-active:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+          <span class="font-display font-bold text-xs uppercase tracking-wider mt-0.5">Derecha</span>
+        </button>
+        <span class="text-xs font-semibold text-ink-secondary bg-white/70 px-3 py-0.5 rounded-full shadow-xs">Turn Right</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

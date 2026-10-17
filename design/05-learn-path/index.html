@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Watch Play Talk - Learn Path</title>
+<!-- Google Fonts: Quicksand & Readex Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "text-primary": "#120C1F",
+            "inverse-on-surface": "#f5eef8",
+            "on-tertiary-container": "#4b3f00",
+            "surface-tint": "#6b49b5",
+            "danger": "#DC2626",
+            "accent-fill": "#8165C0",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#221b00",
+            "tertiary-fixed-dim": "#e2c545",
+            "on-error-container": "#93000a",
+            "primary-fixed-dim": "#d1bcff",
+            "on-primary-fixed-variant": "#532f9b",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-surface": "#1d1a21",
+            "tertiary-fixed": "#ffe263",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#6f5d00",
+            "surface-container-highest": "#e7e0ea",
+            "secondary-fixed-dim": "#ffb59e",
+            "surface-container-low": "#f8f1fb",
+            "surface-dim": "#ded8e2",
+            "primary-container": "#8260cd",
+            "secondary-fixed": "#ffdbd0",
+            "on-tertiary-fixed-variant": "#534600",
+            "text-tertiary": "#857D99",
+            "primary": "#6947b2",
+            "on-secondary-fixed-variant": "#6e3826",
+            "on-background": "#1d1a21",
+            "on-tertiary": "#ffffff",
+            "border-divider": "#E6E1F2",
+            "inverse-surface": "#322f37",
+            "secondary-container": "#ffb199",
+            "accent-pressed": "#7159A9",
+            "tertiary-container": "#c5aa2a",
+            "success": "#16A34A",
+            "inverse-primary": "#d1bcff",
+            "surface-container-high": "#ede6f0",
+            "on-surface-variant": "#494552",
+            "surface-container": "#f2ecf6",
+            "on-primary-fixed": "#24005b",
+            "background": "#F6F4FC",
+            "error-container": "#ffdad6",
+            "outline-variant": "#cbc3d4",
+            "accent-tint": "#F1ECFC",
+            "primary-fixed": "#eaddff",
+            "surface": "#FFFFFF",
+            "on-primary-container": "#fffbff",
+            "outline": "#7a7483",
+            "secondary": "#8a4e3b",
+            "surface-variant": "#e7e0ea",
+            "warning": "#D97706",
+            "on-secondary-fixed": "#370e02",
+            "text-secondary": "#4B4360",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#7a412f",
+            "surface-bright": "#fef7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "caption": ["Readex Pro"],
+            "label": ["Readex Pro"],
+            "title": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "body": ["Readex Pro"]
+          },
+          "fontSize": {
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Ambient layered shadow token */
+    .soft-shadow {
+      box-shadow: 0 1px 2px rgba(18, 12, 31, 0.04), 0 8px 24px rgba(18, 12, 31, 0.06);
+    }
+    .soft-shadow-lg {
+      box-shadow: 0 2px 4px rgba(18, 12, 31, 0.04), 0 12px 30px rgba(129, 101, 192, 0.16);
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary font-body antialiased selection:bg-accent-tint selection:text-accent-fill flex justify-center min-h-full">
+<!-- Mobile Screen Container (393px width standard bounds) -->
+<main class="relative w-full max-w-[393px] min-h-[852px] bg-background flex flex-col justify-between overflow-x-hidden pb-[92px]">
+<!-- ==================== HEADER (KID TOP BAR) ==================== -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-5 pt-12 pb-3.5 flex items-center justify-between transition-colors shadow-sm">
+<!-- Left: Mia Avatar & Greeting -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 rounded-full p-[2.5px] bg-accent-tint ring-2 ring-accent-fill/30 shadow-sm shrink-0">
+<img alt="Mia avatar profile photo" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-tertiary">Watch Play Talk</span>
+<h1 class="font-display text-title font-bold text-text-primary leading-tight -mt-0.5">Hola, Mia!</h1>
+</div>
+</div>
+<!-- Right: Badges & Parent Lock -->
+<div class="flex items-center gap-2">
+<!-- Stars Counter -->
+<div class="flex items-center gap-1.5 bg-accent-tint px-3 py-1.5 rounded-full border border-border-divider soft-shadow">
+<span class="material-symbols-outlined fill-icon text-[#E5A93B] text-[18px]">stars</span>
+<span class="font-label text-caption font-bold text-text-primary">24</span>
+</div>
+<!-- Streak Pill -->
+<div class="hidden sm:flex items-center gap-1 bg-secondary-container/30 px-2.5 py-1.5 rounded-full border border-secondary-container/40">
+<span class="material-symbols-outlined fill-icon text-secondary text-[17px]">local_fire_department</span>
+<span class="font-label text-caption font-bold text-secondary">3</span>
+</div>
+<!-- Parent Gate Lock Button -->
+<button aria-label="Parent settings lock" class="w-9 h-9 rounded-full bg-accent-tint hover:bg-surface-variant text-text-tertiary hover:text-accent-fill flex items-center justify-center transition-transform active:scale-90 border border-border-divider ml-0.5">
+<span class="material-symbols-outlined text-[19px]">lock</span>
+</button>
+</div>
+</header>
+<!-- ==================== WINDING LESSON PATH (FOCAL AREA) ==================== -->
+<section aria-label="Learning Journey Path" class="relative w-full flex-1 px-5 pt-6 pb-12 flex flex-col items-center select-none overflow-hidden">
+<!-- SVG Winding Trail Graphic (Playful Ribbon / Track) -->
+<div class="absolute inset-0 pointer-events-none w-full h-full">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 393 680">
+<defs>
+<lineargradient id="pathGradient" x1="0%" x2="0%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#FFB199" stop-opacity="0.55"></stop>
+<stop offset="50%" stop-color="#9D7BEA" stop-opacity="0.45"></stop>
+<stop offset="100%" stop-color="#8165C0" stop-opacity="0.25"></stop>
+</lineargradient>
+<lineargradient id="dashedGradient" x1="0%" x2="0%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#8165C0" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#857D99" stop-opacity="0.4"></stop>
+</lineargradient>
+</defs>
+<!-- Soft glow ribbon path -->
+<path d="M 196 610 C 90 530, 95 440, 200 365 C 295 300, 310 200, 205 130 C 170 105, 180 50, 200 20" stroke="url(#pathGradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path>
+<!-- Dotted center track -->
+<path d="M 196 610 C 90 530, 95 440, 200 365 C 295 300, 310 200, 205 130 C 170 105, 180 50, 200 20" stroke="url(#dashedGradient)" stroke-dasharray="10 14" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+<!-- PATH NODES STACK (Arranged top-to-bottom visually: Top is upcoming locked, Center is current, Bottom is completed) -->
+<div class="relative w-full flex flex-col items-center space-y-9 z-10 pt-2">
+<!-- 5. NODE: Locked Node 2 (Top) - "My Family" -->
+<div class="flex flex-col items-center translate-x-3 transition-transform">
+<div class="relative flex items-center justify-center">
+<button aria-label="Locked topic: My Family" class="w-[68px] h-[68px] rounded-full bg-surface-container/90 border-2 border-border-divider/90 flex items-center justify-center text-text-tertiary soft-shadow cursor-not-allowed opacity-90" disabled="">
+<span class="material-symbols-outlined text-[28px] text-text-tertiary">lock</span>
+</button>
+<span class="absolute -bottom-1 -right-1 bg-surface rounded-full p-1 border border-border-divider shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-text-tertiary">diversity_1</span>
+</span>
+</div>
+<p class="font-label text-caption font-semibold text-text-tertiary mt-2">My Family</p>
+</div>
+<!-- 4. NODE: Locked Node 1 (Upper-Middle) - "Animals" -->
+<div class="flex flex-col items-center -translate-x-14 transition-transform">
+<div class="relative flex items-center justify-center">
+<button aria-label="Locked topic: Animals" class="w-[72px] h-[72px] rounded-full bg-surface-container/90 border-2 border-border-divider flex items-center justify-center text-text-tertiary soft-shadow cursor-not-allowed opacity-90" disabled="">
+<span class="material-symbols-outlined text-[30px] text-text-tertiary">lock</span>
+</button>
+<span class="absolute -bottom-1 -right-1 bg-surface rounded-full p-1 border border-border-divider shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-text-tertiary">cruelty_free</span>
+</span>
+</div>
+<p class="font-label text-caption font-semibold text-text-tertiary mt-2">Animals</p>
+</div>
+<!-- 3. CURRENT NODE (Focal Hero Node) - "Colors: rojo, azul, amarillo" -->
+<div class="relative w-full flex flex-col items-center my-2">
+<!-- Teacher Maestra Luna floating encouragement bubble (Left side) -->
+<div class="absolute left-1 -top-8 flex items-center gap-2 z-20 animate-bounce duration-1000">
+<div class="relative w-14 h-14 rounded-full ring-4 ring-secondary-container bg-surface p-0.5 soft-shadow-lg shrink-0 overflow-hidden">
+<img alt="Close-up circular portrait photo of a smiling friendly young Latina teacher in her late 20s named Maestra Luna" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYW8luTSaZL0EvCImsZKAM0U11bbmGg8DLuHi5DG6haqBPaUh6KkhgqwqxhHOvb7lWYg872gZ-mOSKvMhhzr0CTgEyS7keXUVO-hNUtgYF1_iYHNIPbSW84jZQQ3vlRdXfrgBEcvlmlV_tWNyr3H470j-8Cdq2kQorAE-PplPHlOoT4-pU1sH3LhvZx-9trxsEyvXVl9_twMsK4mJVbQvM2ySzf22wZQ5Bh_f4dKnX8AZWFjBvUX1QaYzQl53Y6t8XyoEJz9cihFg"/>
+</div>
+<!-- Speech Bubble -->
+<div class="relative bg-surface px-3 py-1.5 rounded-2xl rounded-bl-sm border border-border-divider soft-shadow flex items-center">
+<span class="font-display text-caption font-bold text-accent-fill">¡Vamos!</span>
+<span class="material-symbols-outlined text-[16px] text-accent-fill ml-0.5">sentiment_very_satisfied</span>
+</div>
+</div>
+<!-- Hero Main Node Button -->
+<div class="relative flex items-center justify-center pt-6">
+<!-- Pulsing soft halo aura -->
+<div class="absolute w-[114px] h-[114px] rounded-full bg-accent-tint/90 ring-8 ring-accent-fill/15 animate-pulse"></div>
+<button aria-label="Current lesson: Colors: rojo, azul, amarillo" class="relative w-[92px] h-[92px] rounded-full bg-gradient-to-br from-accent-fill to-[#9D7BEA] text-on-primary flex flex-col items-center justify-center soft-shadow-lg border-4 border-surface active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined fill-icon text-[44px] text-surface">palette</span>
+</button>
+<!-- Floating Active Star Badge -->
+<div class="absolute -top-1 -right-2 bg-secondary-container text-text-primary rounded-full p-2 border-2 border-surface shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined fill-icon text-[18px] text-[#A84920]">play_arrow</span>
+</div>
+</div>
+<!-- Lesson Title Card -->
+<div class="mt-3 text-center max-w-[260px] bg-surface/95 px-4 py-2.5 rounded-2xl border border-border-divider soft-shadow">
+<div class="inline-flex items-center gap-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-accent-fill"></span>
+<span class="font-caption text-caption text-accent-fill font-bold tracking-wide">CURRENT LESSON</span>
+</div>
+<h2 class="font-display text-body font-bold text-text-primary leading-snug">Colors</h2>
+<p class="font-body text-caption text-text-secondary">rojo, azul, amarillo</p>
+<!-- 3 Mini Progress Steps (Watch, Play, Talk) -->
+<div class="mt-3 pt-2.5 border-t border-border-divider flex items-center justify-center gap-2">
+<!-- 1. Step: Watch (Completed / Checked) -->
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-full border border-border-divider">
+<span class="material-symbols-outlined text-success text-[15px] font-bold">check_circle</span>
+<span class="font-caption text-[12px] font-semibold text-text-secondary">Watch</span>
+</div>
+<!-- 2. Step: Play (Active Highlight) -->
+<div class="flex items-center gap-1 bg-accent-fill text-on-primary px-2.5 py-1 rounded-full shadow-sm">
+<span class="material-symbols-outlined fill-icon text-[14px]">sports_esports</span>
+<span class="font-caption text-[12px] font-bold">Play</span>
+</div>
+<!-- 3. Step: Talk (Upcoming) -->
+<div class="flex items-center gap-1 bg-surface px-2 py-1 rounded-full border border-border-divider">
+<span class="material-symbols-outlined text-text-tertiary text-[14px]">record_voice_over</span>
+<span class="font-caption text-[12px] font-medium text-text-tertiary">Talk</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. NODE: Completed Node 2 (Middle-Lower) - "Numbers 1 to 5" -->
+<div class="flex flex-col items-center translate-x-14 transition-transform">
+<div class="relative flex items-center justify-center">
+<button aria-label="Completed: Numbers 1 to 5" class="w-[74px] h-[74px] rounded-full bg-surface text-accent-fill border-2 border-border-divider flex items-center justify-center soft-shadow active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px] text-accent-fill">pin</span>
+</button>
+<!-- Checkmark status badge -->
+<div class="absolute -bottom-1 -right-1 bg-success text-on-primary rounded-full w-6 h-6 flex items-center justify-center border-2 border-surface shadow-sm">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</div>
+</div>
+<p class="font-label text-caption font-semibold text-text-primary mt-2">Numbers 1 to 5</p>
+</div>
+<!-- 1. NODE: Completed Node 1 (Lower) - "Hello and Goodbye" -->
+<div class="flex flex-col items-center -translate-x-6 transition-transform">
+<div class="relative flex items-center justify-center">
+<button aria-label="Completed: Hello and Goodbye" class="w-[74px] h-[74px] rounded-full bg-surface text-accent-fill border-2 border-border-divider flex items-center justify-center soft-shadow active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[36px] text-accent-fill">waving_hand</span>
+</button>
+<!-- Checkmark status badge -->
+<div class="absolute -bottom-1 -right-1 bg-success text-on-primary rounded-full w-6 h-6 flex items-center justify-center border-2 border-surface shadow-sm">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</div>
+</div>
+<p class="font-label text-caption font-semibold text-text-primary mt-2">Hello &amp; Goodbye</p>
+</div>
+</div>
+</section>
+<!-- ==================== BOTTOM TAB BAR (3 STRICT TABS) ==================== -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[393px] z-50 bg-surface h-[72px] px-6 pb-2 border-t border-border-divider flex items-center justify-around shadow-sm">
+<!-- TAB 1: Learn (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-accent-fill font-semibold gap-1 [&amp;&gt;span:first-child]:bg-accent-tint [&amp;&gt;span:first-child]:rounded-full [&amp;&gt;span:first-child]:px-4 [&amp;&gt;span:first-child]:py-1 transition-all" href="#learn">
+<span class="flex items-center justify-center">
+<span class="material-symbols-outlined fill-icon text-[24px]">map</span>
+</span>
+<span class="font-caption text-caption text-accent-fill font-bold">Learn</span>
+</a>
+<!-- TAB 2: Watch (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-tertiary gap-1 font-medium transition-all hover:text-accent-fill" href="#watch">
+<span class="flex items-center justify-center py-1">
+<span class="material-symbols-outlined text-[24px]">play_circle</span>
+</span>
+<span class="font-caption text-caption text-text-tertiary">Watch</span>
+</a>
+<!-- TAB 3: Stickers (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-tertiary gap-1 font-medium transition-all hover:text-accent-fill" href="#stickers">
+<span class="flex items-center justify-center py-1">
+<span class="material-symbols-outlined text-[24px]">stars</span>
+</span>
+<span class="font-caption text-caption text-text-tertiary">Stickers</span>
+</a>
+</nav>
+</main>
+</body></html>

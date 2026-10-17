@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Subscription Paywall</title>
+<!-- Google Fonts: Quicksand & Readex Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#ede6f0",
+            "border-divider": "#E6E1F2",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#ffdbd0",
+            "primary-container": "#8260cd",
+            "on-primary-container": "#fffbff",
+            "surface": "#FFFFFF",
+            "on-secondary-fixed-variant": "#6e3826",
+            "surface-bright": "#fef7ff",
+            "on-secondary-fixed": "#370e02",
+            "inverse-primary": "#d1bcff",
+            "secondary-fixed-dim": "#ffb59e",
+            "outline-variant": "#cbc3d4",
+            "on-tertiary-container": "#4b3f00",
+            "success": "#16A34A",
+            "on-secondary-container": "#7a412f",
+            "accent-pressed": "#7159A9",
+            "surface-container": "#f2ecf6",
+            "on-tertiary-fixed-variant": "#534600",
+            "inverse-surface": "#322f37",
+            "surface-container-low": "#f8f1fb",
+            "primary-fixed": "#eaddff",
+            "on-surface": "#1d1a21",
+            "tertiary": "#6f5d00",
+            "on-surface-variant": "#494552",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#532f9b",
+            "surface-tint": "#6b49b5",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#6947b2",
+            "on-tertiary": "#ffffff",
+            "outline": "#7a7483",
+            "on-tertiary-fixed": "#221b00",
+            "on-primary-fixed": "#24005b",
+            "text-primary": "#120C1F",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#f5eef8",
+            "secondary-container": "#ffb199",
+            "on-error-container": "#93000a",
+            "danger": "#DC2626",
+            "surface-variant": "#e7e0ea",
+            "secondary": "#8a4e3b",
+            "tertiary-container": "#c5aa2a",
+            "text-tertiary": "#857D99",
+            "text-secondary": "#4B4360",
+            "accent-fill": "#8165C0",
+            "background": "#F6F4FC",
+            "primary-fixed-dim": "#d1bcff",
+            "on-primary": "#ffffff",
+            "accent-tint": "#F1ECFC",
+            "tertiary-fixed-dim": "#e2c545",
+            "surface-dim": "#ded8e2",
+            "on-background": "#1d1a21",
+            "tertiary-fixed": "#ffe263",
+            "surface-container-highest": "#e7e0ea",
+            "warning": "#D97706",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label": ["Readex Pro", "sans-serif"],
+            "title": ["Readex Pro", "sans-serif"],
+            "caption": ["Readex Pro", "sans-serif"],
+            "display": ["Quicksand", "sans-serif"],
+            "body": ["Readex Pro", "sans-serif"]
+          },
+          "fontSize": {
+            "label": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "600"
+              }
+            ],
+            "title": [
+              "22px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "14px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "500"
+              }
+            ],
+            "display": [
+              "34px",
+              {
+                "lineHeight": "42px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body": [
+              "17px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ]
+          },
+          "boxShadow": {
+            "ambient": "0 1px 2px rgba(18,12,31,.05), 0 8px 24px rgba(18,12,31,.07)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary min-h-screen flex justify-center items-start antialiased selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Form-factor Modal Container -->
+<main class="w-full max-w-[420px] min-h-screen bg-background flex flex-col justify-between px-5 pt-10 pb-9 relative shadow-2xl">
+<!-- Top Bar: Close Button & Parent Area Tag -->
+<header class="flex items-center justify-between w-full mb-4">
+<button aria-label="Close" class="w-10 h-10 rounded-full bg-surface border border-border-divider flex items-center justify-center text-text-secondary hover:bg-accent-tint active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface border border-border-divider rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-accent-fill" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-caption text-caption text-text-secondary text-[12px] tracking-tight">Parent Area</span>
+</div>
+</header>
+<!-- Scrollable Content Stack -->
+<div class="flex flex-col gap-4">
+<!-- Hero Photo Card -->
+<section class="w-full relative overflow-hidden rounded-[24px] bg-surface shadow-ambient border border-border-divider/50">
+<div class="aspect-[16/10] w-full relative">
+<img alt="Happy young toddler laughing while playing with tablet" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRtrlALCKoObDgaLymTUyxpVRmPjSwWMu5Eilo-tBfodYfSlgqdLOk6laZzlNPnrc25Qp-sB2LKP2TGLhEB7ong7JzRpD5u1XqsBatBZONMbHEScQ-6vpKETOv8IIfi5lIZedZnRb6nPeAHDTZVEKaQ-QJNnACKZ7ZBvq1vEiD-SkCCu5MxHmBva_RgYKbhCFTaDsY3EW7f8y6Tlo9ILAYcIv_gQB9vIDds4Rf0R2DMUwXTsb3A5gCDv3O3XtaSXYeE4UGY8nABa4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/20 via-transparent to-transparent"></div>
+</div>
+</section>
+<!-- Headline and Subtitle -->
+<section class="text-center px-1">
+<h1 class="font-display text-[26px] leading-[32px] font-bold text-text-primary">
+          Start your 7-day free trial
+        </h1>
+<p class="font-body text-caption text-text-secondary mt-1.5 max-w-[340px] mx-auto leading-relaxed">
+          Unlock unlimited bilingual learning adventures for your little one.
+        </p>
+</section>
+<!-- Checklist Features Bento Box -->
+<section class="bg-surface rounded-[24px] p-4 shadow-ambient border border-border-divider flex flex-col gap-2.5">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-accent-tint flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[15px] text-accent-fill font-bold" data-icon="check">check</span>
+</div>
+<span class="font-caption text-caption text-text-primary font-medium">Ad-free episodes</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-accent-tint flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[15px] text-accent-fill font-bold" data-icon="check">check</span>
+</div>
+<span class="font-caption text-caption text-text-primary font-medium">New lessons every week</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-accent-tint flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[15px] text-accent-fill font-bold" data-icon="check">check</span>
+</div>
+<span class="font-caption text-caption text-text-primary font-medium">Spanish and English</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-accent-tint flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[15px] text-accent-fill font-bold" data-icon="check">check</span>
+</div>
+<span class="font-caption text-caption text-text-primary font-medium">Up to 4 child profiles</span>
+</div>
+</section>
+<!-- Plan Selection Cards -->
+<section aria-label="Subscription plan options" class="flex flex-col gap-3" role="radiogroup">
+<!-- Annual Plan (Selected by Default) -->
+<label class="relative flex items-center justify-between p-4 rounded-[24px] bg-accent-tint/40 border-2 border-accent-fill shadow-ambient cursor-pointer transition-all duration-200" id="annual-card">
+<input checked="" class="sr-only" name="subscription_plan" onchange="updatePlanSelection('annual')" type="radio" value="annual"/>
+<div class="flex items-start gap-3.5">
+<!-- Active Radio Indicator -->
+<div class="w-6 h-6 rounded-full border-2 border-accent-fill bg-accent-fill flex items-center justify-center mt-0.5 shrink-0 transition-colors" id="annual-radio">
+<span class="material-symbols-outlined text-[16px] text-surface font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title text-label text-text-primary font-semibold">Annual</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-text-primary text-[11px] font-caption font-bold tracking-tight">Best value</span>
+</div>
+<span class="font-caption text-caption text-text-secondary mt-0.5">$5.00 per month</span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-title text-label text-text-primary font-semibold">$59.99<span class="text-[13px] font-normal text-text-secondary">/yr</span></span>
+<span class="text-[11px] font-caption text-accent-fill font-semibold bg-surface px-1.5 py-0.5 rounded-full border border-border-divider mt-0.5">Save 37%</span>
+</div>
+</label>
+<!-- Monthly Plan Card (Unselected by Default) -->
+<label class="relative flex items-center justify-between p-4 rounded-[24px] bg-surface border border-border-divider hover:border-accent-fill/60 cursor-pointer transition-all duration-200" id="monthly-card">
+<input class="sr-only" name="subscription_plan" onchange="updatePlanSelection('monthly')" type="radio" value="monthly"/>
+<div class="flex items-center gap-3.5">
+<!-- Inactive Radio Indicator -->
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant bg-surface flex items-center justify-center shrink-0 transition-colors" id="monthly-radio">
+<span class="hidden material-symbols-outlined text-[16px] text-surface font-bold" data-icon="check" id="monthly-check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title text-label text-text-primary font-semibold">Monthly</span>
+<span class="font-caption text-caption text-text-secondary">$7.99 per month</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title text-label text-text-secondary font-medium">$7.99<span class="text-[13px] font-normal text-text-tertiary">/mo</span></span>
+</div>
+</label>
+</section>
+<!-- CTA & Safety Disclaimer -->
+<section class="flex flex-col gap-3 mt-1">
+<!-- Primary Pill Gradient CTA -->
+<button class="w-full h-14 rounded-full bg-gradient-to-r from-accent-fill to-secondary-container text-surface font-label text-label flex items-center justify-center shadow-ambient hover:opacity-95 active:scale-[0.98] transition-all duration-150" type="button">
+          Start free trial
+        </button>
+<!-- Grown-up note -->
+<div class="flex items-center justify-center gap-1.5 text-text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-caption text-caption text-[13px]">A grown-up check comes next.</span>
+</div>
+<!-- Terms & Restore Caption -->
+<p class="text-center font-caption text-[12px] leading-5 text-text-tertiary max-w-[320px] mx-auto">
+          Cancel anytime in App Store settings. 
+          <a class="text-accent-fill hover:underline font-semibold ml-1" href="#restore">Restore purchases.</a>
+</p>
+</section>
+</div>
+</main>
+<script>
+    function updatePlanSelection(plan) {
+      const annualCard = document.getElementById('annual-card');
+      const monthlyCard = document.getElementById('monthly-card');
+      const annualRadio = document.getElementById('annual-radio');
+      const monthlyRadio = document.getElementById('monthly-radio');
+      const monthlyCheck = document.getElementById('monthly-check');
+
+      if (plan === 'annual') {
+        annualCard.className = "relative flex items-center justify-between p-4 rounded-[24px] bg-accent-tint/40 border-2 border-accent-fill shadow-ambient cursor-pointer transition-all duration-200";
+        monthlyCard.className = "relative flex items-center justify-between p-4 rounded-[24px] bg-surface border border-border-divider hover:border-accent-fill/60 cursor-pointer transition-all duration-200";
+
+        annualRadio.className = "w-6 h-6 rounded-full border-2 border-accent-fill bg-accent-fill flex items-center justify-center mt-0.5 shrink-0 transition-colors";
+        annualRadio.innerHTML = '<span class="material-symbols-outlined text-[16px] text-surface font-bold" data-icon="check">check</span>';
+
+        monthlyRadio.className = "w-6 h-6 rounded-full border-2 border-outline-variant bg-surface flex items-center justify-center shrink-0 transition-colors";
+        monthlyRadio.innerHTML = '';
+      } else {
+        monthlyCard.className = "relative flex items-center justify-between p-4 rounded-[24px] bg-accent-tint/40 border-2 border-accent-fill shadow-ambient cursor-pointer transition-all duration-200";
+        annualCard.className = "relative flex items-center justify-between p-4 rounded-[24px] bg-surface border border-border-divider hover:border-accent-fill/60 cursor-pointer transition-all duration-200";
+
+        monthlyRadio.className = "w-6 h-6 rounded-full border-2 border-accent-fill bg-accent-fill flex items-center justify-center shrink-0 transition-colors";
+        monthlyRadio.innerHTML = '<span class="material-symbols-outlined text-[16px] text-surface font-bold" data-icon="check">check</span>';
+
+        annualRadio.className = "w-6 h-6 rounded-full border-2 border-outline-variant bg-surface flex items-center justify-center mt-0.5 shrink-0 transition-colors";
+        annualRadio.innerHTML = '';
+      }
+    }
+  </script>
+</body></html>

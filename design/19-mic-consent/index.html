@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Turn on Talk?</title>
+<!-- Google Fonts: Quicksand & Readex Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f5eef8",
+            "text-tertiary": "#857D99",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#8260cd",
+            "on-error": "#ffffff",
+            "accent-fill": "#8165C0",
+            "secondary-container": "#ffb199",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed-variant": "#534600",
+            "secondary-fixed-dim": "#ffb59e",
+            "background": "#F6F4FC",
+            "tertiary": "#6f5d00",
+            "on-primary-fixed": "#24005b",
+            "tertiary-container": "#c5aa2a",
+            "on-tertiary-fixed": "#221b00",
+            "secondary": "#8a4e3b",
+            "primary-fixed-dim": "#d1bcff",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#eaddff",
+            "on-surface-variant": "#494552",
+            "tertiary-fixed-dim": "#e2c545",
+            "accent-pressed": "#7159A9",
+            "surface-variant": "#e7e0ea",
+            "text-secondary": "#4B4360",
+            "text-primary": "#120C1F",
+            "inverse-surface": "#322f37",
+            "on-surface": "#1d1a21",
+            "surface-container-low": "#f8f1fb",
+            "on-primary-fixed-variant": "#532f9b",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#d1bcff",
+            "surface-tint": "#6b49b5",
+            "on-background": "#1d1a21",
+            "on-tertiary": "#ffffff",
+            "success": "#16A34A",
+            "error": "#ba1a1a",
+            "danger": "#DC2626",
+            "accent-tint": "#F1ECFC",
+            "tertiary-fixed": "#ffe263",
+            "surface-dim": "#ded8e2",
+            "surface-bright": "#fef7ff",
+            "warning": "#D97706",
+            "surface-container": "#f2ecf6",
+            "surface-container-highest": "#e7e0ea",
+            "on-secondary-container": "#7a412f",
+            "on-secondary-fixed": "#370e02",
+            "outline-variant": "#cbc3d4",
+            "outline": "#7a7483",
+            "border-divider": "#E6E1F2",
+            "primary": "#6947b2",
+            "on-secondary-fixed-variant": "#6e3826",
+            "surface-container-high": "#ede6f0",
+            "surface": "#FFFFFF",
+            "secondary-fixed": "#ffdbd0",
+            "on-tertiary-container": "#4b3f00",
+            "on-primary-container": "#fffbff",
+            "error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "label": ["Readex Pro"],
+            "body": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "caption": ["Readex Pro"],
+            "title": ["Readex Pro"]
+          },
+          "fontSize": {
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .elevation-gentle {
+      box-shadow: 0 1px 2px rgba(18, 12, 31, 0.04), 0 8px 24px rgba(18, 12, 31, 0.06);
+    }
+  </style>
+</head>
+<body class="bg-[#e4deee] min-h-screen flex justify-center items-center antialiased font-body selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Device Simulation Frame (iPhone 393px width) -->
+<main class="w-full max-w-[393px] min-h-[852px] bg-background relative flex flex-col justify-between overflow-x-hidden shadow-2xl sm:rounded-[44px] border border-border-divider/50">
+<!-- Top Status Bar & TopAppBar Container -->
+<header class="w-full pt-3 pb-2 px-5 bg-background/80 backdrop-blur-md sticky top-0 z-30">
+<!-- Status bar placeholder spacing -->
+<div class="flex justify-between items-center text-xs font-semibold text-text-primary px-1 pt-1 pb-3">
+<span>9:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">wifi</span>
+<span class="material-symbols-outlined text-[17px]">battery_full</span>
+</div>
+</div>
+<!-- TopAppBar: Parent Area with Lock and Dismiss -->
+<nav class="flex items-center justify-between h-[44px]">
+<!-- Parent Mode Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border-divider shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-accent-fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label text-caption text-text-secondary font-semibold tracking-wide">Parent area</span>
+</div>
+<!-- Close / Dismiss Action Button -->
+<button aria-label="Close" class="w-10 h-10 rounded-full bg-surface border border-border-divider flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-accent-tint active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</nav>
+</header>
+<!-- Scrollable Content Canvas -->
+<section class="flex-1 px-5 pt-1 pb-6 flex flex-col">
+<!-- Hero Visual with Photo -->
+<div class="relative w-full aspect-[1.34] rounded-[24px] overflow-hidden elevation-gentle border border-border-divider/70 bg-surface">
+<img alt="Warm authentic documentary lifestyle photograph of a smiling mother and her toddler talking happily together" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPdJrBBROdsGMaLJoJyQ13qd29OETcVwzgsjptVNMaPrgkL7gh_NUZbLqjy8dxCw_92YdHSQYHMEe-fnT_hvDbxIgsYrdQPsva55dJWmhdwXMstwEaQVxXmtC0nlda-PsdbulNwwa-oHsxJ_KYc10hBZN_GyGzGhswzawMOY2iLGtjcfK-LXhMTx2cR_cLNt4SYFRLMbnD9xrXSCzbSobvLZGZfhpTDLxyYOzn5-pCh97333yYtT5FAz3gCisf0J0-NULiYFaj_tQ"/>
+<!-- Soft ambient gradient overlay to fuse photo gently -->
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/25 via-transparent to-transparent pointer-events-none"></div>
+<!-- Subtle Gentle Tag on Visual -->
+<div class="absolute bottom-3 left-3 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm border border-white/60">
+<span class="material-symbols-outlined text-accent-fill text-[16px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="font-display font-bold text-caption text-text-primary">Watch • Play • Talk</span>
+</div>
+</div>
+<!-- Header Typography -->
+<div class="text-center mt-4 mb-3">
+<h1 class="font-display font-bold text-[28px] leading-[34px] text-text-primary tracking-tight">
+          Turn on Talk?
+        </h1>
+<p class="font-body text-[15px] leading-[22px] text-text-secondary mt-1.5 max-w-[310px] mx-auto">
+          Practice spoken Spanish words together with playful voice games.
+        </p>
+</div>
+<!-- Consent Assurance Bento Card -->
+<div class="bg-surface rounded-[24px] p-4 sm:p-5 border border-border-divider/70 elevation-gentle space-y-3.5 my-auto">
+<!-- Bullet 1: Lessons vocal practice -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-accent-tint flex-shrink-0 flex items-center justify-center text-accent-fill mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-label text-[15px] leading-[20px] font-semibold text-text-primary">
+              Your child answers out loud in lessons
+            </h2>
+<p class="font-body text-caption text-text-tertiary mt-0.5 leading-snug">
+              Builds confidence speaking real words with Maestra Luna
+            </p>
+</div>
+</div>
+<!-- Divider line -->
+<div class="h-px bg-border-divider/40 ml-[52px]"></div>
+<!-- Bullet 2: On-device only -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-accent-tint flex-shrink-0 flex items-center justify-center text-accent-fill mt-0.5">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-label text-[15px] leading-[20px] font-semibold text-text-primary">
+              Speech is recognized on this device only
+            </h2>
+<p class="font-body text-caption text-text-tertiary mt-0.5 leading-snug">
+              Powered by on-device recognition models
+            </p>
+</div>
+</div>
+<!-- Divider line -->
+<div class="h-px bg-border-divider/40 ml-[52px]"></div>
+<!-- Bullet 3: Zero recording / cloud transmission -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-accent-tint flex-shrink-0 flex items-center justify-center text-accent-fill mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">cloud_off</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-label text-[15px] leading-[20px] font-semibold text-text-primary">
+              No audio is ever recorded, saved or sent
+            </h2>
+<p class="font-body text-caption text-text-tertiary mt-0.5 leading-snug">
+              100% private to your living room
+            </p>
+</div>
+</div>
+<!-- Divider line -->
+<div class="h-px bg-border-divider/40 ml-[52px]"></div>
+<!-- Bullet 4: Parental switch control -->
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-accent-tint flex-shrink-0 flex items-center justify-center text-accent-fill mt-0.5">
+<span class="material-symbols-outlined text-[20px]">toggle_on</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-label text-[15px] leading-[20px] font-semibold text-text-primary">
+              You can turn it off any time
+            </h2>
+<p class="font-body text-caption text-text-tertiary mt-0.5 leading-snug">
+              Easily toggled in Parent Settings whenever you wish
+            </p>
+</div>
+</div>
+</div>
+<!-- Action Buttons Cluster -->
+<div class="mt-4 space-y-2.5">
+<!-- Primary Action Button -->
+<button class="w-full min-h-[56px] py-4 px-6 rounded-full bg-accent-fill hover:bg-accent-pressed text-surface font-label text-[17px] font-semibold flex items-center justify-center gap-2.5 shadow-sm active:scale-95 transition-all focus:outline-none focus:ring-4 focus:ring-accent-tint" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span>Allow microphone</span>
+</button>
+<!-- Secondary Action Button -->
+<button class="w-full min-h-[52px] py-3.5 px-6 rounded-full bg-surface border-2 border-[#9D7BEA] text-accent-fill hover:bg-accent-tint/60 font-label text-label font-semibold text-center active:scale-95 transition-all focus:outline-none" type="button">
+          Use tap answers instead
+        </button>
+</div>
+<!-- Footer Privacy & COPPA Disclaimer -->
+<footer class="mt-4 pb-2 text-center flex items-center justify-center gap-1.5 text-text-tertiary">
+<span class="material-symbols-outlined text-[15px] text-text-tertiary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-caption text-caption tracking-tight">You are in control. Built for COPPA.</span>
+</footer>
+</section>
+<!-- iOS Home Indicator Bottom Safe Area Space (34px) -->
+<div class="w-full h-[34px] flex justify-center items-end pb-2 pointer-events-none">
+<div class="w-32 h-1 bg-text-primary/20 rounded-full"></div>
+</div>
+</main>
+</body></html>

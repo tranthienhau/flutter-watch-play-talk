@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+  <title>Apple TV - Who is Watching?</title>
+  <!-- Google Fonts: Quicksand & Readex Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Quicksand', 'sans-serif'],
+            sans: ['Readex Pro', 'sans-serif'],
+          },
+          colors: {
+            lavender: {
+              main: '#9D7BEA',
+              fill: '#8165C0',
+              tint: '#F1ECFC',
+              pressed: '#7159A9',
+            },
+            peach: {
+              main: '#FFB199',
+              soft: '#FFEAE3',
+            },
+            canvas: '#F6F4FC',
+            textPrimary: '#120C1F',
+            textSecondary: '#4B4360',
+            textTertiary: '#857D99',
+            borderSubtle: '#E6E1F2',
+          },
+          boxShadow: {
+            'tv-focus': '0 24px 60px -10px rgba(157, 123, 234, 0.45), 0 0 0 8px #9D7BEA, 0 0 35px 4px rgba(157, 123, 234, 0.35)',
+            'tv-card': '0 12px 32px rgba(18, 12, 31, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* tvOS 10-foot scale & smooth backdrop */
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      user-select: none;
+      background: radial-gradient(circle at 50% 15%, #FFFFFF 0%, #FAF8FE 45%, #F4EEFC 80%, #EDE5FA 100%);
+    }
+
+    /* Subtle ambient organic mesh */
+    .ambient-glow-lavender {
+      position: absolute;
+      top: -120px;
+      left: 20%;
+      width: 700px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(157, 123, 234, 0.16) 0%, rgba(246, 244, 252, 0) 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .ambient-glow-peach {
+      position: absolute;
+      bottom: -100px;
+      right: 20%;
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 177, 153, 0.22) 0%, rgba(246, 244, 252, 0) 70%);
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    /* Card focus animations */
+    .profile-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="relative flex flex-col justify-between font-sans text-textPrimary px-24 py-16">
+
+  <!-- Ambient background elements -->
+  <div class="ambient-glow-lavender"></div>
+  <div class="ambient-glow-peach"></div>
+
+  <!-- Top App Brand Header -->
+  <header class="relative z-10 flex items-center justify-between w-full">
+    <!-- Brand Logo & App Tagline -->
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-2xl bg-white shadow-tv-card flex items-center justify-center p-2 border border-borderSubtle">
+        <img src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg" alt="Watch Play Talk Logo" class="w-full h-full object-contain">
+      </div>
+      <div>
+        <h2 class="font-display font-bold text-2xl text-textPrimary tracking-tight">Watch Play Talk</h2>
+        <p class="font-sans text-sm text-textTertiary font-medium">Bilingual Learning TV • Español + English</p>
+      </div>
+    </div>
+
+    <!-- Right Side Status Badges (Safe Mode / Apple TV Remote Status) -->
+    <div class="flex items-center gap-5">
+      <div class="flex items-center gap-2.5 px-5 py-2.5 bg-white/80 backdrop-blur-md rounded-full border border-borderSubtle shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-sans text-sm font-semibold text-textSecondary">Kids Safe Mode Active</span>
+      </div>
+      <div class="flex items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur-md rounded-full border border-borderSubtle shadow-sm text-textTertiary">
+        <!-- Shield COPPA icon -->
+        <svg class="w-4 h-4 text-lavender-fill" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span class="font-sans text-sm font-medium text-textSecondary">Ad-Free Protected</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Central Section: Title + Profile Grid -->
+  <main class="relative z-10 flex flex-col items-center justify-center flex-1 my-auto">
+    <!-- Section Title & Subheading -->
+    <div class="text-center mb-16">
+      <h1 class="font-display font-bold text-6xl text-textPrimary tracking-tight drop-shadow-sm mb-4">
+        ¿Quién está viendo hoy?
+      </h1>
+      <p class="font-sans text-2xl text-textSecondary font-normal tracking-wide">
+        Who is watching today? <span class="text-textTertiary">• Elige tu perfil para continuar</span>
+      </p>
+    </div>
+
+    <!-- 4 tvOS Profile Tiles in a balanced row -->
+    <div class="flex items-center justify-center gap-14 w-full max-w-7xl">
+
+      <!-- Profile 1: MIA (Active / Focused tile) -->
+      <div class="profile-card group flex flex-col items-center cursor-pointer scale-110 relative z-20">
+        <!-- Focused Halo & Avatar container -->
+        <div class="relative w-56 h-56 rounded-full p-2 bg-gradient-to-tr from-lavender-main via-lavender-fill to-peach-main shadow-tv-focus">
+          <div class="w-full h-full rounded-full overflow-hidden bg-white border-4 border-white">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28" alt="Mia" class="w-full h-full object-cover">
+          </div>
+          <!-- Selected Checkmark/Play Badge -->
+          <div class="absolute -bottom-1 -right-1 w-12 h-12 bg-lavender-fill text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Profile Meta -->
+        <div class="mt-7 flex flex-col items-center">
+          <span class="font-display font-bold text-3xl text-lavender-fill tracking-tight drop-shadow-sm">Mia</span>
+          <div class="mt-2.5 flex items-center gap-2">
+            <span class="px-3.5 py-1 bg-lavender-tint text-lavender-fill text-sm font-semibold rounded-full border border-lavender-main/20">
+              Age 3 • Nivel 1
+            </span>
+            <span class="flex items-center gap-1 text-amber-500 font-bold text-sm bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+              ★ 24
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile 2: LEO -->
+      <div class="profile-card group flex flex-col items-center cursor-pointer opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300">
+        <!-- Avatar Ring -->
+        <div class="relative w-48 h-48 rounded-full p-1.5 bg-white shadow-tv-card border border-borderSubtle hover:border-lavender-main transition-colors">
+          <div class="w-full h-full rounded-full overflow-hidden bg-white">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1XfKJser536aw6pHON1kL2O4BrY7DDWAF83PNkO9UrfXqMh93u4Z01T9JObR5bf4tTjx4YNdcroNQE8N9CHg95DBdoV-4TqXYk2Rvi5-wk7fCewqrscecmRsSw2n4vrsZjIR7lz-bvI-VTzcb9IEzPz8Q6TbBsjRKn66_hF0isTQbV8zNZ5Ae2tivbq1e4cjG1Jw-EJ0c3TQNt63HW3VZtWQFd46E36unHUueN58bOctu7sIbVkw3oY6vA" alt="Leo" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <!-- Profile Meta -->
+        <div class="mt-6 flex flex-col items-center">
+          <span class="font-display font-bold text-2xl text-textPrimary tracking-tight">Leo</span>
+          <div class="mt-2 flex items-center gap-2">
+            <span class="px-3 py-0.5 bg-white text-textSecondary text-sm font-medium rounded-full border border-borderSubtle">
+              Age 5 • Both
+            </span>
+            <span class="flex items-center gap-1 text-amber-500 font-semibold text-sm bg-white px-2 py-0.5 rounded-full border border-borderSubtle">
+              ★ 12
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile 3: SOFIA -->
+      <div class="profile-card group flex flex-col items-center cursor-pointer opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300">
+        <!-- Avatar Ring -->
+        <div class="relative w-48 h-48 rounded-full p-1.5 bg-white shadow-tv-card border border-borderSubtle hover:border-lavender-main transition-colors">
+          <div class="w-full h-full rounded-full overflow-hidden bg-white">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1VLTu3dFNeh_AbzYf6ttrl3xUepYE1MAhGG9_dadRF3ULbxoQJbDOuBrUE0vfkFW7MdkXEiaM2zFbwRCJGhwP_bPraWnXLsCVFqnvfoSH3xsmN3HJqJV8U-I5L88COBRancj7xn9TkFbYZl6HpxIviDBl4Q2kKfU7Fh1L9ZQ1OjxgpdS8RfwqCJvnC6uuPcB9g42x65_NETGSQJQ4Zs2Um4Y3JB8xORJ6bV3s97p7980U1DIcQtD_kyyS4" alt="Sofia" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <!-- Profile Meta -->
+        <div class="mt-6 flex flex-col items-center">
+          <span class="font-display font-bold text-2xl text-textPrimary tracking-tight">Sofia</span>
+          <div class="mt-2 flex items-center gap-2">
+            <span class="px-3 py-0.5 bg-white text-textSecondary text-sm font-medium rounded-full border border-borderSubtle">
+              Age 2 • English
+            </span>
+            <span class="flex items-center gap-1 text-amber-500 font-semibold text-sm bg-white px-2 py-0.5 rounded-full border border-borderSubtle">
+              ★ 8
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile 4: GROWN-UPS (Parent Zone with Lock) -->
+      <div class="profile-card group flex flex-col items-center cursor-pointer opacity-85 hover:opacity-100 hover:scale-105 transition-all duration-300">
+        <!-- Lock Circular Tile -->
+        <div class="relative w-48 h-48 rounded-full p-1.5 bg-white shadow-tv-card border border-borderSubtle hover:border-peach-main transition-colors flex items-center justify-center">
+          <div class="w-full h-full rounded-full bg-gradient-to-br from-purple-50 via-peach-soft/60 to-lavender-tint flex flex-col items-center justify-center border-2 border-dashed border-lavender-main/40">
+            <!-- Phosphor-style clean Lock Icon -->
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-lavender-fill mb-1">
+              <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="3" ry="3"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Profile Meta -->
+        <div class="mt-6 flex flex-col items-center">
+          <span class="font-display font-bold text-2xl text-textPrimary tracking-tight">Grown-ups</span>
+          <div class="mt-2">
+            <span class="px-3 py-0.5 bg-peach-soft text-textSecondary text-sm font-semibold rounded-full border border-peach-main/40 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-lavender-fill" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              PIN Protected
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- tvOS Footer Instructions / Remote Remote Navigation Prompt -->
+  <footer class="relative z-10 flex items-center justify-between w-full pt-4 border-t border-borderSubtle/60">
+    <!-- Siri Remote Navigation Hint -->
+    <div class="flex items-center gap-4 px-6 py-3 bg-white/70 backdrop-blur-md rounded-2xl border border-borderSubtle shadow-sm">
+      <!-- Apple TV Clickpad Icon Graphic -->
+      <div class="w-9 h-9 rounded-full bg-lavender-tint border border-lavender-main/30 flex items-center justify-center text-lavender-fill">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="12" cy="12" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-sans font-medium text-base text-textPrimary">
+          Press the touch surface or clickpad to choose
+        </p>
+        <p class="font-sans text-xs text-textTertiary">
+          Presiona la superficie táctil para seleccionar
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick action shortcuts: Options & Add Learner -->
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2.5 px-5 py-2.5 bg-white/60 backdrop-blur-sm rounded-xl border border-borderSubtle text-textSecondary">
+        <span class="px-2 py-0.5 text-xs font-bold bg-textPrimary/10 rounded text-textPrimary">PLAY/PAUSE</span>
+        <span class="text-sm font-medium">Auto-play latest lesson</span>
+      </div>
+      <div class="flex items-center gap-2.5 px-5 py-2.5 bg-white/60 backdrop-blur-sm rounded-xl border border-borderSubtle text-textSecondary">
+        <span class="px-2 py-0.5 text-xs font-bold bg-textPrimary/10 rounded text-textPrimary">MENU</span>
+        <span class="text-sm font-medium">Back</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

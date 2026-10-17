@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=393, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Parent Area - Watch Play Talk</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#f2ecf6",
+            "accent-pressed": "#7159A9",
+            "outline": "#7a7483",
+            "primary-fixed": "#eaddff",
+            "text-tertiary": "#857D99",
+            "inverse-on-surface": "#f5eef8",
+            "primary": "#6947b2",
+            "text-primary": "#120C1F",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-primary-fixed-variant": "#532f9b",
+            "warning": "#D97706",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#cbc3d4",
+            "primary-container": "#8260cd",
+            "on-tertiary-fixed-variant": "#534600",
+            "inverse-primary": "#d1bcff",
+            "secondary-fixed": "#ffdbd0",
+            "accent-fill": "#8165C0",
+            "surface": "#FFFFFF",
+            "tertiary-container": "#c5aa2a",
+            "on-surface-variant": "#494552",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "tertiary": "#6f5d00",
+            "surface-container-highest": "#e7e0ea",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#1d1a21",
+            "surface-container-high": "#ede6f0",
+            "surface-variant": "#e7e0ea",
+            "on-secondary-container": "#7a412f",
+            "border-divider": "#E6E1F2",
+            "tertiary-fixed": "#ffe263",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#d1bcff",
+            "on-secondary-fixed": "#370e02",
+            "surface-container-low": "#f8f1fb",
+            "on-tertiary-container": "#4b3f00",
+            "text-secondary": "#4B4360",
+            "surface-tint": "#6b49b5",
+            "on-background": "#1d1a21",
+            "on-secondary": "#ffffff",
+            "background": "#F6F4FC",
+            "on-primary-container": "#fffbff",
+            "surface-bright": "#fef7ff",
+            "danger": "#DC2626",
+            "success": "#16A34A",
+            "tertiary-fixed-dim": "#e2c545",
+            "inverse-surface": "#322f37",
+            "secondary": "#8a4e3b",
+            "on-tertiary-fixed": "#221b00",
+            "accent-tint": "#F1ECFC",
+            "surface-dim": "#ded8e2",
+            "on-primary-fixed": "#24005b",
+            "secondary-container": "#ffb199",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#6e3826"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "title": ["Readex Pro"],
+            "body": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "caption": ["Readex Pro"],
+            "label": ["Readex Pro"]
+          },
+          "fontSize": {
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F6F4FC;
+      color: #120C1F;
+      font-family: 'Readex Pro', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-card-shadow {
+      box-shadow: 0 1px 2px rgba(18, 12, 31, 0.05), 0 8px 24px rgba(18, 12, 31, 0.07);
+    }
+    .custom-hero-gradient {
+      background: linear-gradient(135deg, #9D7BEA 0%, #FFB199 100%);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="flex justify-center bg-[#ECE8F7] min-h-screen">
+<!-- Mobile Container (393px width lock) -->
+<main class="w-full max-w-[393px] bg-background min-h-screen flex flex-col relative pb-10">
+<!-- Top App Bar (Shared Component Contract) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 h-[59px] w-full max-w-[393px] mx-auto bg-surface border-b border-border-divider shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-accent-tint flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+</div>
+<h1 class="text-title font-title text-text-primary tracking-tight">Parent area</h1>
+</div>
+<button aria-label="Close parent area" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-text-secondary hover:bg-accent-tint hover:text-accent-pressed active:scale-95 transition-transform duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</header>
+<!-- Top Safe Area Spacing -->
+<div class="h-[59px] w-full shrink-0"></div>
+<!-- Scrollable Content Canvas -->
+<div class="px-5 pt-4 flex flex-col gap-4">
+<!-- Child Switcher Section -->
+<section aria-label="Child selector" class="pt-1">
+<div class="flex items-center justify-between mb-2 px-0.5">
+<span class="text-caption font-caption text-text-tertiary">Select learner</span>
+<span class="text-caption font-caption text-accent-fill font-medium">Spanish track</span>
+</div>
+<div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1">
+<!-- Mia (Active) -->
+<button class="flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-accent-tint border-2 border-accent-fill custom-card-shadow active:scale-95 transition-all" type="button">
+<div class="relative w-8 h-8 rounded-full overflow-hidden ring-1 ring-white shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-label font-label text-accent-fill font-bold">Mia</span>
+<span class="material-symbols-outlined text-accent-fill text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+<!-- Leo (Inactive) -->
+<button class="flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-surface border border-border-divider hover:bg-surface-container active:scale-95 transition-all" type="button">
+<div class="relative w-8 h-8 rounded-full overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XfKJser536aw6pHON1kL2O4BrY7DDWAF83PNkO9UrfXqMh93u4Z01T9JObR5bf4tTjx4YNdcroNQE8N9CHg95DBdoV-4TqXYk2Rvi5-wk7fCewqrscecmRsSw2n4vrsZjIR7lz-bvI-VTzcb9IEzPz8Q6TbBsjRKn66_hF0isTQbV8zNZ5Ae2tivbq1e4cjG1Jw-EJ0c3TQNt63HW3VZtWQFd46E36unHUueN58bOctu7sIbVkw3oY6vA"/>
+</div>
+<span class="text-label font-label text-text-secondary font-medium">Leo</span>
+</button>
+<!-- Sofia (Inactive) -->
+<button class="flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-surface border border-border-divider hover:bg-surface-container active:scale-95 transition-all" type="button">
+<div class="relative w-8 h-8 rounded-full overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VLTu3dFNeh_AbzYf6ttrl3xUepYE1MAhGG9_dadRF3ULbxoQJbDOuBrUE0vfkFW7MdkXEiaM2zFbwRCJGhwP_bPraWnXLsCVFqnvfoSH3xsmN3HJqJV8U-I5L88COBRancj7xn9TkFbYZl6HpxIviDBl4Q2kKfU7Fh1L9ZQ1OjxgpdS8RfwqCJvnC6uuPcB9g42x65_NETGSQJQ4Zs2Um4Y3JB8xORJ6bV3s97p7980U1DIcQtD_kyyS4"/>
+</div>
+<span class="text-label font-label text-text-secondary font-medium">Sofia</span>
+</button>
+</div>
+</section>
+<!-- Focal Hero Stat Card ("Mia this week") -->
+<section class="custom-hero-gradient rounded-[24px] p-5 text-white custom-card-shadow relative overflow-hidden">
+<!-- Soft subtle decorative circle overlay -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-white/10 pointer-events-none blur-xl"></div>
+<div class="absolute -left-6 -top-6 w-28 h-28 rounded-full bg-white/10 pointer-events-none blur-lg"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="text-title font-display font-bold text-white tracking-normal">Mia this week</h2>
+<p class="text-caption font-caption text-white/85">Goal: 10 mins • 5 days/wk</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-caption font-label text-white flex items-center gap-1 border border-white/25">
+<span class="material-symbols-outlined text-[15px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+              On track
+            </span>
+</div>
+<!-- 3 Prominent Metrics -->
+<div class="grid grid-cols-3 gap-2 py-3 px-2 rounded-2xl bg-black/10 backdrop-blur-md border border-white/15 mb-4">
+<div class="text-center">
+<div class="text-title font-display font-bold text-white">5</div>
+<div class="text-[12px] font-caption text-white/80 leading-tight">lessons done</div>
+</div>
+<div class="text-center border-x border-white/20">
+<div class="text-title font-display font-bold text-white">18</div>
+<div class="text-[12px] font-caption text-white/80 leading-tight">words learned</div>
+</div>
+<div class="text-center">
+<div class="text-title font-display font-bold text-white">42<span class="text-[13px] font-body font-normal ml-0.5">m</span></div>
+<div class="text-[12px] font-caption text-white/80 leading-tight">total time</div>
+</div>
+</div>
+<!-- Mini Bar Chart (Mon - Sun) -->
+<div>
+<div class="flex justify-between items-center mb-2 px-1">
+<span class="text-caption font-caption text-white/90 font-medium">Daily practice time</span>
+<span class="text-caption font-caption text-white/75 text-[12px]">Avg 8.4m / day</span>
+</div>
+<div class="grid grid-cols-7 gap-1.5 items-end h-20 pt-2 px-1">
+<!-- Monday -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white/85">12m</span>
+<div class="w-full bg-white rounded-full transition-all" style="height: 70%;"></div>
+<span class="text-[11px] font-caption text-white/90 font-medium">M</span>
+</div>
+<!-- Tuesday -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white/85">10m</span>
+<div class="w-full bg-white rounded-full transition-all" style="height: 58%;"></div>
+<span class="text-[11px] font-caption text-white/90 font-medium">T</span>
+</div>
+<!-- Wednesday -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white/85">8m</span>
+<div class="w-full bg-white rounded-full transition-all" style="height: 48%;"></div>
+<span class="text-[11px] font-caption text-white/90 font-medium">W</span>
+</div>
+<!-- Thursday (Today) -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white font-bold">12m</span>
+<div class="w-full bg-white rounded-full ring-2 ring-white/50" style="height: 72%;"></div>
+<span class="text-[11px] font-caption text-white font-bold underline underline-offset-2">T</span>
+</div>
+<!-- Friday -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white/75">-</span>
+<div class="w-full bg-white/35 rounded-full" style="height: 12%;"></div>
+<span class="text-[11px] font-caption text-white/75">F</span>
+</div>
+<!-- Saturday -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white/75">-</span>
+<div class="w-full bg-white/35 rounded-full" style="height: 12%;"></div>
+<span class="text-[11px] font-caption text-white/75">S</span>
+</div>
+<!-- Sunday -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<span class="text-[10px] font-caption text-white/75">-</span>
+<div class="w-full bg-white/35 rounded-full" style="height: 12%;"></div>
+<span class="text-[11px] font-caption text-white/75">S</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Words Practiced Card -->
+<section class="bg-surface rounded-[24px] p-5 custom-card-shadow border border-border-divider">
+<div class="flex items-center justify-between mb-3.5">
+<div>
+<h3 class="text-title font-title text-text-primary text-[19px]">Words practiced</h3>
+<p class="text-caption font-caption text-text-tertiary">Colors unit • Spanish</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-accent-tint flex items-center justify-center text-accent-fill hover:bg-primary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+<div class="divide-y divide-border-divider">
+<!-- Row 1: rojo -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#FEE2E2] flex items-center justify-center text-[#DC2626]">
+<span class="material-symbols-outlined text-[16px]" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<div>
+<span class="text-label font-label text-text-primary">rojo</span>
+<span class="text-caption font-caption text-text-tertiary ml-1.5">• Red</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#DCFCE7] text-success text-caption font-label flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+              said it
+            </span>
+</div>
+<!-- Row 2: azul -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#DBEAFE] flex items-center justify-center text-[#2563EB]">
+<span class="material-symbols-outlined text-[16px]" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<div>
+<span class="text-label font-label text-text-primary">azul</span>
+<span class="text-caption font-caption text-text-tertiary ml-1.5">• Blue</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#DCFCE7] text-success text-caption font-label flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+              said it
+            </span>
+</div>
+<!-- Row 3: amarillo -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#FEF3C7] flex items-center justify-center text-[#D97706]">
+<span class="material-symbols-outlined text-[16px]" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<div>
+<span class="text-label font-label text-text-primary">amarillo</span>
+<span class="text-caption font-caption text-text-tertiary ml-1.5">• Yellow</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#FFEDD5] text-[#C2410C] text-caption font-label flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="hourglass_top">hourglass_top</span>
+              practicing
+            </span>
+</div>
+</div>
+</section>
+<!-- Recent Lessons Card -->
+<section class="bg-surface rounded-[24px] p-5 custom-card-shadow border border-border-divider">
+<div class="flex items-center justify-between mb-3">
+<div>
+<h3 class="text-title font-title text-text-primary text-[19px]">Recent lessons</h3>
+<p class="text-caption font-caption text-text-tertiary">Step flow: Watch • Play • Talk</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-text-secondary text-caption font-medium">3 completed</span>
+</div>
+<div class="divide-y divide-border-divider">
+<!-- Lesson 1 -->
+<div class="py-3 flex items-center justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-accent-tint flex items-center justify-center text-accent-fill shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="palette">palette</span>
+</div>
+<div>
+<h4 class="text-label font-label text-text-primary text-[15px] leading-snug">Colors: rojo, azul, amarillo</h4>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="text-caption font-caption text-text-tertiary text-[13px]">Oct 7</span>
+<span class="text-text-tertiary">•</span>
+<span class="text-caption font-caption text-success font-medium text-[13px]">Complete</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-0.5 text-warning shrink-0 bg-surface-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-label text-text-primary text-[13px]">3</span>
+</div>
+</div>
+<!-- Lesson 2 -->
+<div class="py-3 flex items-center justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-accent-tint flex items-center justify-center text-accent-fill shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="pin">pin</span>
+</div>
+<div>
+<h4 class="text-label font-label text-text-primary text-[15px] leading-snug">Numbers 1 to 5</h4>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="text-caption font-caption text-text-tertiary text-[13px]">Oct 6</span>
+<span class="text-text-tertiary">•</span>
+<span class="text-caption font-caption text-success font-medium text-[13px]">Complete</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-0.5 text-warning shrink-0 bg-surface-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-label text-text-primary text-[13px]">3</span>
+</div>
+</div>
+<!-- Lesson 3 -->
+<div class="py-3 flex items-center justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-accent-tint flex items-center justify-center text-accent-fill shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="waving_hand">waving_hand</span>
+</div>
+<div>
+<h4 class="text-label font-label text-text-primary text-[15px] leading-snug">Hello and Goodbye</h4>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="text-caption font-caption text-text-tertiary text-[13px]">Oct 4</span>
+<span class="text-text-tertiary">•</span>
+<span class="text-caption font-caption text-success font-medium text-[13px]">Complete</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-0.5 text-warning shrink-0 bg-surface-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-label text-text-primary text-[13px]">3</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Account & Settings Actions -->
+<section class="flex flex-col items-center gap-3 pt-2">
+<button class="w-full h-12 rounded-full bg-surface border-2 border-[#9D7BEA] text-accent-fill font-label text-label flex items-center justify-center gap-2 hover:bg-accent-tint active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="credit_card">credit_card</span>
+          Manage subscription
+        </button>
+<!-- Subtle Footer Status -->
+<div class="text-center space-y-1">
+<p class="text-caption font-caption text-text-tertiary text-[13px]">Watch Play Talk Family Plan • Renews Nov 12</p>
+<div class="flex items-center justify-center gap-1 text-[12px] font-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px] text-success" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            Adult verification active
+          </div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

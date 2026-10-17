@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Watch Play Talk - Catch Game</title>
+<!-- Google Fonts: Quicksand (Display) & Readex Pro (Body/UI) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#6947b2",
+            "tertiary": "#6f5d00",
+            "on-surface": "#1d1a21",
+            "secondary-container": "#ffb199",
+            "border-divider": "#E6E1F2",
+            "background": "#F6F4FC",
+            "warning": "#D97706",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-background": "#1d1a21",
+            "primary-container": "#8260cd",
+            "inverse-surface": "#322f37",
+            "on-secondary-fixed-variant": "#6e3826",
+            "surface-bright": "#fef7ff",
+            "surface": "#FFFFFF",
+            "text-tertiary": "#857D99",
+            "surface-container": "#f2ecf6",
+            "on-primary-fixed": "#24005b",
+            "accent-tint": "#F1ECFC",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#534600",
+            "secondary-fixed": "#ffdbd0",
+            "on-tertiary-fixed": "#221b00",
+            "outline": "#7a7483",
+            "accent-pressed": "#7159A9",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "tertiary-fixed-dim": "#e2c545",
+            "danger": "#DC2626",
+            "on-error-container": "#93000a",
+            "surface-container-highest": "#e7e0ea",
+            "surface-container-high": "#ede6f0",
+            "surface-variant": "#e7e0ea",
+            "on-tertiary-container": "#4b3f00",
+            "tertiary-container": "#c5aa2a",
+            "outline-variant": "#cbc3d4",
+            "inverse-primary": "#d1bcff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#7a412f",
+            "text-secondary": "#4B4360",
+            "on-secondary-fixed": "#370e02",
+            "secondary": "#8a4e3b",
+            "primary-fixed": "#eaddff",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#532f9b",
+            "surface-dim": "#ded8e2",
+            "text-primary": "#120C1F",
+            "primary-fixed-dim": "#d1bcff",
+            "tertiary-fixed": "#ffe263",
+            "on-tertiary": "#ffffff",
+            "success": "#16A34A",
+            "inverse-on-surface": "#f5eef8",
+            "surface-tint": "#6b49b5",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#494552",
+            "accent-fill": "#8165C0",
+            "on-primary-container": "#fffbff",
+            "surface-container-low": "#f8f1fb"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body": ["Readex Pro"],
+            "label": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "title": ["Readex Pro"],
+            "caption": ["Readex Pro"]
+          },
+          "fontSize": {
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined ms-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Gentle 2D Vector Fruit Floating Motion */
+    @keyframes gentleSway {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(8px) rotate(3deg); }
+    }
+    @keyframes appleCatchWiggle {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-4px) scale(1.03); }
+    }
+    @keyframes basketCheer {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes scorePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    .anim-sway { animation: gentleSway 3s ease-in-out infinite; }
+    .anim-apple { animation: appleCatchWiggle 2.5s ease-in-out infinite; }
+    .anim-basket { animation: basketCheer 2.8s ease-in-out infinite; }
+    .anim-pop { animation: scorePulse 1.8s ease-in-out infinite; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style>.ms-fill{font-variation-settings:'FILL' 1;}</style></head>
+<body class="h-full bg-background text-text-primary antialiased font-body flex justify-center items-center">
+<!-- Mobile Device Canvas (iPhone portrait standard 393px width constraint) -->
+<main class="w-full max-w-[393px] h-screen max-h-[852px] bg-background flex flex-col justify-between relative overflow-hidden select-none shadow-2xl md:rounded-[44px] md:border-[10px] md:border-surface">
+<!-- Top Safe Area Buffer & Header Section -->
+<header class="w-full pt-10 px-4 pb-2 z-30 flex-shrink-0 bg-background">
+<!-- Nav Row: Exit, Step Indicator Pills, Pause -->
+<div class="flex items-center justify-between mb-3">
+<!-- Close / Exit Button -->
+<button aria-label="Exit game" class="w-12 h-12 rounded-full bg-surface shadow-sm border border-border-divider flex items-center justify-center text-text-secondary active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<!-- Lesson Step Pills (Watch, Play, Talk) -->
+<nav aria-label="Lesson Progress" class="flex items-center gap-1.5 bg-surface-container-low px-2 py-1.5 rounded-full border border-border-divider">
+<!-- Step 1: Watch (Completed) -->
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface text-success">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check_circle</span>
+<span class="font-caption text-caption text-text-secondary font-semibold">Watch</span>
+</div>
+<!-- Step 2: Play (Current Active Step) -->
+<div class="flex items-center gap-1 px-3 py-1 rounded-full bg-accent-fill text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+<span class="font-caption text-caption font-bold">Play</span>
+</div>
+<!-- Step 3: Talk (Upcoming) -->
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full text-text-tertiary">
+<span class="material-symbols-outlined text-[16px]">record_voice_over</span>
+<span class="font-caption text-caption font-medium">Talk</span>
+</div>
+</nav>
+<!-- Pause Button -->
+<button aria-label="Pause game" class="w-12 h-12 rounded-full bg-surface shadow-sm border border-border-divider flex items-center justify-center text-text-secondary active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]">pause</span>
+</button>
+</div>
+<!-- Bilingual Prompt Card & Target Swatch Banner -->
+<div class="bg-surface rounded-2xl p-3 shadow-sm border border-border-divider flex items-center justify-between gap-2">
+<!-- Bilingual Prompt & Speaker Target -->
+<div class="flex items-center gap-2.5 flex-1 min-w-0">
+<button aria-label="Play audio for Rojo" class="w-11 h-11 flex-shrink-0 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center active:scale-95 transition-transform border border-border-divider" type="button">
+<span class="material-symbols-outlined ms-fill text-[24px]">volume_up</span>
+</button>
+<div class="flex flex-col truncate">
+<div class="flex items-center gap-1.5">
+<span class="font-title text-label font-bold text-text-primary">¡Atrapa los rojos!</span>
+</div>
+<span class="font-caption text-caption text-text-secondary font-normal">Catch the red ones!</span>
+</div>
+</div>
+<!-- Target Swatch Pill -->
+<div class="flex items-center gap-1.5 bg-[#FFEFEF] border border-[#FFCCD0] px-2.5 py-1 rounded-full flex-shrink-0">
+<!-- 2D Vector Target Apple Swatch Icon -->
+<svg class="w-5 h-5 flex-shrink-0" fill="none" viewbox="0 0 32 32">
+<path d="M16 6C17 3 20 2 21 2" stroke="#2E7D32" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M19 3C22 3 24 5 24 5C24 5 22 7 19 6" fill="#4CAF50"></path>
+<path d="M16 8C11 8 7 12 7 17C7 24 12 28 16 28C20 28 25 24 25 17C25 12 21 8 16 8Z" fill="#DC2626"></path>
+<circle cx="12" cy="14" fill="#FFFFFF" fill-opacity="0.6" r="1.5"></circle>
+</svg>
+<span class="font-caption text-caption font-bold text-[#B91C1C]">Rojo</span>
+</div>
+</div>
+<!-- Mini Star Score Tracker -->
+<div class="mt-2 flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined ms-fill text-[#E5A800] text-[20px]">stars</span>
+<span class="font-caption text-caption font-bold text-text-primary">6 / 10</span>
+</div>
+<!-- Progress Track -->
+<div class="w-44 h-3 bg-accent-tint rounded-full overflow-hidden p-0.5 border border-border-divider">
+<div class="h-full bg-gradient-to-r from-accent-fill to-secondary-container rounded-full w-[60%] transition-all duration-300"></div>
+</div>
+<!-- Star Badge Pill -->
+<div class="flex items-center gap-0.5 text-[#E5A800]">
+<span class="material-symbols-outlined ms-fill text-[18px]">star</span>
+<span class="material-symbols-outlined ms-fill text-[18px]">star</span>
+<span class="material-symbols-outlined ms-fill text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px] text-border-divider">star</span>
+</div>
+</div>
+</header>
+<!-- Main Game Playfield Container (Flat 2D Vector Art Canvas) -->
+<section aria-label="Game Canvas" class="relative flex-1 w-full mx-auto overflow-hidden bg-gradient-to-b from-[#EBE4FA] via-[#F4EEFA] to-[#FFE8DF] border-y border-border-divider flex flex-col justify-end">
+<!-- Vector Background Sky & Floating Clouds -->
+<div class="absolute inset-0 pointer-events-none z-0">
+<!-- 2D Cloud Left -->
+<svg class="absolute top-4 left-3 w-20 opacity-80" fill="none" viewbox="0 0 100 45">
+<path d="M20 35H80C88 35 94 29 94 21C94 14 88 8 80 8C78 8 76 9 75 10C71 4 64 0 55 0C45 0 37 6 35 15C33 14 30 13 27 13C16 13 8 21 8 30C8 33 9 35 11 35H20Z" fill="#FFFFFF"></path>
+</svg>
+<!-- 2D Cloud Right -->
+<svg class="absolute top-12 right-4 w-24 opacity-75" fill="none" viewbox="0 0 100 45">
+<path d="M20 35H80C88 35 94 29 94 21C94 14 88 8 80 8C78 8 76 9 75 10C71 4 64 0 55 0C45 0 37 6 35 15C33 14 30 13 27 13C16 13 8 21 8 30C8 33 9 35 11 35H20Z" fill="#FFFFFF"></path>
+</svg>
+</div>
+<!-- 2D Rolling Flat Hills Layer (Backdrop) -->
+<div class="absolute bottom-0 inset-x-0 h-44 pointer-events-none z-0">
+<!-- Far Hill (Lavender Pastel) -->
+<svg class="absolute bottom-0 w-full h-40" fill="none" preserveaspectratio="none" viewbox="0 0 393 160">
+<path d="M0 70C90 40 180 85 270 50C330 25 370 45 393 60V160H0V70Z" fill="#E2DCF3"></path>
+<path d="M0 100C110 70 210 115 310 80C360 65 385 75 393 85V160H0V100Z" fill="#D3EBD7"></path>
+</svg>
+<!-- Near Hill (Minty Flat Grass with clean vector daisy flowers) -->
+<svg class="absolute bottom-0 w-full h-24" fill="none" preserveaspectratio="none" viewbox="0 0 393 100">
+<path d="M0 35C100 15 220 50 393 25V100H0V35Z" fill="#BFE4C7"></path>
+</svg>
+<!-- Flat Decorative 2D Daisies on Hills -->
+<div class="absolute bottom-4 left-6 flex items-center gap-1 opacity-90">
+<svg class="w-5 h-5" fill="none" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="#FFE263" r="3"></circle>
+<circle cx="12" cy="5" fill="#FFFFFF" r="2.5"></circle>
+<circle cx="12" cy="19" fill="#FFFFFF" r="2.5"></circle>
+<circle cx="5" cy="12" fill="#FFFFFF" r="2.5"></circle>
+<circle cx="19" cy="12" fill="#FFFFFF" r="2.5"></circle>
+</svg>
+</div>
+<div class="absolute bottom-6 right-8 flex items-center gap-1 opacity-90">
+<svg class="w-4 h-4" fill="none" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="#FFE263" r="3"></circle>
+<circle cx="12" cy="5" fill="#FFFFFF" r="2.5"></circle>
+<circle cx="12" cy="19" fill="#FFFFFF" r="2.5"></circle>
+<circle cx="5" cy="12" fill="#FFFFFF" r="2.5"></circle>
+<circle cx="19" cy="12" fill="#FFFFFF" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Falling 2D Vector Items Layer -->
+<div class="relative w-full h-full z-10 pointer-events-none">
+<!-- 1. TARGET ITEM: Falling Red Apple (Center-Left Lane) -->
+<div class="absolute top-10 left-[22%] flex flex-col items-center anim-apple">
+<!-- 2D Motion Trails -->
+<div class="flex gap-2 mb-1 opacity-40">
+<span class="w-1 h-3 bg-[#DC2626] rounded-full"></span>
+<span class="w-1 h-5 bg-[#DC2626] rounded-full"></span>
+<span class="w-1 h-2 bg-[#DC2626] rounded-full"></span>
+</div>
+<!-- Red Apple 2D Vector -->
+<svg class="w-16 h-16 drop-shadow-sm" fill="none" viewbox="0 0 64 64">
+<!-- Stem -->
+<path d="M32 14C34 7 40 5 43 5" stroke="#4E342E" stroke-linecap="round" stroke-width="4"></path>
+<!-- Leaf -->
+<path d="M39 8C46 7 49 12 49 12C49 12 44 16 39 13C37 12 37 9 39 8Z" fill="#4CAF50"></path>
+<!-- Apple Body -->
+<path d="M32 18C20 18 12 26 12 37C12 49 22 59 32 59C42 59 52 49 52 37C52 26 44 18 32 18Z" fill="#DC2626"></path>
+<!-- Apple Indent Top -->
+<path d="M28 18C30 19 34 19 36 18" stroke="#B91C1C" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Kawaii 2D Face on Apple -->
+<circle cx="26" cy="35" fill="#120C1F" r="2.2"></circle>
+<circle cx="38" cy="35" fill="#120C1F" r="2.2"></circle>
+<path d="M30 40C31 42 33 42 34 40" stroke="#120C1F" stroke-linecap="round" stroke-width="2"></path>
+<!-- Cheeks -->
+<ellipse cx="23" cy="38" fill="#FFA4A4" rx="2" ry="1.2"></ellipse>
+<ellipse cx="41" cy="38" fill="#FFA4A4" rx="2" ry="1.2"></ellipse>
+<!-- Flat Highlight -->
+<circle cx="21" cy="28" fill="#FFFFFF" fill-opacity="0.6" r="3"></circle>
+</svg>
+<!-- Label Pill Under Target -->
+<span class="mt-1 px-2.5 py-0.5 rounded-full bg-[#FFE5E5] text-[#B91C1C] font-caption text-[12px] font-bold border border-[#FFCCD0] tracking-wide">
+            ¡Rojo!
+          </span>
+</div>
+<!-- 2. DISTRACTOR ITEM: Falling Blueberries (Top-Right Lane) -->
+<div class="absolute top-6 right-[14%] flex flex-col items-center anim-sway" style="animation-delay: -1s;">
+<!-- 2D Motion Trail -->
+<div class="flex gap-1.5 mb-1 opacity-30">
+<span class="w-1 h-3 bg-[#3B82F6] rounded-full"></span>
+<span class="w-1 h-4 bg-[#3B82F6] rounded-full"></span>
+</div>
+<!-- Blueberry Cluster 2D Vector -->
+<svg class="w-14 h-14 drop-shadow-sm" fill="none" viewbox="0 0 56 56">
+<!-- Leaf -->
+<path d="M28 10C33 7 36 11 36 11C36 11 31 15 28 12Z" fill="#66BB6A"></path>
+<!-- Back Berry -->
+<circle cx="35" cy="24" fill="#2563EB" r="12"></circle>
+<circle cx="35" cy="20" fill="#1D4ED8" r="3"></circle>
+<!-- Front Berry -->
+<circle cx="22" cy="32" fill="#3B82F6" r="14"></circle>
+<!-- Berry Crown Detail -->
+<circle cx="20" cy="28" fill="#1E40AF" r="3.5"></circle>
+<!-- Kawaii Face -->
+<circle cx="18" cy="33" fill="#120C1F" r="1.8"></circle>
+<circle cx="26" cy="33" fill="#120C1F" r="1.8"></circle>
+<path d="M21 36C22 37 23 37 24 36" stroke="#120C1F" stroke-linecap="round" stroke-width="1.8"></path>
+<ellipse cx="15" cy="35" fill="#93C5FD" rx="1.5" ry="1"></ellipse>
+<ellipse cx="28" cy="35" fill="#93C5FD" rx="1.5" ry="1"></ellipse>
+<!-- Highlight -->
+<circle cx="16" cy="26" fill="#FFFFFF" fill-opacity="0.6" r="2.2"></circle>
+</svg>
+<span class="mt-1 px-2 py-0.5 rounded-full bg-[#EBF3FF] text-[#1D4ED8] font-caption text-[11px] font-semibold border border-[#D0E2FF]">
+            Azul
+          </span>
+</div>
+<!-- 3. DISTRACTOR ITEM: Falling Banana (Mid-Left Lane) -->
+<div class="absolute top-28 left-[6%] flex flex-col items-center anim-sway" style="animation-delay: -2s;">
+<svg class="w-13 h-13 drop-shadow-sm" fill="none" viewbox="0 0 52 52">
+<!-- Banana Curve Flat Vector -->
+<path d="M12 36C15 42 27 44 38 32C45 24 46 13 46 11C46 11 41 12 34 16C24 22 13 28 12 36Z" fill="#FACC15"></path>
+<!-- Banana Stem & Tip -->
+<path d="M46 11L48 9" stroke="#713F12" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="12" cy="36" fill="#713F12" r="2.5"></circle>
+<!-- Shading Stripe -->
+<path d="M16 36C24 38 35 30 42 16" stroke="#EAB308" stroke-linecap="round" stroke-width="2"></path>
+<!-- Flat Highlight -->
+<path d="M20 32C26 30 33 24 37 18" stroke="#FEF08A" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
+<span class="mt-0.5 px-2 py-0.2 rounded-full bg-[#FEF9C3] text-[#854D0E] font-caption text-[11px] font-semibold border border-[#FEF08A]">
+            Amarillo
+          </span>
+</div>
+<!-- 4. ANOTHER TARGET: Approaching Red Apple (Right-Center) -->
+<div class="absolute top-36 right-[24%] flex flex-col items-center opacity-90">
+<svg class="w-12 h-12" fill="none" viewbox="0 0 64 64">
+<path d="M32 14C34 7 40 5 43 5" stroke="#4E342E" stroke-linecap="round" stroke-width="3.5"></path>
+<path d="M39 8C46 7 49 12 49 12C49 12 44 16 39 13C37 12 37 9 39 8Z" fill="#4CAF50"></path>
+<path d="M32 18C20 18 12 26 12 37C12 49 22 59 32 59C42 59 52 49 52 37C52 26 44 18 32 18Z" fill="#EF4444"></path>
+<circle cx="21" cy="28" fill="#FFFFFF" fill-opacity="0.6" r="2.5"></circle>
+</svg>
+</div>
+<!-- Success Feedback Badge ("¡Muy bien! +1" pop effect) -->
+<div class="absolute bottom-28 left-[52%] anim-pop z-20">
+<div class="bg-surface border-2 border-accent-fill text-accent-fill px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined ms-fill text-[#E5A800] text-[16px]">star</span>
+<span class="font-title text-caption font-bold">¡Muy bien! +1</span>
+</div>
+</div>
+<!-- PLAYER CHARACTER: "Canastita" Basket (Bottom Center) -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center anim-basket z-20 pointer-events-auto cursor-pointer">
+<!-- Cute Kawaii Basket 2D Vector Illustration -->
+<svg class="w-36 h-32 drop-shadow-md" fill="none" viewbox="0 0 140 120">
+<!-- Basket Handle Arc -->
+<path d="M28 65C28 20 112 20 112 65" stroke="#8A4E3B" stroke-linecap="round" stroke-width="8"></path>
+<path d="M28 65C28 24 112 24 112 65" stroke="#FFB199" stroke-linecap="round" stroke-width="4"></path>
+<!-- Caught Red Apples inside basket peek -->
+<circle cx="50" cy="50" fill="#DC2626" r="11"></circle>
+<circle cx="70" cy="46" fill="#DC2626" r="13"></circle>
+<circle cx="90" cy="50" fill="#DC2626" r="11"></circle>
+<!-- Leaf on caught apple -->
+<path d="M70 32C74 30 76 34 76 34C76 34 72 37 69 35Z" fill="#4CAF50"></path>
+<circle cx="66" cy="42" fill="#FFFFFF" fill-opacity="0.6" r="2"></circle>
+<!-- Basket Rim Top -->
+<ellipse cx="70" cy="58" fill="#8A4E3B" rx="52" ry="11"></ellipse>
+<ellipse cx="70" cy="57" fill="#FFDBCE" rx="49" ry="9"></ellipse>
+<!-- Basket Main Body -->
+<path d="M20 58C23 98 34 114 70 114C106 114 117 98 120 58C108 63 32 63 20 58Z" fill="#FFB59E"></path>
+<!-- Clean Flat 2D Woven Texture Lines -->
+<path d="M35 68C42 102 46 108 55 112" stroke="#E08B73" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M105 68C98 102 94 108 85 112" stroke="#E08B73" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M27 82C48 90 92 90 113 82" stroke="#E08B73" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M32 98C50 104 90 104 108 98" stroke="#E08B73" stroke-linecap="round" stroke-width="2"></path>
+<!-- Kawaii Happy Face on Basket -->
+<!-- Left Eye (Happy Curved Arch) -->
+<path d="M52 82C53 77 59 77 60 82" stroke="#120C1F" stroke-linecap="round" stroke-width="3"></path>
+<!-- Right Eye (Happy Curved Arch) -->
+<path d="M80 82C81 77 87 77 88 82" stroke="#120C1F" stroke-linecap="round" stroke-width="3"></path>
+<!-- Big Cute Smile -->
+<path d="M64 88C66 94 74 94 76 88" stroke="#120C1F" stroke-linecap="round" stroke-width="2.8"></path>
+<!-- Open mouth pink fill -->
+<path d="M65 89C67 93 73 93 75 89Z" fill="#DC2626"></path>
+<!-- Rosy Kawaii Blushing Cheeks -->
+<ellipse cx="46" cy="85" fill="#FF7B7B" fill-opacity="0.8" rx="5" ry="3.2"></ellipse>
+<ellipse cx="94" cy="85" fill="#FF7B7B" fill-opacity="0.8" rx="5" ry="3.2"></ellipse>
+</svg>
+<!-- Character Name Tag -->
+<span class="font-caption text-[13px] font-bold text-text-secondary bg-surface px-3 py-0.5 rounded-full border border-border-divider -mt-1 shadow-sm">
+            Canastita
+          </span>
+</div>
+</div>
+<!-- Catch Zone Visual Target Floor Guideline -->
+<div class="w-full flex justify-center pb-2 z-10">
+<div class="w-48 h-1.5 bg-accent-fill/20 rounded-full"></div>
+</div>
+</section>
+<!-- Bottom Kid Controls (Generous 76px touch targets for ages 2-6) -->
+<!-- STRICTLY NO BOTTOM TAB BAR on this game screen per constraints -->
+<footer class="w-full px-5 pt-3 pb-8 bg-surface z-30 border-t border-border-divider flex-shrink-0">
+<!-- Control Buttons Row -->
+<div class="flex items-center justify-between gap-4">
+<!-- Giant LEFT Steering Button (76px touch target) -->
+<button aria-label="Mover a la izquierda / Move Left" class="w-[76px] h-[76px] rounded-full bg-accent-tint border-2 border-accent-fill text-accent-fill flex items-center justify-center shadow-md active:bg-accent-pressed active:text-on-primary active:scale-90 transition-all select-none" type="button">
+<span class="material-symbols-outlined text-[42px] font-bold">arrow_back</span>
+</button>
+<!-- Center Interactive Tap Audio Prompt & Target Reminder -->
+<div class="flex-1 flex flex-col items-center justify-center">
+<button class="w-full py-3 px-3 rounded-full bg-surface-container-low border border-border-divider flex items-center justify-center gap-2 active:scale-95 transition-transform" type="button">
+<span class="w-4 h-4 rounded-full bg-[#DC2626] inline-block shadow-inner"></span>
+<span class="font-title text-label text-text-primary font-bold">Mueve la canasta</span>
+</button>
+<span class="font-caption text-[12px] text-text-tertiary mt-1 font-medium">Usa las flechas para jugar</span>
+</div>
+<!-- Giant RIGHT Steering Button (76px touch target) -->
+<button aria-label="Mover a la derecha / Move Right" class="w-[76px] h-[76px] rounded-full bg-accent-tint border-2 border-accent-fill text-accent-fill flex items-center justify-center shadow-md active:bg-accent-pressed active:text-on-primary active:scale-90 transition-all select-none" type="button">
+<span class="material-symbols-outlined text-[42px] font-bold">arrow_forward</span>
+</button>
+</div>
+<!-- Safe Area Home Indicator Bar -->
+<div class="w-32 h-1 bg-outline-variant/60 rounded-full mx-auto mt-4"></div>
+</footer>
+</main>
+</body></html>

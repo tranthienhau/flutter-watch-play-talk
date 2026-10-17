@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Welcome - Watch Play Talk</title>
+<!-- Google Fonts: Quicksand & Readex Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#fef7ff",
+            "surface": "#FFFFFF",
+            "inverse-on-surface": "#f5eef8",
+            "primary-container": "#8260cd",
+            "surface-container-lowest": "#ffffff",
+            "text-secondary": "#4B4360",
+            "on-primary-container": "#fffbff",
+            "danger": "#DC2626",
+            "error": "#ba1a1a",
+            "surface-tint": "#6b49b5",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#ffb59e",
+            "border-divider": "#E6E1F2",
+            "tertiary-fixed": "#ffe263",
+            "surface-container-highest": "#e7e0ea",
+            "on-background": "#1d1a21",
+            "tertiary-container": "#c5aa2a",
+            "on-surface-variant": "#494552",
+            "on-error": "#ffffff",
+            "primary": "#6947b2",
+            "outline-variant": "#cbc3d4",
+            "surface-container": "#f2ecf6",
+            "inverse-primary": "#d1bcff",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "warning": "#D97706",
+            "secondary-fixed": "#ffdbd0",
+            "on-tertiary-fixed-variant": "#534600",
+            "on-primary-fixed-variant": "#532f9b",
+            "error-container": "#ffdad6",
+            "outline": "#7a7483",
+            "background": "#F6F4FC",
+            "accent-fill": "#8165C0",
+            "on-primary-fixed": "#24005b",
+            "surface-variant": "#e7e0ea",
+            "on-secondary-fixed": "#370e02",
+            "primary-fixed": "#eaddff",
+            "text-tertiary": "#857D99",
+            "on-tertiary-fixed": "#221b00",
+            "on-secondary-container": "#7a412f",
+            "surface-container-high": "#ede6f0",
+            "secondary": "#8a4e3b",
+            "success": "#16A34A",
+            "accent-tint": "#F1ECFC",
+            "tertiary": "#6f5d00",
+            "on-tertiary-container": "#4b3f00",
+            "surface-dim": "#ded8e2",
+            "surface-container-low": "#f8f1fb",
+            "accent-pressed": "#7159A9",
+            "text-primary": "#120C1F",
+            "on-primary": "#ffffff",
+            "on-surface": "#1d1a21",
+            "inverse-surface": "#322f37",
+            "on-secondary-fixed-variant": "#6e3826",
+            "primary-fixed-dim": "#d1bcff",
+            "secondary-container": "#ffb199",
+            "tertiary-fixed-dim": "#e2c545"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "title": [
+              "Readex Pro"
+            ],
+            "display": [
+              "Quicksand"
+            ],
+            "caption": [
+              "Readex Pro"
+            ],
+            "body": [
+              "Readex Pro"
+            ],
+            "label": [
+              "Readex Pro"
+            ]
+          },
+          "fontSize": {
+            "title": [
+              "22px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "30px",
+              {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "caption": [
+              "14px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "500"
+              }
+            ],
+            "body": [
+              "17px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "label": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "600"
+              }
+            ]
+          },
+          "boxShadow": {
+            "ambient": "0 1px 2px rgba(18, 12, 31, 0.05), 0 8px 24px rgba(18, 12, 31, 0.07)"
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-text-primary font-body antialiased min-h-screen flex items-center justify-center p-0 md:p-6 select-none">
+<!-- iPhone Frame Mockup / Viewport (393px × 852px) -->
+<div class="relative w-full max-w-[393px] h-screen max-h-[852px] bg-background flex flex-col justify-between overflow-y-auto overflow-x-hidden md:rounded-[48px] md:shadow-2xl md:border-[8px] md:border-[#EAE6F5]">
+<!-- Top Structural Safe Area (Status bar ~59px placeholder spacing) -->
+<div class="w-full h-12 shrink-0 pt-2 px-7 flex items-center justify-between text-text-primary">
+<span class="text-caption font-caption font-semibold tracking-tight text-xs">9:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[15px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+<!-- Main Scrollable Journey Canvas -->
+<main class="flex-1 px-5 flex flex-col justify-between pt-1 pb-4">
+<!-- Top Branding Anchor -->
+<section class="flex flex-col items-center justify-center text-center mt-1">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-accent-tint flex items-center justify-center shadow-sm mb-2.5 p-0.5 border border-border-divider">
+<img alt="Watch Play Talk App Icon" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg"/>
+</div>
+<h2 class="text-title font-title font-bold text-text-primary tracking-tight">Watch Play Talk</h2>
+</section>
+<!-- Hero Focal Element: Lifestyle Card (Girl & Mother Learning) -->
+<section class="my-4">
+<div class="relative w-full h-[220px] rounded-3xl overflow-hidden shadow-ambient bg-surface border border-border-divider">
+<img alt="Mother and daughter laughing while learning with tablet" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqywnurM_06eCiYdU-H_Dm94iKz1FiiLbaNbGnIkG5uVUFd0iSP8_LQJkWSarRsIDaJ88SNN2hGsLQwS3sGrGlQRsJQZRN3_0g1fZ2zDmPdZcnQ5bBJfcm2yvsNA5ZtpOmNgkgCt-Z1nWCrX04FM8m0JgB5J3IxBZxFhUAxvJqxOp8xR6yPJuQ7LV49cqDSmb4M1SvHnTL_EFq3VA06bUnvJIRx8nQwSqEKA1yTjUmVgtgGNgHvMrj0CTBHgx-N3f2Jn9N3q9xB6s"/>
+<!-- Subtle bottom tonal vignette for polish -->
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/20 via-transparent to-transparent pointer-events-none"></div>
+</div>
+</section>
+<!-- Headline, Copy & Highlights -->
+<section class="flex flex-col items-center text-center px-1">
+<!-- Tag / Pill Highlights -->
+<div class="flex items-center justify-center gap-2 mb-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-caption font-caption bg-accent-tint text-accent-fill font-semibold">
+            Spanish + English
+          </span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-caption font-caption bg-secondary-container text-text-primary font-semibold">
+            Ages 2–6
+          </span>
+</div>
+<!-- Headline -->
+<h1 class="text-display font-display text-text-primary leading-tight font-bold mb-2">
+          Watch to learn.<br/>Play to learn.
+        </h1>
+<!-- Subtitle -->
+<p class="text-body font-body text-text-secondary leading-relaxed px-1 text-sm md:text-base">
+          Spanish and English lessons for ages 2 to 6, led by Maestra Luna. Ad-free.
+        </p>
+</section>
+<!-- Action Buttons Stack (min 56px touch height) -->
+<section class="flex flex-col gap-3 mt-5 w-full">
+<!-- Apple Sign In -->
+<button class="w-full h-14 bg-black text-white font-label text-label flex items-center justify-center gap-3 rounded-full shadow-sm hover:opacity-95 active:scale-[0.99] transition duration-150 cursor-pointer" type="button">
+<!-- Apple SVG Icon -->
+<svg aria-hidden="true" class="w-5 h-5 fill-current mb-0.5" viewbox="0 0 170 170">
+<path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.33-6.53-9.97-11.75-21.43-15.66-34.38-3.91-12.95-5.87-24.91-5.87-35.88 0-15.11 3.91-27.42 11.75-36.93 7.84-9.51 17.65-14.38 29.43-14.61 4.79 0 10.14 1.25 16.05 3.75 5.91 2.5 9.77 3.75 11.58 3.75 1.58 0 5.62-1.33 12.12-4 6.5-2.67 11.93-3.83 16.29-3.5 12.29.67 22.25 5.38 29.87 14.13-10.74 6.52-16.02 15.54-15.83 27.06.21 9.94 4.09 18.23 11.64 24.87 7.55 6.64 16.53 10.22 26.94 10.74-2.28 7.07-4.99 14.07-8.14 21zm-24.62-105.7c0 6.64-2.45 12.87-7.36 17.69-4.91 4.82-10.82 7.7-17.73 7.7-.21-1.05-.32-2.01-.32-2.88 0-6.64 2.62-13.06 7.86-18.26 5.24-5.2 11.23-7.98 17.97-8.35.11 1.37.17 2.45.17 3.25z"></path>
+</svg>
+<span>Continue with Apple</span>
+</button>
+<!-- Google Sign In -->
+<button class="w-full h-14 bg-surface text-text-primary border border-border-divider font-label text-label flex items-center justify-center gap-3 rounded-full shadow-sm hover:bg-surface-bright active:scale-[0.99] transition duration-150 cursor-pointer" type="button">
+<!-- Google 'G' SVG Icon -->
+<svg aria-hidden="true" class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Continue with Google</span>
+</button>
+<!-- Email Alternative -->
+<button class="text-accent-fill font-label text-label py-1.5 text-center hover:opacity-80 transition cursor-pointer" type="button">
+          Use email instead
+        </button>
+</section>
+<!-- Footer Grown-Ups Lock Note -->
+<footer class="mt-3 flex items-center justify-center gap-1.5 text-text-tertiary">
+<span class="material-symbols-outlined text-[16px] text-text-tertiary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<p class="text-caption font-caption text-xs tracking-normal">
+          For grown-ups: a parent sets up the account.
+        </p>
+</footer>
+</main>
+<!-- Bottom Structural Safe Area (Home indicator placeholder ~34px) -->
+<div class="w-full h-8 shrink-0 flex items-center justify-center pb-2">
+<div class="w-32 h-1 bg-text-primary/20 rounded-full"></div>
+</div>
+</div>
+</body></html>

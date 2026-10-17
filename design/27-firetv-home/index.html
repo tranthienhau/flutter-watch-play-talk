@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=1920, height=1080, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Amazon Fire TV 10-Foot UI</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Quicksand (Display) & Readex Pro (Body, Title, Caption, Label) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-primary-container": "#fffbff",
+          "tertiary-fixed-dim": "#e2c545",
+          "on-secondary-fixed-variant": "#6e3826",
+          "on-error-container": "#93000a",
+          "secondary-fixed-dim": "#ffb59e",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-fixed": "#221b00",
+          "text-secondary": "#4B4360",
+          "secondary": "#8a4e3b",
+          "on-primary": "#ffffff",
+          "on-surface": "#1d1a21",
+          "surface-bright": "#fef7ff",
+          "primary-fixed-dim": "#d1bcff",
+          "surface-container-lowest": "#ffffff",
+          "inverse-on-surface": "#f5eef8",
+          "surface-dim": "#ded8e2",
+          "surface-container-high": "#ede6f0",
+          "on-error": "#ffffff",
+          "surface-tint": "#6b49b5",
+          "on-primary-fixed-variant": "#532f9b",
+          "text-primary": "#120C1F",
+          "on-tertiary-fixed-variant": "#534600",
+          "tertiary": "#6f5d00",
+          "on-secondary-container": "#7a412f",
+          "on-secondary": "#ffffff",
+          "accent-pressed": "#7159A9",
+          "border-divider": "#E6E1F2",
+          "accent-tint": "#F1ECFC",
+          "surface-container-low": "#f8f1fb",
+          "tertiary-fixed": "#ffe263",
+          "primary-container": "#8260cd",
+          "on-surface-variant": "#494552",
+          "tertiary-container": "#c5aa2a",
+          "secondary-fixed": "#ffdbd0",
+          "surface-container-highest": "#e7e0ea",
+          "primary": "#6947b2",
+          "on-primary-fixed": "#24005b",
+          "inverse-surface": "#322f37",
+          "surface-container": "#f2ecf6",
+          "inverse-primary": "#d1bcff",
+          "accent-fill": "#8165C0",
+          "success": "#16A34A",
+          "background": "#F6F4FC",
+          "primary-fixed": "#eaddff",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "outline-variant": "#cbc3d4",
+          "surface": "#FFFFFF",
+          "secondary-container": "#ffb199",
+          "on-secondary-fixed": "#370e02",
+          "outline": "#7a7483",
+          "surface-variant": "#e7e0ea",
+          "warning": "#D97706",
+          "text-tertiary": "#857D99",
+          "on-background": "#1d1a21",
+          "on-tertiary-container": "#4b3f00",
+          "danger": "#DC2626"
+        },
+        "borderRadius": {
+          "DEFAULT": "1rem",
+          "lg": "2rem",
+          "xl": "3rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter": "1rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "space-xl": "2rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "margin": "1.25rem"
+        },
+        "fontFamily": {
+          "display": [
+            "Quicksand", "sans-serif"
+          ],
+          "caption": [
+            "Readex Pro", "sans-serif"
+          ],
+          "body": [
+            "Readex Pro", "sans-serif"
+          ],
+          "label": [
+            "Readex Pro", "sans-serif"
+          ],
+          "title": [
+            "Readex Pro", "sans-serif"
+          ]
+        },
+        "fontSize": {
+          "display": [
+            "34px",
+            {
+              "lineHeight": "42px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "caption": [
+            "14px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "500"
+            }
+          ],
+          "body": [
+            "17px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label": [
+            "16px",
+            {
+              "lineHeight": "22px",
+              "fontWeight": "600"
+            }
+          ],
+          "title": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary flex relative selection:bg-accent-tint selection:text-accent-fill antialiased">
+<!-- Ambient TV Glow Backgrounds -->
+<div class="absolute -top-32 left-1/4 w-[800px] h-[450px] bg-accent-tint opacity-70 blur-[130px] pointer-events-none -z-10"></div>
+<div class="absolute bottom-10 right-20 w-[600px] h-[400px] bg-secondary-container opacity-25 blur-[150px] pointer-events-none -z-10"></div>
+<!-- 1. LEFT NAVIGATION RAIL (10-Foot Amazon Fire TV Collapsed / Expandable Rail) -->
+<nav class="w-32 h-screen bg-surface border-r border-border-divider flex flex-col justify-between items-center py-8 z-50 shrink-0 shadow-[0_1px_2px_rgba(18,12,31,0.05),0_8px_24px_rgba(18,12,31,0.07)]">
+<!-- Brand Logo Area -->
+<div class="flex flex-col items-center gap-space-xs">
+<div class="w-16 h-16 rounded-full bg-accent-tint p-2 flex items-center justify-center border-2 border-border-divider shadow-sm">
+<img alt="Watch Play Talk" class="w-12 h-12 rounded-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg"/>
+</div>
+<span class="font-display text-caption font-bold text-accent-fill tracking-tight text-center">Watch<br/>Play Talk</span>
+</div>
+<!-- Navigation Items -->
+<div class="flex flex-col items-center gap-6 w-full px-space-sm">
+<!-- Nav Item 1: Home (FOCUSED / ACTIVE STATE) -->
+<div class="flex flex-col items-center justify-center w-20 h-20 bg-accent-fill text-on-primary rounded-lg shadow-[0_8px_20px_rgba(129,101,192,0.45)] ring-4 ring-primary-fixed-dim scale-105 cursor-pointer">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label text-caption font-bold mt-1 text-on-primary">Home</span>
+</div>
+<!-- Nav Item 2: Episodes -->
+<div class="flex flex-col items-center justify-center w-20 h-16 rounded-lg text-text-tertiary hover:bg-accent-tint hover:text-accent-fill cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-3xl">play_circle</span>
+<span class="font-caption text-caption mt-1">Episodes</span>
+</div>
+<!-- Nav Item 3: Songs -->
+<div class="flex flex-col items-center justify-center w-20 h-16 rounded-lg text-text-tertiary hover:bg-accent-tint hover:text-accent-fill cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-3xl">music_note</span>
+<span class="font-caption text-caption mt-1">Songs</span>
+</div>
+<!-- Nav Item 4: Search -->
+<div class="flex flex-col items-center justify-center w-20 h-16 rounded-lg text-text-tertiary hover:bg-accent-tint hover:text-accent-fill cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-3xl">search</span>
+<span class="font-caption text-caption mt-1">Search</span>
+</div>
+<!-- Nav Item 5: Profiles -->
+<div class="flex flex-col items-center justify-center w-20 h-16 rounded-lg text-text-tertiary hover:bg-accent-tint hover:text-accent-fill cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-3xl">person</span>
+<span class="font-caption text-caption mt-1">Profiles</span>
+</div>
+</div>
+<!-- Kid Safe Grown-Up Lock Indicator -->
+<div class="flex flex-col items-center gap-space-xs text-text-tertiary">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-border-divider">
+<span class="material-symbols-outlined text-xl text-text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<span class="font-caption text-[11px] text-text-tertiary">Parent Area</span>
+</div>
+</nav>
+<!-- 2. MAIN 10-FOOT CONTENT CANVAS (1920 Screen Area) -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden px-14 pt-8 pb-4">
+<!-- TOP HEADER ROW -->
+<header class="flex justify-between items-center w-full mb-6">
+<!-- Left Pill Cluster -->
+<div class="flex items-center gap-4">
+<!-- Badge: No ads, ever -->
+<div class="flex items-center gap-2 bg-accent-tint px-4 py-2 rounded-full border border-border-divider">
+<span class="material-symbols-outlined text-accent-fill text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label text-caption font-semibold text-accent-fill tracking-wide">No ads, ever</span>
+</div>
+<!-- Language Pill -->
+<div class="flex items-center gap-2 bg-surface px-4 py-2 rounded-full border border-border-divider shadow-sm">
+<span class="material-symbols-outlined text-text-secondary text-base">translate</span>
+<span class="font-label text-caption font-medium text-text-secondary">Español + English • Ages 2–6</span>
+</div>
+</div>
+<!-- Right Active Profile & Star Counter -->
+<div class="flex items-center gap-5 bg-surface pl-3 pr-5 py-1.5 rounded-full border border-border-divider shadow-sm">
+<img alt="Mia" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-fixed" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+<div class="flex flex-col">
+<span class="font-display text-label font-bold text-text-primary leading-tight">Mia</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-caption text-caption text-text-secondary font-semibold">24 stars</span>
+</div>
+</div>
+<div class="w-px h-6 bg-border-divider mx-1"></div>
+<span class="material-symbols-outlined text-text-tertiary text-lg">lock</span>
+</div>
+</header>
+<!-- HERO CAROUSEL CARD (Cinematic 10-foot TV Feature Banner) -->
+<section class="relative w-full h-[370px] rounded-xl overflow-hidden bg-surface shadow-[0_1px_2px_rgba(18,12,31,0.05),0_8px_24px_rgba(18,12,31,0.07)] border border-border-divider shrink-0 mb-7">
+<!-- Background Photo -->
+<img alt="Sing and Dance Week" class="absolute inset-0 w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AEtjO1W7IyJNv6XX0qzsC9l88f-OaXdCArEb_LQeHVfWBnknZwJ_YJ9js6DnnTsSGDR_n8Bnss2lNo-HN6bfTfbmzGT69SyGTnmMhTvtvpLpEDmT9J14DQsrRL5sSbl4r7a_AXbHJ6dRFdTZO9feATPUH8jyZEB_ZodKZxv-lSKPqquAdcwmXRdlW9aOmOtN2XjFFm5KK31GbAVFJAcYdBChGtYYEz21YAc21t-pZLzyo-oQlS0XeAIiJ14McQ"/>
+<!-- Gradient Overlays for High-Legibility TV Viewing -->
+<div class="absolute inset-0 bg-gradient-to-r from-[#120C1F]/90 via-[#120C1F]/65 to-transparent w-3/4"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#120C1F]/80 via-transparent to-transparent"></div>
+<!-- Overlaid Banner Content -->
+<div class="relative z-10 flex flex-col justify-between h-full p-10 max-w-2xl">
+<!-- Top Tag & Pill -->
+<div class="flex items-center gap-3">
+<span class="bg-secondary-container text-text-primary font-label text-caption font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+            FEATURED THIS WEEK • NEW
+          </span>
+<span class="text-on-primary font-caption text-caption opacity-85 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span> 28 min
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="space-y-2">
+<h1 class="font-display text-[44px] leading-[50px] font-bold text-on-primary drop-shadow-sm tracking-tight">
+            Sing and Dance Week
+          </h1>
+<p class="font-body text-body text-on-primary/90 max-w-xl line-clamp-2">
+            Bilingual music, gentle rhythm games, and story dances with Maestra Luna &amp; friends!
+          </p>
+</div>
+<!-- TV Interactive Actions (With Focused Play Button) -->
+<div class="flex items-center gap-5 pt-2">
+<!-- Primary Action Button: Focused TV state -->
+<button class="flex items-center gap-3 px-8 h-14 rounded-full bg-gradient-to-r from-accent-fill to-secondary-container text-on-primary font-label text-body font-bold shadow-[0_12px_28px_rgba(129,101,192,0.45)] ring-4 ring-white scale-105 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Watch now</span>
+</button>
+<!-- Secondary Action: Favorites -->
+<button class="flex items-center gap-2.5 px-6 h-14 rounded-full bg-white/20 backdrop-blur-md text-on-primary font-label text-body font-semibold border border-white/30 hover:bg-white/30 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-2xl">favorite_border</span>
+<span>Add to Favorites</span>
+</button>
+<!-- Carousel Indicators -->
+<div class="flex items-center gap-2 ml-6">
+<div class="w-8 h-2.5 rounded-full bg-white shadow-sm"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-white/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-white/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-white/40"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTENT THUMBNAIL RAILS WRAPPER -->
+<div class="flex-1 flex flex-col justify-start gap-6 overflow-hidden">
+<!-- RAIL 1: New episodes -->
+<section>
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-accent-fill text-2xl" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+<h2 class="font-display text-title font-bold text-text-primary tracking-tight">New episodes</h2>
+</div>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1 cursor-pointer hover:text-accent-fill">
+            See all (18) <span class="material-symbols-outlined text-base">arrow_forward</span>
+</span>
+</div>
+<!-- 4-Card Horizontal TV Rail -->
+<div class="grid grid-cols-4 gap-6">
+<!-- Card 1 (FOCUSED TILE STATE ON D-PAD) -->
+<div class="flex flex-col group cursor-pointer">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden ring-4 ring-accent-fill shadow-[0_12px_36px_rgba(157,123,234,0.35)] scale-[1.03] transition-transform duration-200">
+<img alt="Colors Everywhere" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Up-xb6b9rklJClAEb8aZ6-mPadW0pvDfTHHLwuUC4vAMD27mkyXdCLT42sXWmW-9M-JWj5rISIjLzEYvQwhNxf9LzTuYksplixed0RYqqvHL1v_m_A_5lbwpfQsFPRMNg09BIPSv7tQe0wI4A2ppf-QxXQEHgYhsZdhAU7sfw5lXwpP0eT9OxgjpQKEsbUetgpnyMmSHY1YPsbFjKy5EeisgqOmBmfQpKzzk5MhzJFXeMNcL1rt2nf7xQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-[#120C1F]/80 backdrop-blur-sm text-white font-caption text-caption font-semibold px-2.5 py-1 rounded-full">
+                Ep 42 • 48 min
+              </div>
+<div class="absolute bottom-2.5 right-2.5 w-10 h-10 rounded-full bg-accent-fill text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="mt-2.5">
+<h3 class="font-display text-label font-bold text-text-primary group-hover:text-accent-fill">Colors Everywhere</h3>
+<p class="font-caption text-caption text-text-secondary">Los Colores • Learn red, blue, and yellow</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm transition-all duration-200">
+<img alt="Animal Friends" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1W6QWYxPd_zGxBrFHxPX5QP2Cfbt-r1UYniDalFWetaQ2xvdaVIf2n-FccB4CRmRMngyDyRqZyZZaCtCgSet9ifZw5brqqcQIRnucThw64xrEefZhqzXpr0xv_Iu81C1-V9kZ6wxKDGuvmVmJCiieMWxJ5_v7vx8JIZL3jkX7O8FaRzNhKftqBuZBLeF_5VaBJIOLOjaT2YcT3M_VR9GTaa__H2ADPdEkatljqBkhzzXt7mahGYWM13cdA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-[#120C1F]/70 backdrop-blur-sm text-white font-caption text-caption font-medium px-2.5 py-1 rounded-full">
+                Ep 41 • 52 min
+              </div>
+</div>
+<div class="mt-2.5">
+<h3 class="font-display text-label font-bold text-text-primary">Animal Friends</h3>
+<p class="font-caption text-caption text-text-secondary">Los Animales • Farm animal sounds</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm transition-all duration-200">
+<img alt="Count With Me" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1V-78kO994EWxww9MKH1tJc9VPgzo5xF4SRHkuz1AHerTOt1WU8jq42jDAVJ3y3VyD-qTyPE_zMn1SDh2Nauha4gmAcyYVaMeHlYHKwqUC8csokOiMU0VNF2hLk1j8qkc5Hz6CD7cTVI88tObShvEpzBFKkJVn-lEDOnxaWK4K-BuQNOnfRdZ6O5HrX3cwnOroxD8AkzGdXv75wAf5JJvhIUMAFUDz6HWwgWH-BU6IgI_7XaKj0Tjsszg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-[#120C1F]/70 backdrop-blur-sm text-white font-caption text-caption font-medium px-2.5 py-1 rounded-full">
+                Ep 40 • 45 min
+              </div>
+</div>
+<div class="mt-2.5">
+<h3 class="font-display text-label font-bold text-text-primary">Count With Me</h3>
+<p class="font-caption text-caption text-text-secondary">Uno, Dos, Tres • Numbers 1 to 5</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm transition-all duration-200">
+<img alt="Puppet Adventure" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VIWosbwf6kOPgRhq05RFPaPwOXm03rfjiECUmQgekxrbOQmkgysAJApkNYOo0h2rGnxo5JkGB5Id847RRCIiQHHYyyc5V5qKVJ7Vji9Jq5iaDOv-wSHn_k4D2oNM9BrazVtneAEqVCx7Si44H-wL3RfgZgT2TaACuVhxicnExcT_ddaYLdjKkTimyFMW46J-OXZdb8l8jlH7BMi3HLtOn8rFKafdks9gobF-fI0VzkYUGK6HkeGwSxBdc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-[#120C1F]/70 backdrop-blur-sm text-white font-caption text-caption font-medium px-2.5 py-1 rounded-full">
+                Ep 39 • 50 min
+              </div>
+</div>
+<div class="mt-2.5">
+<h3 class="font-display text-label font-bold text-text-primary">Puppet Adventure</h3>
+<p class="font-caption text-caption text-text-secondary">Amigos del Bosque</p>
+</div>
+</div>
+</div>
+</section>
+<!-- RAIL 2: En español -->
+<section>
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-container text-2xl" style="font-variation-settings: 'FILL' 1;">music_video</span>
+<h2 class="font-display text-title font-bold text-text-primary tracking-tight">En español</h2>
+</div>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1 cursor-pointer hover:text-accent-fill">
+            Ver todas las canciones <span class="material-symbols-outlined text-base">arrow_forward</span>
+</span>
+</div>
+<div class="grid grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm">
+<img alt="Los Colores" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VIWosbwf6kOPgRhq05RFPaPwOXm03rfjiECUmQgekxrbOQmkgysAJApkNYOo0h2rGnxo5JkGB5Id847RRCIiQHHYyyc5V5qKVJ7Vji9Jq5iaDOv-wSHn_k4D2oNM9BrazVtneAEqVCx7Si44H-wL3RfgZgT2TaACuVhxicnExcT_ddaYLdjKkTimyFMW46J-OXZdb8l8jlH7BMi3HLtOn8rFKafdks9gobF-fI0VzkYUGK6HkeGwSxBdc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-accent-tint/90 text-accent-fill font-caption text-caption font-bold px-2.5 py-0.5 rounded-full">
+                Canción
+              </div>
+</div>
+<div class="mt-2">
+<h3 class="font-display text-label font-bold text-text-primary">Los Colores</h3>
+<p class="font-caption text-caption text-text-secondary">Vocabulario básico</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm">
+<img alt="Mi Familia" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Up-xb6b9rklJClAEb8aZ6-mPadW0pvDfTHHLwuUC4vAMD27mkyXdCLT42sXWmW-9M-JWj5rISIjLzEYvQwhNxf9LzTuYksplixed0RYqqvHL1v_m_A_5lbwpfQsFPRMNg09BIPSv7tQe0wI4A2ppf-QxXQEHgYhsZdhAU7sfw5lXwpP0eT9OxgjpQKEsbUetgpnyMmSHY1YPsbFjKy5EeisgqOmBmfQpKzzk5MhzJFXeMNcL1rt2nf7xQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-accent-tint/90 text-accent-fill font-caption text-caption font-bold px-2.5 py-0.5 rounded-full">
+                Cuento
+              </div>
+</div>
+<div class="mt-2">
+<h3 class="font-display text-label font-bold text-text-primary">Mi Familia</h3>
+<p class="font-caption text-caption text-text-secondary">Canciones para cantar</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm">
+<img alt="Los Números" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1W7IyJNv6XX0qzsC9l88f-OaXdCArEb_LQeHVfWBnknZwJ_YJ9js6DnnTsSGDR_n8Bnss2lNo-HN6bfTfbmzGT69SyGTnmMhTvtvpLpEDmT9J14DQsrRL5sSbl4r7a_AXbHJ6dRFdTZO9feATPUH8jyZEB_ZodKZxv-lSKPqquAdcwmXRdlW9aOmOtN2XjFFm5KK31GbAVFJAcYdBChGtYYEz21YAc21t-pZLzyo-oQlS0XeAIiJ14McQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-accent-tint/90 text-accent-fill font-caption text-caption font-bold px-2.5 py-0.5 rounded-full">
+                Juego
+              </div>
+</div>
+<div class="mt-2">
+<h3 class="font-display text-label font-bold text-text-primary">Los Números</h3>
+<p class="font-caption text-caption text-text-secondary">Contando hasta 10</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col group cursor-pointer opacity-90 hover:opacity-100">
+<div class="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-border-divider bg-surface shadow-sm">
+<img alt="Buenos Días" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1W6QWYxPd_zGxBrFHxPX5QP2Cfbt-r1UYniDalFWetaQ2xvdaVIf2n-FccB4CRmRMngyDyRqZyZZaCtCgSet9ifZw5brqqcQIRnucThw64xrEefZhqzXpr0xv_Iu81C1-V9kZ6wxKDGuvmVmJCiieMWxJ5_v7vx8JIZL3jkX7O8FaRzNhKftqBuZBLeF_5VaBJIOLOjaT2YcT3M_VR9GTaa__H2ADPdEkatljqBkhzzXt7mahGYWM13cdA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 bg-accent-tint/90 text-accent-fill font-caption text-caption font-bold px-2.5 py-0.5 rounded-full">
+                Rutina
+              </div>
+</div>
+<div class="mt-2">
+<h3 class="font-display text-label font-bold text-text-primary">Buenos Días</h3>
+<p class="font-caption text-caption text-text-secondary">Rutina matutina</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- 3. TV REMOTE CONTROL HINT BAR (Footer) -->
+<footer class="mt-auto pt-3 border-t border-border-divider flex items-center justify-between text-text-secondary">
+<div class="flex items-center gap-6">
+<!-- Select hint -->
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-surface border border-border-divider shadow-sm flex items-center justify-center font-caption text-caption font-bold text-text-primary">
+            OK
+          </span>
+<span class="font-caption text-caption font-medium">Select / Play</span>
+</div>
+<!-- D-Pad hint -->
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface border border-border-divider shadow-sm flex items-center justify-center font-caption text-caption font-bold text-text-primary">
+            D-PAD
+          </span>
+<span class="font-caption text-caption font-medium">Browse</span>
+</div>
+<!-- Back hint -->
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-surface border border-border-divider shadow-sm flex items-center justify-center font-caption text-caption font-bold text-text-primary">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+</span>
+<span class="font-caption text-caption font-medium">Previous menu</span>
+</div>
+<!-- Options Menu hint -->
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-surface border border-border-divider shadow-sm flex items-center justify-center font-caption text-caption font-bold text-text-primary">
+<span class="material-symbols-outlined text-sm">menu</span>
+</span>
+<span class="font-caption text-caption font-medium">Options</span>
+</div>
+</div>
+<div class="flex items-center gap-2 font-caption text-caption text-text-tertiary">
+<span class="material-symbols-outlined text-base text-accent-fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span>Watch Play Talk for Amazon Fire TV • Safe &amp; COPPA compliant</span>
+</div>
+</footer>
+</main>
+</body></html>

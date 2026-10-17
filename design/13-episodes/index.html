@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Episodes</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "text-secondary": "#4B4360",
+            "primary": "#6947b2",
+            "text-tertiary": "#857D99",
+            "text-primary": "#120C1F",
+            "surface-container-low": "#f8f1fb",
+            "on-surface": "#1d1a21",
+            "surface-bright": "#fef7ff",
+            "secondary": "#8a4e3b",
+            "on-error": "#ffffff",
+            "on-primary-container": "#fffbff",
+            "primary-container": "#8260cd",
+            "on-tertiary-fixed-variant": "#534600",
+            "surface-container": "#f2ecf6",
+            "on-secondary": "#ffffff",
+            "accent-tint": "#F1ECFC",
+            "surface-variant": "#e7e0ea",
+            "tertiary-container": "#c5aa2a",
+            "error-container": "#ffdad6",
+            "background": "#F6F4FC",
+            "surface-tint": "#6b49b5",
+            "tertiary-fixed": "#ffe263",
+            "on-tertiary-container": "#4b3f00",
+            "surface-container-high": "#ede6f0",
+            "secondary-container": "#ffb199",
+            "on-secondary-container": "#7a412f",
+            "tertiary": "#6f5d00",
+            "on-primary-fixed-variant": "#532f9b",
+            "on-error-container": "#93000a",
+            "danger": "#DC2626",
+            "surface": "#FFFFFF",
+            "on-surface-variant": "#494552",
+            "border-divider": "#E6E1F2",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#221b00",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#ffdbd0",
+            "outline": "#7a7483",
+            "on-secondary-fixed": "#370e02",
+            "on-background": "#1d1a21",
+            "surface-container-highest": "#e7e0ea",
+            "primary-fixed": "#eaddff",
+            "accent-pressed": "#7159A9",
+            "surface-dim": "#ded8e2",
+            "inverse-surface": "#322f37",
+            "accent-fill": "#8165C0",
+            "on-primary-fixed": "#24005b",
+            "warning": "#D97706",
+            "inverse-on-surface": "#f5eef8",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-primary": "#ffffff",
+            "outline-variant": "#cbc3d4",
+            "on-secondary-fixed-variant": "#6e3826",
+            "primary-fixed-dim": "#d1bcff",
+            "inverse-primary": "#d1bcff",
+            "success": "#16A34A",
+            "tertiary-fixed-dim": "#e2c545"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label": ["Readex Pro"],
+            "caption": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "title": ["Readex Pro"],
+            "body": ["Readex Pro"]
+          },
+          "fontSize": {
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Hide scrollbar for category pills */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary antialiased font-body min-h-screen flex justify-center selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Viewport Container (393px width constraint on desktop) -->
+<main class="w-full max-w-[393px] min-h-[852px] bg-background relative flex flex-col pb-28 overflow-x-hidden shadow-2xl">
+<!-- 1. KID TOP HEADER (Shared Component compliant) -->
+<header class="flex justify-between items-center w-full px-5 pt-12 pb-3 max-w-md mx-auto bg-surface">
+<div class="flex items-center gap-3">
+<!-- Mia circular photo avatar -->
+<div class="relative w-12 h-12 rounded-full ring-2 ring-surface shadow-sm overflow-hidden bg-accent-tint shrink-0">
+<img alt="Mia" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-tertiary leading-tight">Watch Play Talk</span>
+<span class="font-['Quicksand'] font-bold text-lg text-text-primary leading-tight">Hola, Mia!</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<!-- Star Pill Counter -->
+<div class="flex items-center gap-1.5 bg-surface rounded-full px-3 py-1.5 border border-border-divider shadow-sm">
+<span class="material-symbols-outlined text-[#F59E0B] fill-icon text-[18px]">star</span>
+<span class="font-label text-label font-bold text-text-primary text-sm leading-none">24</span>
+</div>
+<!-- Parent Lock Button -->
+<button aria-label="Parent Zone" class="w-10 h-10 rounded-full bg-surface border border-border-divider text-text-tertiary flex items-center justify-center hover:bg-accent-tint transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</button>
+</div>
+</header>
+<!-- CONTENT WRAPPER -->
+<div class="px-5 pt-4 flex flex-col gap-5">
+<!-- 2. TITLE & AD-FREE BADGE -->
+<section class="flex items-center justify-between gap-2">
+<h1 class="font-['Quicksand'] font-bold text-[28px] leading-tight text-text-primary tracking-tight">
+          Episodes
+        </h1>
+<div class="bg-accent-tint text-accent-fill font-label text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-[15px] fill-icon">verified_user</span>
+<span>No ads, ever</span>
+</div>
+</section>
+<!-- 3. FILTER CHIPS -->
+<nav aria-label="Filter episodes" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 -mx-5 px-5">
+<button class="bg-accent-fill text-white font-label text-caption font-semibold px-4 py-2 rounded-full shadow-sm active:scale-95 transition-transform shrink-0" type="button">
+          All
+        </button>
+<button class="bg-surface text-text-secondary border border-border-divider font-label text-caption font-medium px-4 py-2 rounded-full hover:bg-surface-bright active:scale-95 transition-all shrink-0" type="button">
+          Español
+        </button>
+<button class="bg-surface text-text-secondary border border-border-divider font-label text-caption font-medium px-4 py-2 rounded-full hover:bg-surface-bright active:scale-95 transition-all shrink-0" type="button">
+          English
+        </button>
+<button class="bg-surface text-text-secondary border border-border-divider font-label text-caption font-medium px-4 py-2 rounded-full hover:bg-surface-bright active:scale-95 transition-all shrink-0" type="button">
+          Songs
+        </button>
+</nav>
+<!-- 4. FEATURED HERO CARD (BOLD FOCAL ELEMENT) -->
+<section class="w-full bg-surface rounded-[24px] border border-border-divider/70 overflow-hidden shadow-[0_8px_24px_rgba(18,12,31,0.07)] flex flex-col transition-transform active:scale-[0.99] duration-200">
+<!-- Hero Media Container (16:9 Aspect Ratio) -->
+<div class="relative w-full aspect-video bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Joyful bilingual preschool music lesson where teacher Maestra Luna sits cross-legged on a colorful rug playing an acoustic guitar while three diverse children sing along happily in a sunlit classroom filled with wooden toy shelves and gentle pastel art. The scene uses soft warm lighting, creamy lavender undertones, natural documentary style, and gentle cheerful expressions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-srkfzweBYe2FYyTeImyy0s0SX-vuR7SgYqwWKQE3ueKuK7uQK8HkpnUs6lYqVp7m-CTA-PB0guo36jzfvVBobrnZQ4lakISCFlsxZtq-nnAYKBN4FZQw5rp8fqv2QyiP2GtpEA6hvXhwY-t4RfVs8GUCVCCEB2ayCh11q41iOtTakn46ByiXuiYr0yydeLTNVHfWSm-1elFxaI79dji41WBHqSbUl4_4khWh0ct4SshbguslUSkKBBXesZTAjRBZPvFuTd4Knyw"/>
+<!-- Top Left Tag -->
+<div class="absolute top-3 left-3 bg-secondary-container text-text-primary font-caption font-bold text-xs px-3 py-1 rounded-full shadow-sm tracking-wide">
+            New this week
+          </div>
+<!-- Bottom Right Duration -->
+<div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white font-caption font-medium text-xs px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>48 min</span>
+</div>
+</div>
+<!-- Hero Content Body -->
+<div class="p-4 pt-3.5 flex flex-col gap-3">
+<div>
+<h2 class="font-['Quicksand'] font-bold text-[20px] leading-snug text-text-primary tracking-tight">
+              Episode 42: Colors Everywhere
+            </h2>
+<p class="font-body text-text-secondary text-sm leading-relaxed mt-1">
+              Sing along with Maestra Luna and discover rojo, azul, y amarillo!
+            </p>
+</div>
+<!-- Giant Kid-Sized CTA Button (56px) -->
+<button class="h-14 w-full rounded-full bg-gradient-to-r from-[#9D7BEA] to-[#FFB199] text-white font-['Quicksand'] font-bold text-base flex items-center justify-center gap-2.5 shadow-[0_4px_16px_rgba(129,101,192,0.35)] hover:opacity-95 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px] fill-icon">play_arrow</span>
+<span>Play Episode</span>
+</button>
+</div>
+</section>
+<!-- 5. EPISODE LIST ROWS -->
+<section class="flex flex-col gap-3 mt-1">
+<div class="flex items-center justify-between">
+<h3 class="font-['Quicksand'] font-bold text-[18px] text-text-primary">
+            More Episodes
+          </h3>
+<span class="font-caption text-xs text-text-tertiary">3 available</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Episode Row 1 -->
+<article class="bg-surface rounded-[20px] p-3 border border-border-divider flex items-center gap-3.5 shadow-[0_2px_8px_rgba(18,12,31,0.03)] active:bg-surface-bright transition-colors cursor-pointer">
+<div class="relative w-24 h-[72px] rounded-2xl overflow-hidden bg-surface-container shrink-0">
+<img class="w-full h-full object-cover" data-alt="Playful documentary shot of a smiling teacher in an apron with animal hand puppets leading a circle of attentive multicultural preschool kids sitting on a colorful woven mat in an airy wooden classroom. Soft ambient daylight, gentle pastel lavender aesthetic, joyful expressions, warm authentic early childhood learning atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhUEhPNBNYyVkyjiaX5d3dJ4p8DnOwE7hIeNV6sRwh5MwBBkiJ_pkqziL-UvJ-xOSW09qr1d9baQbC2QM34trIaYwFipmU41dgfQjvOet2di18INkeuCu5rs8-3TZuEgk6EVxsYOZA0YdyREZvAoZuJZaRaXE5ps7sdnc7w4pR-vDl8SgsW_Po_QHVMr56Ke3_tQPR2NWP59HlfjqHcjtQoJsEzUi5NZheGT_Sr4uJCmuOH3HOGxTJVRxThWZCfibwpzyEb6x7Gss"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<div class="w-7 h-7 rounded-full bg-white/90 text-accent-fill flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px] fill-icon">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<h4 class="font-['Quicksand'] font-bold text-[15px] leading-snug text-text-primary truncate">
+                Ep 41: Animal Friends
+              </h4>
+<p class="font-caption text-caption text-text-tertiary text-xs mt-0.5 truncate">
+                52 min • Spanish &amp; English
+              </p>
+<!-- Progress Bar (75%) -->
+<div class="w-full h-1 bg-accent-tint rounded-full mt-2.5 overflow-hidden">
+<div class="h-full bg-[#9D7BEA] rounded-full w-3/4"></div>
+</div>
+</div>
+<button aria-label="Play episode 41" class="w-9 h-9 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center shrink-0 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px] fill-icon">play_arrow</span>
+</button>
+</article>
+<!-- Episode Row 2 -->
+<article class="bg-surface rounded-[20px] p-3 border border-border-divider flex items-center gap-3.5 shadow-[0_2px_8px_rgba(18,12,31,0.03)] active:bg-surface-bright transition-colors cursor-pointer">
+<div class="relative w-24 h-[72px] rounded-2xl overflow-hidden bg-surface-container shrink-0">
+<img class="w-full h-full object-cover" data-alt="Preschool teacher sitting with four young toddlers around a circular wooden table stacking colorful wooden educational number blocks. High key soft light, bright gentle pastel colors, warm friendly expressions, candid educational photography style, pastel lavender and peach room tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABmocaZt8zPeaRO-Pw2TSlyi8z_1C00o-yrkzi7YKypjdjEwNZm-wUlCt9ytVBBrFNhjj85I0yUHouBIWk_r7ZBtpegC43sL-GlQmGF1gu9FxgXq2RMdSiG_3zSZ6h-nHc4kIEuzyqCUCHjnBPT9xSTPqse_Q6YHqaz60MzhoFynKaQAZW4qwrHcNRSQi3JFFu5YbJPj3yl6Fj44wOSyfI5Y8cGbJObaYIrl3f4nXIoP2Ki7pA5z26uNPDaxNsxxF_jZD4jAU5_aY"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<div class="w-7 h-7 rounded-full bg-white/90 text-accent-fill flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px] fill-icon">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<h4 class="font-['Quicksand'] font-bold text-[15px] leading-snug text-text-primary truncate">
+                Ep 40: Count With Me
+              </h4>
+<p class="font-caption text-caption text-text-tertiary text-xs mt-0.5 truncate">
+                45 min • Spanish &amp; English
+              </p>
+<!-- Progress Bar (30%) -->
+<div class="w-full h-1 bg-accent-tint rounded-full mt-2.5 overflow-hidden">
+<div class="h-full bg-[#9D7BEA] rounded-full w-[30%]"></div>
+</div>
+</div>
+<button aria-label="Play episode 40" class="w-9 h-9 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center shrink-0 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px] fill-icon">play_arrow</span>
+</button>
+</article>
+<!-- Episode Row 3 -->
+<article class="bg-surface rounded-[20px] p-3 border border-border-divider flex items-center gap-3.5 shadow-[0_2px_8px_rgba(18,12,31,0.03)] active:bg-surface-bright transition-colors cursor-pointer">
+<div class="relative w-24 h-[72px] rounded-2xl overflow-hidden bg-surface-container shrink-0">
+<img class="w-full h-full object-cover" data-alt="Charming bilingual circle time in a preschool classroom where a teacher and a circle of laughing young children point to their noses and mouths learning body parts names. Natural gentle sunlight pouring through large windows, wooden floors, alphabet circular carpet, soothing lavender and neutral surroundings, authentic documentary photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1ITqXNIXa71K-REM9k2ulrKdfKCpQ3Lc92NY-drmar1prBg-SQj2Em5bpC7FeF20_4Z7cSbcP-EZzuUOzWmXMwsITXuZSak82C8idJf4RDFgDxpVBnzCh1iJlUTdfw56CfnwFG0oBns1dQvbCMp_l1srDVYgIsr5FXYkmKomWkonKNsQMy7oATV29ndD5eMhl4BHi21P5BwpdL5mN614Q_h2NK-x5u_9EAZ4AJYXEK6tJBvROsRAcENc5wci8SoGA0YyphZUpV-M"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<div class="w-7 h-7 rounded-full bg-white/90 text-success flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px] fill-icon">check</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-1">
+<div class="flex items-center gap-1.5 truncate">
+<h4 class="font-['Quicksand'] font-bold text-[15px] leading-snug text-text-primary truncate">
+                  Ep 39: My Body
+                </h4>
+</div>
+<p class="font-caption text-caption text-text-tertiary text-xs mt-0.5 truncate">
+                50 min • Spanish &amp; English
+              </p>
+<!-- Progress Bar (100% Completed) -->
+<div class="w-full h-1 bg-accent-tint rounded-full mt-2.5 overflow-hidden">
+<div class="h-full bg-success rounded-full w-full"></div>
+</div>
+</div>
+<button aria-label="Replay episode 39" class="w-9 h-9 rounded-full bg-surface-container text-text-secondary flex items-center justify-center shrink-0 active:scale-95 transition-transform hover:bg-accent-tint hover:text-accent-fill" type="button">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+</button>
+</article>
+</div>
+</section>
+</div>
+<!-- 6. BOTTOM TAB BAR (Immutable Shared Component Specification) -->
+<!-- Destination count: 3 | Labels: Learn, Watch, Stickers | Icons: map, play_circle, stars -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-[72px] px-4 pb-4 max-w-md mx-auto bg-surface border-t border-border-divider">
+<!-- Tab 1: Learn (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-tertiary gap-1 font-medium hover:opacity-90 transition-opacity active:scale-95 duration-150" href="#learn">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<span class="font-caption text-caption text-[11px] leading-none">Learn</span>
+</a>
+<!-- Tab 2: Watch (Active - Semantic target for Episodes screen) -->
+<a class="flex flex-col items-center justify-center text-accent-fill font-semibold gap-1 [&amp;&gt;span:first-child]:bg-accent-tint [&amp;&gt;span:first-child]:rounded-full [&amp;&gt;span:first-child]:px-4 [&amp;&gt;span:first-child]:py-1 hover:opacity-90 transition-opacity active:scale-95 duration-150" href="#watch">
+<span class="material-symbols-outlined text-[24px] fill-icon">play_circle</span>
+<span class="font-caption text-caption text-[11px] leading-none">Watch</span>
+</a>
+<!-- Tab 3: Stickers (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-tertiary gap-1 font-medium hover:opacity-90 transition-opacity active:scale-95 duration-150" href="#stickers">
+<span class="material-symbols-outlined text-[24px]">stars</span>
+<span class="font-caption text-caption text-[11px] leading-none">Stickers</span>
+</a>
+</nav>
+</main>
+</body></html>

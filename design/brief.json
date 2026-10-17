@@ -1,0 +1,273 @@
+{
+  "title": "Watch Play Talk",
+  "slug": "watch-play-talk",
+  "domain": "education",
+  "style": "bright",
+  "allow3D": false,
+  "features": [
+    "Ad-free streaming of original episodes",
+    "Spanish and English lessons led by on-screen teacher",
+    "Watch, Play, Talk 3-step lessons",
+    "Action learning games from templates",
+    "Voice quiz with on-device speech check",
+    "Parent accounts, subscriptions, free trial",
+    "Child profiles with progress tracking",
+    "Parental gate on purchases and settings",
+    "COPPA, Apple Kids, Google Families compliance"
+  ],
+  "screenCount": 19,
+  "sharedComponents": {
+    "bottomTabBar": {
+      "tabs": [
+        "Learn",
+        "Watch",
+        "Stickers"
+      ],
+      "icons": [
+        "map-trifold (path)",
+        "play-circle",
+        "sticker"
+      ],
+      "note": "Kid tab bar: 3 large tabs, 72px tall, big icons with labels. Active = accent filled pill behind icon, others muted ink."
+    },
+    "statusBar": "Kid screens: child avatar + name left, star counter + parent lock icon right.",
+    "controls": "Primary button: pill, accent->support soft gradient or accentFill, white label, min 56px tall for kids. Secondary: white pill with accent border. Inputs 12px radius, focus accent ring. Cards 24px radius soft shadow. Chips pill accentTint with accentFill text."
+  },
+  "screens": [
+    {
+      "name": "welcome",
+      "group": "onboarding",
+      "nav": "none",
+      "purpose": "Parent first-run: meet the app and sign in",
+      "content": "Hero real photo of a smiling 3-year-old girl and her mother on a sofa watching a tablet together, soft daylight. App mark placeholder top. Headline 'Watch to learn. Play to learn.' Subline 'Spanish and English lessons for ages 2 to 6, led by Maestra Luna. Ad-free.' Buttons: 'Continue with Apple' (black pill), 'Continue with Google' (white pill, border), text link 'Use email instead'. Footer caption 'For grown-ups: a parent sets up the account.'",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "parental-gate",
+      "group": "onboarding",
+      "nav": "none",
+      "purpose": "Grown-up check before purchases or settings",
+      "content": "Calm modal-like full screen. Lock icon in tinted circle. Title 'Grown-ups only'. Instruction 'Type the number: forty-seven'. Large number keypad 1-9, 0, delete, in rounded soft keys. Input boxes showing '4 _'. Small caption 'This keeps purchases and settings away from little hands.' Close X top left.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "child-profiles",
+      "group": "onboarding",
+      "nav": "none",
+      "purpose": "Pick which child is learning",
+      "content": "Title 'Who is learning today?' Grid of 3 big round profile tiles with real photo avatars: 'Mia, age 3, Spanish' (curly-haired toddler girl), 'Leo, age 5, Both' (boy with gap-tooth smile), 'Sofia, age 2, English'. Fourth tile dashed '+ Add child'. Small top-right link 'Parent area' with lock icon.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "subscription",
+      "group": "onboarding",
+      "nav": "none",
+      "purpose": "Start free trial, choose monthly or annual",
+      "content": "Hero real photo of a toddler boy laughing holding a tablet. Title 'Start your 7-day free trial'. Checklist: 'Ad-free episodes', 'New lessons every week', 'Spanish and English', 'Up to 4 child profiles'. Two plan cards: 'Annual $59.99/yr, $5.00/mo, Save 37%' (selected, accent border, 'Best value' chip) and 'Monthly $7.99/mo'. Primary gradient pill 'Start free trial'. Caption 'Cancel anytime in App Store settings. Restore purchases.' Parental gate note 'A grown-up check comes next.'",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "learn-path",
+      "group": "core",
+      "nav": "Learn",
+      "purpose": "Child home: winding lesson path Watch, Play, Talk",
+      "content": "Top: child avatar Mia photo + 'Hola, Mia!' + star counter '24' + streak flame '3 days'. Focal: big winding path of round lesson nodes on soft gradient background: done nodes with check ('Hello and Goodbye', 'Numbers 1 to 5'), current node large glowing 'Colors: rojo, azul, amarillo' with three small step dots Watch, Play, Talk, locked nodes 'Animals', 'My Family'. Teacher Maestra Luna real photo badge (smiling young Latina woman teacher, purple cardigan) speech bubble '\u00a1Vamos!' Big buttons min 64px, no small text for kids.",
+      "states": [
+        "default",
+        "empty"
+      ]
+    },
+    {
+      "name": "learn-path-empty",
+      "group": "core",
+      "nav": "Learn",
+      "purpose": "First-run state of the path before any lesson",
+      "content": "Same header 'Hola, Leo!' with 0 stars. Focal: real photo of a smiling teacher Maestra Luna waving, speech bubble 'Ready for your first lesson?'. One big glowing start node 'Lesson 1: Hello and Goodbye' with huge pill button 'Start'. Faded locked nodes below. No progress yet.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "lesson-intro",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Lesson overview with 3 steps",
+      "content": "Back arrow. Lesson card with real photo still from a kids show: colorful crayons red blue yellow on a table. Title 'Colors: rojo, azul, amarillo'. Caption '4 min'. Three huge step cards in a row/vertical: 1 'Watch' (play icon, 2 min), 2 'Play' (game controller, Catch the colors), 3 'Talk' (microphone, say the colors). Step 1 highlighted. Giant gradient pill 'Start'. Language toggle chip 'Espa\u00f1ol'.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "watch-clip",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Step 1 Watch: lesson clip player",
+      "content": "Full-bleed landscape-style video area in top half showing real photo of a teacher holding up a red apple in a bright classroom set. Subtitle line 'Rojo. Red. \u00a1Rojo!' Big round play/pause, rewind 10s. Progress bar 1:12 / 2:05. Step indicator pills Watch (active), Play, Talk. Big 'Next: Play' button disabled until done. Close X.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "play-game",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Step 2 Play: action game catching the right color",
+      "content": "Game screen: flat 2D vector game scene, sky gradient, a cute flat-vector basket character at bottom the child steers left/right with big arrow pads. Falling flat-vector fruit: red apples, blue berries, yellow bananas. Top banner prompt 'Catch the rojo ones!' with speaker icon. Score '6 / 10' with stars. Pause button. Step pills Watch done, Play active, Talk.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "talk-quiz",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Step 3 Talk: voice quiz listening for an answer",
+      "content": "Maestra Luna real photo portrait in large circle at top. Speech bubble '\u00bfDe qu\u00e9 color es la manzana?'. Center: real photo of a red apple card. Huge round microphone button with pulsing soft rings and label 'Listening...'. Small row of 3 tap-answer fallback picture buttons faded below: red, blue, yellow swatches. Progress 'Question 2 of 4'. Step pills Talk active.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "talk-feedback",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Gentle correction after a close answer",
+      "content": "Maestra Luna real photo smiling. Big friendly card: 'Great try!' and 'Let's say it together: ROJO' with large word in accent and speaker replay button. Two big buttons: 'Say it again' (mic) and 'Next question'. Encouraging tone, no red X, no 'wrong'. Small dots showing tries 1 of 2.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "lesson-complete",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Reward after finishing all 3 steps",
+      "content": "Celebration: flat 2D confetti, big sticker reveal of a flat vector red apple sticker. Title '\u00a1Muy bien, Mia!' Subtitle 'You learned 3 colors'. Chips: 'rojo', 'azul', 'amarillo'. +3 stars counter. Buttons 'Next lesson' (gradient pill) and 'Back to path'.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "episodes",
+      "group": "core",
+      "nav": "Watch",
+      "purpose": "Ad-free library of full weekly episodes",
+      "content": "Title 'Episodes'. Featured hero card with real photo still: teacher and kids singing on a colorful set, 'New this week: Episode 42, Colors Everywhere, 48 min', play button. Filter chips 'All', 'Espa\u00f1ol', 'English', 'Songs'. List of episode rows with real photo thumbnails: 'Ep 41: Animal Friends, 52 min', 'Ep 40: Count With Me, 45 min', 'Ep 39: My Body, 50 min', each with progress bar. Badge 'No ads, ever'.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "episode-player",
+      "group": "detail",
+      "nav": "none",
+      "purpose": "Full episode playback",
+      "content": "Large video area with real photo of teacher with puppet on a bright stage. Title 'Episode 42: Colors Everywhere'. Chapter list of lessons inside the episode: 'Hello song 0:00', 'Colors 4:12', 'Counting 11:40', 'Animals 19:05', with current highlighted. Controls: big play, scrubber 14:20 / 48:00, subtitles toggle 'ES/EN'. Close X.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "stickers",
+      "group": "core",
+      "nav": "Stickers",
+      "purpose": "Sticker book of rewards",
+      "content": "Title 'My stickers'. Stars counter '24'. Grid of flat 2D vector sticker slots: earned stickers colorful (red apple, sun, cat, number 3, rainbow, star), unearned as grey silhouettes with lock. Focal: big latest sticker 'Rainbow' with 'New!' tag. Progress 'Page 1: 6 of 12'.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "parent-dashboard",
+      "group": "settings",
+      "nav": "none",
+      "purpose": "Parent area: progress across children",
+      "content": "Header 'Parent area' with close X, lock icon. Child switcher chips with photo avatars Mia, Leo, Sofia. Focal stat card gradient: 'Mia this week: 5 lessons, 18 words, 42 min'. Bar mini chart minutes per day Mon-Sun. List 'Words practiced': rojo (said it), azul (said it), amarillo (practicing). Section 'Recent lessons' with dates. Button 'Manage subscription'.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "child-progress",
+      "group": "settings",
+      "nav": "none",
+      "purpose": "Detail of one child's learning",
+      "content": "Header with Mia real photo avatar, 'Mia, age 3, learning Spanish'. Topic progress bars: Colors 80%, Numbers 60%, Animals 20%, Family 0%. Card 'Talk results' showing 'right 14, close 4, tap answers 3' (no recordings stored note). Timeline of completed lessons. Button 'Edit profile'.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "parent-settings",
+      "group": "settings",
+      "nav": "none",
+      "purpose": "Parent settings and privacy controls",
+      "content": "Header 'Settings'. Groups: 'Learning' rows: Lesson language (Espa\u00f1ol / English / Both), Daily time limit 30 min. 'Talk and microphone' row with toggle 'Use microphone for Talk' ON plus note 'Speech is checked on this device and never saved or sent.' 'Account' rows: Subscription Annual, Restore purchases, Manage children. 'Privacy' rows: Privacy policy, Download my data, Delete account (danger text).",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "name": "mic-consent",
+      "group": "settings",
+      "nav": "none",
+      "purpose": "Parent consent before the microphone is used",
+      "content": "Real photo of a parent and toddler talking face to face, warm home light. Title 'Turn on Talk?' Plain bullets: 'Your child answers out loud in lessons', 'Speech is recognized on this device only', 'No audio is ever recorded, saved or sent', 'You can turn it off any time'. Primary pill 'Allow microphone'. Secondary 'Use tap answers instead'. Caption 'Required by COPPA, you are in control.'",
+      "states": [
+        "default"
+      ]
+    }
+  ],
+  "designSystem": {
+    "variant": "P42",
+    "theme": "light",
+    "frame": "393x852 iPhone 16/17, top inset 59px, bottom 34px",
+    "color": {
+      "background": "#F6F4FC",
+      "surface": "#FFFFFF",
+      "surfaceAlt": "#F6F4FC",
+      "accent": "#9D7BEA",
+      "accentFill": "#8165C0",
+      "accentTint": "#F1ECFC",
+      "accentPressed": "#7159A9",
+      "support": "#FFB199",
+      "text": {
+        "primary": "#120C1F",
+        "secondary": "#4B4360",
+        "tertiary": "#857D99"
+      },
+      "border": "#E6E1F2",
+      "success": "#16A34A",
+      "warning": "#D97706",
+      "danger": "#DC2626"
+    },
+    "type": {
+      "fontFamily": "Readex Pro",
+      "displayFamily": "Quicksand",
+      "numeralFamily": "Readex Pro",
+      "display": "34 / 700 / -0.02em",
+      "title": "22 / 600",
+      "body": "17 / 400",
+      "label": "16 / 600",
+      "caption": "14 / 500"
+    },
+    "radius": {
+      "card": 24,
+      "control": 16,
+      "input": 12,
+      "pill": 999
+    },
+    "spacing": "8pt scale, edge padding 20px, kid tap targets >= 64px",
+    "elevation": "soft only: 0 1px 2px rgba(18,12,31,.05) + 0 8px 24px rgba(18,12,31,.07)",
+    "icons": "Phosphor regular rounded outline, 24px (kid tabs 32px), 1.75 stroke",
+    "a11y": "white labels only on accentFill; kid targets >=64pt; parent targets >=44pt; text on gradient >=4.5:1"
+  }
+}

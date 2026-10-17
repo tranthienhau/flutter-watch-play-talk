@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Watch Play Talk - Learn</title>
+<!-- Google Fonts: Readex Pro & Quicksand -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#e2c545",
+            "error": "#ba1a1a",
+            "surface-variant": "#e7e0ea",
+            "on-primary-fixed-variant": "#532f9b",
+            "accent-tint": "#F1ECFC",
+            "inverse-surface": "#322f37",
+            "accent-fill": "#8165C0",
+            "inverse-on-surface": "#f5eef8",
+            "on-tertiary-fixed": "#221b00",
+            "success": "#16A34A",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "primary-container": "#8260cd",
+            "on-tertiary-fixed-variant": "#534600",
+            "secondary-fixed": "#ffdbd0",
+            "surface": "#FFFFFF",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#ffb59e",
+            "warning": "#D97706",
+            "surface-container": "#f2ecf6",
+            "primary-fixed": "#eaddff",
+            "text-tertiary": "#857D99",
+            "secondary": "#8a4e3b",
+            "accent-pressed": "#7159A9",
+            "surface-container-high": "#ede6f0",
+            "primary": "#6947b2",
+            "border-divider": "#E6E1F2",
+            "outline": "#7a7483",
+            "primary-fixed-dim": "#d1bcff",
+            "text-secondary": "#4B4360",
+            "tertiary-container": "#c5aa2a",
+            "tertiary-fixed": "#ffe263",
+            "text-primary": "#120C1F",
+            "on-surface": "#1d1a21",
+            "on-background": "#1d1a21",
+            "outline-variant": "#cbc3d4",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#24005b",
+            "on-tertiary-container": "#4b3f00",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#d1bcff",
+            "surface-container-low": "#f8f1fb",
+            "danger": "#DC2626",
+            "background": "#F6F4FC",
+            "secondary-container": "#ffb199",
+            "tertiary": "#6f5d00",
+            "surface-bright": "#fef7ff",
+            "on-secondary-container": "#7a412f",
+            "surface-tint": "#6b49b5",
+            "on-secondary-fixed-variant": "#6e3826",
+            "on-primary-container": "#fffbff",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#ded8e2",
+            "surface-container-highest": "#e7e0ea",
+            "on-secondary-fixed": "#370e02",
+            "on-surface-variant": "#494552"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "title": [
+              "Readex Pro"
+            ],
+            "label": [
+              "Readex Pro"
+            ],
+            "caption": [
+              "Readex Pro"
+            ],
+            "display": [
+              "Quicksand"
+            ],
+            "body": [
+              "Readex Pro"
+            ]
+          },
+          "fontSize": {
+            "title": [
+              "22px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "600"
+              }
+            ],
+            "label": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "14px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "500"
+              }
+            ],
+            "display": [
+              "34px",
+              {
+                "lineHeight": "42px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body": [
+              "17px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom soft ambient elevation layered token */
+    .shadow-soft-float {
+      box-shadow: 0 1px 2px rgba(18, 12, 31, 0.05), 0 8px 24px rgba(18, 12, 31, 0.07);
+    }
+    .shadow-ambient-card {
+      box-shadow: 0 4px 16px rgba(129, 101, 192, 0.08), 0 1px 3px rgba(18, 12, 31, 0.04);
+    }
+    .shadow-active-hero {
+      box-shadow: 0 10px 32px rgba(129, 101, 192, 0.16), 0 2px 6px rgba(18, 12, 31, 0.04);
+    }
+    /* Smooth button press styling */
+    .button-press {
+      transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .button-press:active {
+      transform: scale(0.96);
+    }
+    /* Safe area padding helper */
+    .safe-top {
+      padding-top: max(14px, env(safe-area-inset-top));
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary min-h-screen flex justify-center antialiased selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Frame Container (Max 393px width for accurate standard iOS scale) -->
+<div class="relative w-full max-w-[393px] min-h-screen bg-background flex flex-col pb-[92px] overflow-x-hidden">
+<!-- Top Status Bar & App Header (Kid Header / TopAppBar Anchor) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md shadow-sm border-b border-border-divider/50">
+<div class="flex justify-between items-center w-full px-5 pt-12 pb-3 max-w-md mx-auto">
+<!-- Kid Profile & Greeting -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 rounded-full ring-2 ring-accent-tint p-[2px] bg-surface flex-shrink-0">
+<img alt="Leo profile avatar" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XfKJser536aw6pHON1kL2O4BrY7DDWAF83PNkO9UrfXqMh93u4Z01T9JObR5bf4tTjx4YNdcroNQE8N9CHg95DBdoV-4TqXYk2Rvi5-wk7fCewqrscecmRsSw2n4vrsZjIR7lz-bvI-VTzcb9IEzPz8Q6TbBsjRKn66_hF0isTQbV8zNZ5Ae2tivbq1e4cjG1Jw-EJ0c3TQNt63HW3VZtWQFd46E36unHUueN58bOctu7sIbVkw3oY6vA"/>
+</div>
+<div class="flex flex-col">
+<span class="text-caption font-caption text-text-tertiary leading-tight">Watch Play Talk</span>
+<h1 class="text-title font-title font-bold text-text-primary leading-tight tracking-tight">¡Hola, Leo!</h1>
+</div>
+</div>
+<!-- Right: Star Counter (Empty 0) + Parent Lock Button -->
+<div class="flex items-center gap-2">
+<!-- Stars Counter Pill -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-tint rounded-full">
+<span class="material-symbols-outlined text-[20px] text-accent-fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-title text-caption font-bold text-accent-fill">0</span>
+</div>
+<!-- Parent Lock Pill Button (44px touch target) -->
+<button aria-label="Parent settings lock" class="w-10 h-10 rounded-full bg-surface border border-border-divider flex items-center justify-center text-text-tertiary hover:bg-accent-tint hover:text-accent-fill transition-colors button-press" type="button">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Main Content: Learn Path -->
+<main class="flex-1 px-5 pt-5 pb-8 flex flex-col">
+<!-- Teacher Welcome Bubble (Maestra Luna) -->
+<section class="flex items-center gap-3.5 mb-7 bg-surface p-3.5 rounded-[24px] shadow-soft-float border border-border-divider/60">
+<div class="relative w-14 h-14 rounded-full ring-2 ring-accent-fill/20 p-[2px] bg-accent-tint flex-shrink-0">
+<img alt="Maestra Luna teacher portrait" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X8fbnTMhvt0pVD7nKdyspJ6JOxPSAkeyssxPtwojpOeZC9xiIU6Z2MP8j2PM-qDEgOUGdEVo4BfhvUQ7dLb3fVT9_RRnHJHm3Xg7xjA5oqKJ5iJmstoa6VDGl3FRBgPW759BSDDrOfjotYs4Mv5ZzsdDA8EhjpL3RzcSBj7PfcnU5Au2dukGJmqIocLh73X5LxYtRyuMLSZLNjJDbO_dEcX50kn6TWoOHh3E-IoPXvjiph1hbh5wqN7K0"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-success rounded-full border-2 border-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[13px] text-surface font-bold">check</span>
+</div>
+</div>
+<!-- Speech bubble prompt -->
+<div class="flex-1 bg-accent-tint/60 px-3.5 py-2.5 rounded-2xl relative">
+<p class="font-display text-[15px] leading-snug font-bold text-text-primary">
+            Ready for your first lesson? <span class="text-accent-fill">¡Vamos!</span> 👋
+          </p>
+<span class="text-caption font-caption text-text-secondary text-[12px] block mt-0.5">
+            Let’s start with Hello and Goodbye.
+          </span>
+</div>
+</section>
+<!-- Learning Path Container -->
+<div class="relative flex flex-col items-center w-full">
+<!-- Connecting SVG Path Background Layer -->
+<div class="absolute inset-x-0 top-36 bottom-6 pointer-events-none z-0 flex justify-center">
+<svg class="w-full h-full max-w-[320px]" fill="none" preserveaspectratio="none" viewbox="0 0 320 620">
+<!-- Smooth curved dashed path linking Node 1 -> Node 2 -> Node 3 -> Node 4 -->
+<path d="M 160,20 C 160,110 90,130 90,210 C 90,290 230,300 230,390 C 230,470 160,490 160,570" opacity="0.8" stroke="#CBC3D4" stroke-dasharray="8 10" stroke-linecap="round" stroke-width="5"></path>
+</svg>
+</div>
+<!-- Node 1: ACTIVE / HERO CARD (Start Lesson) -->
+<div class="relative z-10 w-full mb-10">
+<!-- Active Start Node Card -->
+<div class="w-full bg-surface rounded-[28px] p-5 shadow-active-hero border-2 border-accent-fill/25 relative overflow-hidden">
+<!-- Soft pastel glow element inside -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-secondary-container/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-28 h-28 bg-accent-tint rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<!-- Badge Tag: Stage Label -->
+<div class="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-accent-tint text-accent-fill border border-accent-fill/20 mb-3 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-accent-fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-label text-caption font-bold tracking-wide">START HERE • LESSON 1</span>
+</div>
+<!-- Lesson Title -->
+<h2 class="font-display text-[26px] leading-tight font-bold text-text-primary mb-1">
+                Hello and Goodbye
+              </h2>
+<p class="font-body text-body text-accent-fill font-medium mb-4">
+                ¡Hola y Adiós!
+              </p>
+<!-- Lesson Step Mini-Pills: Watch, Play, Talk (Empty / Ready State) -->
+<div class="grid grid-cols-3 gap-2 w-full mb-5">
+<!-- Step 1: Watch -->
+<div class="flex items-center justify-center gap-1 py-2 px-1.5 rounded-full border-2 border-accent-fill/30 bg-accent-tint/40 text-text-primary">
+<span class="material-symbols-outlined text-[18px] text-accent-fill">play_circle</span>
+<span class="font-caption text-[12px] font-semibold">Watch</span>
+</div>
+<!-- Step 2: Play -->
+<div class="flex items-center justify-center gap-1 py-2 px-1.5 rounded-full border-2 border-border-divider bg-surface text-text-tertiary">
+<span class="material-symbols-outlined text-[18px]">sports_esports</span>
+<span class="font-caption text-[12px] font-medium">Play</span>
+</div>
+<!-- Step 3: Talk -->
+<div class="flex items-center justify-center gap-1 py-2 px-1.5 rounded-full border-2 border-border-divider bg-surface text-text-tertiary">
+<span class="material-symbols-outlined text-[18px]">record_voice_over</span>
+<span class="font-caption text-[12px] font-medium">Talk</span>
+</div>
+</div>
+<!-- Big Tactile Start Button (Gradient #9D7BEA to #FFB199, Min 64px Height) -->
+<button class="w-full h-16 rounded-full bg-gradient-to-r from-[#9D7BEA] to-[#FFB199] text-surface font-display text-[22px] font-bold flex items-center justify-center gap-3 shadow-md hover:brightness-105 active:scale-[0.98] transition-all button-press" type="button">
+<span>Start</span>
+<span class="material-symbols-outlined text-[28px] font-bold" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Node 2: Locked (Numbers 1 to 5) - Left Aligned on Path -->
+<div class="relative z-10 w-full flex justify-start pl-6 mb-12">
+<div class="flex items-center gap-3.5 opacity-60">
+<!-- Circular Node Anchor -->
+<div class="w-16 h-16 rounded-full bg-surface border-2 border-border-divider flex items-center justify-center shadow-soft-float relative">
+<span class="material-symbols-outlined text-[28px] text-text-tertiary">counter_5</span>
+<div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-surface-container-high border border-border-divider flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-text-tertiary">lock</span>
+</div>
+</div>
+<!-- Node Content -->
+<div class="bg-surface/90 px-4 py-2.5 rounded-2xl border border-border-divider shadow-sm">
+<span class="font-caption text-[11px] font-semibold text-text-tertiary block">LESSON 2</span>
+<span class="font-title text-label font-bold text-text-secondary">Numbers 1 to 5</span>
+</div>
+</div>
+</div>
+<!-- Node 3: Locked (Colors) - Right Aligned on Path -->
+<div class="relative z-10 w-full flex justify-end pr-6 mb-12">
+<div class="flex items-center flex-row-reverse gap-3.5 opacity-55">
+<!-- Circular Node Anchor -->
+<div class="w-16 h-16 rounded-full bg-surface border-2 border-border-divider flex items-center justify-center shadow-soft-float relative">
+<span class="material-symbols-outlined text-[28px] text-text-tertiary">palette</span>
+<div class="absolute -top-1 -left-1 w-6 h-6 rounded-full bg-surface-container-high border border-border-divider flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-text-tertiary">lock</span>
+</div>
+</div>
+<!-- Node Content -->
+<div class="bg-surface/90 px-4 py-2.5 rounded-2xl border border-border-divider shadow-sm text-right">
+<span class="font-caption text-[11px] font-semibold text-text-tertiary block">LESSON 3</span>
+<span class="font-title text-label font-bold text-text-secondary">Colors • Los Colores</span>
+</div>
+</div>
+</div>
+<!-- Node 4: Locked (Animals) - Centered on Path -->
+<div class="relative z-10 w-full flex justify-center mb-6">
+<div class="flex flex-col items-center opacity-45">
+<!-- Circular Node Anchor -->
+<div class="w-16 h-16 rounded-full bg-surface border-2 border-border-divider flex items-center justify-center shadow-soft-float relative mb-2">
+<span class="material-symbols-outlined text-[28px] text-text-tertiary">pets</span>
+<div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-surface-container-high border border-border-divider flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-text-tertiary">lock</span>
+</div>
+</div>
+<!-- Node Content -->
+<div class="bg-surface/90 px-4 py-1.5 rounded-full border border-border-divider shadow-sm text-center">
+<span class="font-caption text-[12px] font-bold text-text-secondary">Lesson 4: Animals</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Docked Kid Tab Bar - 72px) -->
+<!-- Respecting Shared Components JSON: Learn, Watch, Stickers -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-surface border-t border-border-divider shadow-lg max-w-[393px] mx-auto h-[72px] flex justify-around items-center px-4 pb-2">
+<!-- Tab 1: Learn (ACTIVE) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-accent-fill font-semibold gap-1 [&amp;&gt;span:first-child]:bg-accent-tint [&amp;&gt;span:first-child]:rounded-full [&amp;&gt;span:first-child]:px-4 [&amp;&gt;span:first-child]:py-1 transition-all button-press" href="#learn">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-caption text-[12px] font-bold">Learn</span>
+</a>
+<!-- Tab 2: Watch (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-tertiary gap-1 font-medium transition-colors hover:text-accent-fill button-press" href="#watch">
+<span class="material-symbols-outlined text-[24px]">play_circle</span>
+<span class="font-caption text-[12px]">Watch</span>
+</a>
+<!-- Tab 3: Stickers (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-text-tertiary gap-1 font-medium transition-colors hover:text-accent-fill button-press" href="#stickers">
+<span class="material-symbols-outlined text-[24px]">stars</span>
+<span class="font-caption text-[12px]">Stickers</span>
+</a>
+</nav>
+</div>
+</body></html>

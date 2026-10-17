@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Parental Gate</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#ffb199",
+            "primary-container": "#8260cd",
+            "tertiary": "#6f5d00",
+            "surface-dim": "#ded8e2",
+            "surface": "#FFFFFF",
+            "text-tertiary": "#857D99",
+            "on-secondary-container": "#7a412f",
+            "on-background": "#1d1a21",
+            "inverse-surface": "#322f37",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#24005b",
+            "on-tertiary-fixed": "#221b00",
+            "surface-container-lowest": "#ffffff",
+            "success": "#16A34A",
+            "inverse-on-surface": "#f5eef8",
+            "on-primary-container": "#fffbff",
+            "tertiary-fixed-dim": "#e2c545",
+            "primary-fixed-dim": "#d1bcff",
+            "surface-container-high": "#ede6f0",
+            "inverse-primary": "#d1bcff",
+            "accent-fill": "#8165C0",
+            "on-surface": "#1d1a21",
+            "accent-pressed": "#7159A9",
+            "surface-container": "#f2ecf6",
+            "accent-tint": "#F1ECFC",
+            "border-divider": "#E6E1F2",
+            "background": "#F6F4FC",
+            "error-container": "#ffdad6",
+            "primary": "#6947b2",
+            "outline": "#7a7483",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#6b49b5",
+            "warning": "#D97706",
+            "surface-container-highest": "#e7e0ea",
+            "danger": "#DC2626",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#494552",
+            "secondary": "#8a4e3b",
+            "on-error": "#ffffff",
+            "tertiary-container": "#c5aa2a",
+            "text-secondary": "#4B4360",
+            "surface-variant": "#e7e0ea",
+            "surface-bright": "#fef7ff",
+            "primary-fixed": "#eaddff",
+            "on-secondary-fixed": "#370e02",
+            "on-tertiary-fixed-variant": "#534600",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "outline-variant": "#cbc3d4",
+            "on-secondary-fixed-variant": "#6e3826",
+            "tertiary-fixed": "#ffe263",
+            "on-tertiary-container": "#4b3f00",
+            "surface-container-low": "#f8f1fb",
+            "on-primary-fixed-variant": "#532f9b",
+            "text-primary": "#120C1F",
+            "secondary-fixed": "#ffdbd0"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "title": ["Readex Pro"],
+            "caption": ["Readex Pro"],
+            "label": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "body": ["Readex Pro"]
+          },
+          "fontSize": {
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }]
+          },
+          "boxShadow": {
+            "soft-ambient": "0 1px 2px rgba(18,12,31,0.05), 0 8px 24px rgba(18,12,31,0.07)",
+            "keypad-key": "0 1px 2px rgba(18,12,31,0.05), 0 4px 12px rgba(18,12,31,0.05)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes subtle-pulse {
+      0%, 100% { opacity: 0.35; transform: scale(0.92); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+    .cursor-blip {
+      animation: subtle-pulse 1.4s ease-in-out infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased min-h-screen flex items-center justify-center p-0 select-none">
+<!-- Mobile Simulator Frame (iPhone 393 x 852 px standard) -->
+<main class="w-full max-w-[393px] h-[852px] bg-background flex flex-col justify-between relative overflow-hidden shadow-2xl md:rounded-[44px] md:border-[8px] md:border-surface">
+<!-- Top Status Space & Header Area -->
+<header class="w-full pt-14 px-5 pb-2 flex items-center justify-between z-10">
+<!-- Dismiss / Cancel "X" Circular Button -->
+<button aria-label="Close adult gate" class="w-11 h-11 rounded-full bg-surface text-text-secondary flex items-center justify-center shadow-soft-ambient border border-border-divider hover:bg-accent-tint active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-text-secondary text-[22px]">close</span>
+</button>
+<!-- Contextual Tag -->
+<div class="px-3.5 py-1.5 rounded-full bg-accent-tint text-accent-fill text-caption font-caption">
+        Adult verification
+      </div>
+<!-- Blank Spacer for symmetry -->
+<div aria-hidden="true" class="w-11 h-11 pointer-events-none opacity-0"></div>
+</header>
+<!-- Main Content Flow -->
+<section class="flex-1 flex flex-col items-center justify-start px-6 pt-2">
+<!-- Lock Avatar / Badge -->
+<div class="w-[72px] h-[72px] rounded-full bg-accent-tint flex items-center justify-center mb-4 shadow-soft-ambient">
+<span class="material-symbols-outlined text-accent-fill text-[34px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<!-- Title & Instructions -->
+<h1 class="font-display text-[26px] leading-[32px] font-bold text-text-primary text-center mb-2 tracking-tight">
+        Grown-ups only
+      </h1>
+<p class="font-body text-body text-text-secondary text-center max-w-[280px]">
+        Type the number: <span class="font-semibold text-text-primary underline decoration-secondary-container decoration-2 underline-offset-4">forty-seven</span>
+</p>
+<!-- PIN Input Containers -->
+<div class="flex items-center gap-4 mt-6 mb-3">
+<!-- Box 1: Filled with '4' -->
+<div class="w-[66px] h-[72px] rounded-2xl bg-surface border border-border-divider flex items-center justify-center shadow-soft-ambient">
+<span class="font-display text-[32px] font-bold text-text-primary leading-none">4</span>
+</div>
+<!-- Box 2: Active / Focused Input Box with glow border -->
+<div class="w-[66px] h-[72px] rounded-2xl bg-surface border-2 border-primary-container ring-4 ring-accent-tint flex items-center justify-center shadow-soft-ambient relative">
+<!-- Subtle Pulsing Caret Indicator -->
+<div class="w-2.5 h-2.5 rounded-full bg-accent-fill cursor-blip"></div>
+</div>
+</div>
+<!-- Helper Explainer Note -->
+<p class="font-caption text-caption text-text-tertiary text-center px-4 mt-2 mb-4 leading-relaxed">
+        This keeps purchases and settings away from little hands.
+      </p>
+</section>
+<!-- Tactile Focal Keypad Area -->
+<section aria-label="PIN Numeric Keypad" class="w-full px-5 pb-10 pt-2 bg-gradient-to-t from-background via-background to-transparent">
+<div class="max-w-[340px] mx-auto grid grid-cols-3 gap-3">
+<!-- Digit 1 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          1
+        </button>
+<!-- Digit 2 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          2
+        </button>
+<!-- Digit 3 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          3
+        </button>
+<!-- Digit 4 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          4
+        </button>
+<!-- Digit 5 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          5
+        </button>
+<!-- Digit 6 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          6
+        </button>
+<!-- Digit 7 (Highlight matching answer prompt) -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border-2 border-primary-container/30 text-accent-fill font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          7
+        </button>
+<!-- Digit 8 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          8
+        </button>
+<!-- Digit 9 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          9
+        </button>
+<!-- Bottom Left: Clear / Reset Action -->
+<button class="h-16 rounded-2xl flex items-center justify-center text-text-tertiary font-label text-caption font-semibold active:text-text-primary active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          Clear
+        </button>
+<!-- Digit 0 -->
+<button class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-primary font-display text-[26px] font-bold hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+          0
+        </button>
+<!-- Bottom Right: Backspace / Delete Button -->
+<button aria-label="Delete last digit" class="h-16 rounded-2xl bg-surface shadow-keypad-key flex items-center justify-center border border-border-divider/50 text-text-secondary hover:bg-accent-tint active:bg-surface-container active:scale-95 transition-all duration-150 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[24px]">backspace</span>
+</button>
+</div>
+<!-- Home Indicator Safe Area Placeholder -->
+<div aria-hidden="true" class="w-32 h-1 bg-text-tertiary/20 rounded-full mx-auto mt-6"></div>
+</section>
+</main>
+</body></html>

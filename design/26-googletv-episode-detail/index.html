@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google TV - Episode Detail - Animal Friends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              lavender: '#9D7BEA',
+              lavenderDark: '#8165C0',
+              lavenderPressed: '#7159A9',
+              lavenderTint: '#F1ECFC',
+              peach: '#FFB199',
+              bg: '#F6F4FC',
+              darkBg: '#0F0B18',
+              surface: '#FFFFFF',
+              cardDark: '#1E1730',
+              textPrimary: '#120C1F',
+              textSecondary: '#4B4360',
+              textTertiary: '#857D99',
+              border: '#E6E1F2',
+              borderDark: 'rgba(255, 255, 255, 0.12)'
+            }
+          },
+          fontFamily: {
+            display: ['Quicksand', 'sans-serif'],
+            body: ['"Readex Pro"', 'sans-serif']
+          },
+          boxShadow: {
+            tvGlow: '0 0 0 4px #FFFFFF, 0 10px 30px rgba(157, 123, 234, 0.65)',
+            cardGlow: '0 0 0 3px #FFFFFF, 0 12px 28px rgba(129, 101, 192, 0.5)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* TV safe area and D-Pad focus emulation */
+    .tv-safe-area {
+      padding-top: 48px;
+      padding-bottom: 48px;
+      padding-left: 72px;
+      padding-right: 72px;
+    }
+    
+    /* Focused card scale & outline */
+    .tv-focused-btn {
+      background: #FFFFFF !important;
+      color: #8165C0 !important;
+      box-shadow: 0 0 0 4px #FFFFFF, 0 12px 32px rgba(157, 123, 234, 0.75);
+      transform: scale(1.06);
+    }
+    
+    .tv-card-focus:focus-within, .tv-card-focus:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 0 0 3.5px #FFFFFF, 0 16px 36px rgba(129, 101, 192, 0.55);
+    }
+
+    /* Subtle pulse animation for focused elements */
+    @keyframes subtlePulse {
+      0%, 100% { box-shadow: 0 0 0 4px #FFFFFF, 0 10px 28px rgba(157, 123, 234, 0.6); }
+      50% { box-shadow: 0 0 0 4px #FFFFFF, 0 14px 38px rgba(255, 177, 153, 0.8); }
+    }
+    .pulse-glow {
+      animation: subtlePulse 2.8s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden bg-[#0e0917] text-white font-body select-none">
+
+  <!-- Full-bleed backdrop container with high-res real photo -->
+  <div class="relative w-full h-full">
+    <!-- Real photo backdrop: Maestra Luna with plush hand puppet on TV set -->
+    <img 
+      src="https://lh3.googleusercontent.com/aida/AEtjO1UlyMvXtL9NRH1mX8Vh4xL-d3HLxiN6vPgwpXO-BOYFAB4CcD09QFS_Z4Y_kAmB_vIsrZ3vOiV50NEjQs4V0KYn72xFtFgZv_MMbco1FGark1H5dKfeK6YPAUWmEeUvwKlm35RSZpSzdToNtjJFDCS1BXArHPnZC_y5W4zQN53tLkBba-dgWhOHHCTAbKcZektGsfl6FVvy5W_aS3pQ4_J4YiImplkoMt07uqTJp36jRWq0baq1gt1JMQ" 
+      alt="Maestra Luna with cute animal puppet"
+      class="absolute inset-0 w-full h-full object-cover object-right"
+    />
+
+    <!-- Multi-layered cinematic gradient scrims for 10-foot readability -->
+    <!-- Left-side dark/lavender scrim for text legibility -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0d0918] via-[#150d26]/95 via-[48%] via-[#1e1338]/60 to-transparent"></div>
+    
+    <!-- Bottom dark scrim for lessons row & TV safe margins -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0b0714] via-[#0d081a]/90 via-[42%] to-transparent"></div>
+
+    <!-- Soft brand lavender ambient atmospheric glow -->
+    <div class="absolute -top-32 -left-32 w-[680px] h-[680px] bg-[#9D7BEA]/20 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-10 left-1/4 w-[500px] h-[400px] bg-[#FFB199]/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- TV Content Frame (5% / 72px TV Safe Area padding) -->
+    <div class="relative z-10 w-full h-full flex flex-col justify-between tv-safe-area box-border">
+      
+      <!-- Top TV Header / Navigation Bar -->
+      <header class="flex items-center justify-between w-full h-14">
+        <!-- Brand logo & section context -->
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/15">
+            <!-- App mini icon -->
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg" alt="Logo" class="w-7 h-7 rounded-lg shadow-sm" />
+            <span class="font-display font-bold text-lg tracking-tight text-white">Watch Play Talk</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-[#9D7BEA]/30 text-[#E6E1F2] font-medium border border-[#9D7BEA]/40">Google TV</span>
+          </div>
+
+          <!-- Breadcrumb breadcrumb badge -->
+          <div class="flex items-center gap-2 text-brand-textTertiary text-sm font-medium pl-2">
+            <span>Episodes</span>
+            <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span class="text-white/80">Season 1</span>
+          </div>
+        </div>
+
+        <!-- TV Top Right Info: Active Child Profile & Safe Status -->
+        <div class="flex items-center gap-4">
+          <!-- Kid Safe badge -->
+          <div class="flex items-center gap-2 bg-[#16A34A]/20 border border-[#16A34A]/40 px-3.5 py-1.5 rounded-full text-emerald-300 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Kid Safe Mode</span>
+          </div>
+
+          <!-- Active Learner Avatar (Mia) with stars -->
+          <div class="flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/15 pl-1.5 pr-4 py-1.5 rounded-full">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28" alt="Mia" class="w-8 h-8 rounded-full border border-white/60 object-cover" />
+            <div class="flex flex-col text-left">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-bold text-white font-display">Mia</span>
+                <span class="text-[10px] text-brand-peach font-bold flex items-center gap-0.5">
+                  ★ 24
+                </span>
+              </div>
+            </div>
+            <!-- Lock indicator for Parent Area -->
+            <svg class="w-3.5 h-3.5 text-white/50 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- Middle Content Area: Episode Title, Badges, Summary & Action Buttons -->
+      <main class="w-full max-w-3xl flex flex-col justify-center pt-2 pb-4">
+        
+        <!-- Category & Format Tag Bar -->
+        <div class="flex items-center gap-2.5 mb-3.5">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#9D7BEA] text-white tracking-wide uppercase font-display">
+            Interactive Episode
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/90 border border-white/15 backdrop-blur-sm">
+            Unit 4: Animals
+          </span>
+          <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 flex items-center gap-1">
+            <span>✨</span> 3 Stickers to unlock
+          </span>
+        </div>
+
+        <!-- Main Headline Title -->
+        <h1 class="font-display font-bold text-5xl lg:text-[54px] leading-tight text-white tracking-tight drop-shadow-md mb-3">
+          Episode 41: Animal Friends
+        </h1>
+
+        <!-- Bilingual subtitle title -->
+        <p class="font-display text-lg text-brand-peach font-semibold mb-3">
+          Los Amigos Animales • Español y English
+        </p>
+
+        <!-- Episode Metadata Row (Length, Languages, Ages, No Ads) -->
+        <div class="flex items-center flex-wrap gap-2.5 mb-4 text-xs font-semibold text-white/90">
+          <!-- Duration pill -->
+          <span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+            <svg class="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            52 min
+          </span>
+
+          <!-- Language pill -->
+          <span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+            <span class="text-brand-peach font-bold">ES + EN</span>
+            Español and English
+          </span>
+
+          <!-- Age group pill -->
+          <span class="bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+            Ages 2 to 6
+          </span>
+
+          <!-- Ad-free assurance pill -->
+          <span class="bg-[#16A34A]/25 text-emerald-300 px-3 py-1.5 rounded-full border border-[#16A34A]/40 flex items-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            No ads
+          </span>
+
+          <!-- Resolution -->
+          <span class="text-white/60 bg-white/5 px-2.5 py-1 rounded border border-white/10 text-[11px]">
+            4K HDR • 5.1
+          </span>
+        </div>
+
+        <!-- Progress Bar for In-Progress Episode (18:40 / 52:00) -->
+        <div class="w-full max-w-xl mb-4 bg-white/10 rounded-full h-2 overflow-hidden backdrop-blur-sm p-0.5 border border-white/10">
+          <div class="bg-gradient-to-r from-[#9D7BEA] to-[#FFB199] h-full rounded-full transition-all duration-300" style="width: 36%;"></div>
+        </div>
+
+        <!-- Description Paragraph -->
+        <p class="text-base text-[#D5CEE5] leading-relaxed max-w-2xl font-normal mb-6 drop-shadow">
+          Maestra Luna meets farm animals and learns their names in Spanish and English. Includes sing-along songs, interactive animal sounds practice, and gentle speaking games!
+        </p>
+
+        <!-- D-Pad Action Buttons Row -->
+        <div class="flex items-center gap-4" id="action-buttons-group">
+          
+          <!-- Primary CTA Button: Resume 18:40 (FOCUSED STATE - 10ft Leanback Hero) -->
+          <!-- Spec: focused white pill with #8165C0 text and lavender focus glow -->
+          <button 
+            tabindex="1"
+            class="tv-focused-btn pulse-glow group relative flex items-center gap-3 px-8 py-4 rounded-full font-display font-bold text-lg tracking-wide transition-all duration-200 outline-none cursor-pointer"
+          >
+            <!-- Play icon in #8165C0 -->
+            <span class="w-8 h-8 rounded-full bg-[#8165C0]/15 flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#8165C0] translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+            <div class="flex flex-col text-left">
+              <span class="text-[#8165C0] leading-none text-xl">Resume 18:40</span>
+              <span class="text-[11px] text-[#7159A9] font-body font-medium mt-0.5">Lesson 2: Animal sounds</span>
+            </div>
+          </button>
+
+          <!-- Secondary Button: Start Over -->
+          <button 
+            tabindex="2"
+            class="flex items-center gap-2.5 px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/25 border border-white/20 text-white font-display font-semibold text-base transition-all duration-200 outline-none hover:scale-105 hover:border-white/50 cursor-pointer backdrop-blur-md"
+          >
+            <svg class="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <span>Start over</span>
+          </button>
+
+          <!-- Secondary Button: Subtitles: ES -->
+          <button 
+            tabindex="3"
+            class="flex items-center gap-2.5 px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/25 border border-white/20 text-white font-display font-semibold text-base transition-all duration-200 outline-none hover:scale-105 hover:border-white/50 cursor-pointer backdrop-blur-md"
+          >
+            <svg class="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+            </svg>
+            <span>Subtitles: <span class="text-brand-peach font-bold">ES</span></span>
+          </button>
+
+          <!-- Add to Favorites / Stars Button -->
+          <button 
+            tabindex="4"
+            class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white/90 transition-all duration-200 outline-none hover:scale-105 hover:border-white/50 cursor-pointer backdrop-blur-md"
+            title="Favorite"
+          >
+            <svg class="w-6 h-6 text-brand-peach" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </button>
+
+        </div>
+      </main>
+
+      <!-- Bottom Shelf: "Lessons in this episode" with focusable 16:9 cards -->
+      <section class="w-full pt-1">
+        <!-- Shelf Header -->
+        <div class="flex items-center justify-between mb-3.5">
+          <div class="flex items-center gap-3">
+            <h2 class="font-display font-bold text-xl text-white tracking-wide">
+              Lessons in this episode
+            </h2>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#9D7BEA]/25 text-[#E6E1F2] border border-[#9D7BEA]/30">
+              4 interactive parts
+            </span>
+          </div>
+
+          <!-- D-Pad hint for the user -->
+          <div class="flex items-center gap-2 text-xs text-brand-textTertiary font-medium">
+            <span class="flex items-center gap-1 bg-white/5 px-2 py-1 rounded border border-white/10">
+              <svg class="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+              <span>Press down for chapters</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 4 Focusable 16:9 Lesson Cards Row -->
+        <div class="grid grid-cols-4 gap-5">
+          
+          <!-- Card 1: Hello song (Completed) -->
+          <div 
+            tabindex="5"
+            class="tv-card-focus group relative bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/15 transition-all duration-200 cursor-pointer outline-none focus:outline-none"
+          >
+            <!-- 16:9 Thumbnail Container -->
+            <div class="relative aspect-video w-full overflow-hidden bg-black/40">
+              <img 
+                src="https://lh3.googleusercontent.com/aida/AEtjO1W7IyJNv6XX0qzsC9l88f-OaXdCArEb_LQeHVfWBnknZwJ_YJ9js6DnnTsSGDR_n8Bnss2lNo-HN6bfTfbmzGT69SyGTnmMhTvtvpLpEDmT9J14DQsrRL5sSbl4r7a_AXbHJ6dRFdTZO9feATPUH8jyZEB_ZodKZxv-lSKPqquAdcwmXRdlW9aOmOtN2XjFFm5KK31GbAVFJAcYdBChGtYYEz21YAc21t-pZLzyo-oQlS0XeAIiJ14McQ" 
+                alt="Hello song thumbnail" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <!-- Completed Badge -->
+              <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-[#16A34A]/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Done</span>
+              </div>
+
+              <!-- Time tag -->
+              <span class="absolute bottom-2 right-2 bg-black/75 text-white/90 text-[11px] font-medium px-2 py-0.5 rounded backdrop-blur-sm">
+                4:15
+              </span>
+
+              <!-- Step indicator badge -->
+              <span class="absolute bottom-2 left-2 text-[10px] uppercase font-bold text-brand-peach bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">
+                Step 1 • Watch
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-3.5 bg-[#161026]/90 border-t border-white/10 flex items-center justify-between">
+              <div>
+                <h3 class="font-display font-bold text-white text-base group-hover:text-brand-peach transition-colors">
+                  1. Hello song
+                </h3>
+                <p class="text-xs text-brand-textTertiary font-medium mt-0.5">
+                  ¡Hola amigos! Sing-along
+                </p>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60 group-hover:bg-[#9D7BEA] group-hover:text-white transition-all">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 2: Animal sounds (Current / In Progress) -->
+          <div 
+            tabindex="6"
+            class="tv-card-focus group relative bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border-2 border-[#9D7BEA] shadow-[0_0_20px_rgba(157,123,234,0.35)] transition-all duration-200 cursor-pointer outline-none focus:outline-none"
+          >
+            <!-- 16:9 Thumbnail Container -->
+            <div class="relative aspect-video w-full overflow-hidden bg-black/40">
+              <img 
+                src="https://lh3.googleusercontent.com/aida/AEtjO1V-78kO994EWxww9MKH1tJc9VPgzo5xF4SRHkuz1AHerTOt1WU8jq42jDAVJ3y3VyD-qTyPE_zMn1SDh2Nauha4gmAcyYVaMeHlYHKwqUC8csokOiMU0VNF2hLk1j8qkc5Hz6CD7cTVI88tObShvEpzBFKkJVn-lEDOnxaWK4K-BuQNOnfRdZ6O5HrX3cwnOroxD8AkzGdXv75wAf5JJvhIUMAFUDz6HWwgWH-BU6IgI_7XaKj0Tjsszg" 
+                alt="Animal sounds thumbnail" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+              
+              <!-- In progress badge -->
+              <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-[#9D7BEA] px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-md">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                <span>Playing now</span>
+              </div>
+
+              <!-- Time tag -->
+              <span class="absolute bottom-2 right-2 bg-black/75 text-white/90 text-[11px] font-medium px-2 py-0.5 rounded backdrop-blur-sm">
+                14:20
+              </span>
+
+              <!-- Step indicator badge -->
+              <span class="absolute bottom-2 left-2 text-[10px] uppercase font-bold text-white bg-[#8165C0]/90 px-2 py-0.5 rounded backdrop-blur-sm">
+                Step 2 • Play
+              </span>
+            </div>
+
+            <!-- Card Progress bar -->
+            <div class="w-full h-1 bg-white/20">
+              <div class="h-full bg-gradient-to-r from-[#9D7BEA] to-[#FFB199]" style="width: 65%;"></div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-3.5 bg-[#1f1535] border-t border-white/10 flex items-center justify-between">
+              <div>
+                <h3 class="font-display font-bold text-white text-base text-brand-peach">
+                  2. Animal sounds
+                </h3>
+                <p class="text-xs text-white/80 font-medium mt-0.5">
+                  Los sonidos del bosque
+                </p>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-[#9D7BEA] text-white flex items-center justify-center shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 3: Counting cows (Upcoming) -->
+          <div 
+            tabindex="7"
+            class="tv-card-focus group relative bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/15 transition-all duration-200 cursor-pointer outline-none focus:outline-none"
+          >
+            <!-- 16:9 Thumbnail Container -->
+            <div class="relative aspect-video w-full overflow-hidden bg-black/40">
+              <img 
+                src="https://lh3.googleusercontent.com/aida/AEtjO1W6QWYxPd_zGxBrFHxPX5QP2Cfbt-r1UYniDalFWetaQ2xvdaVIf2n-FccB4CRmRMngyDyRqZyZZaCtCgSet9ifZw5brqqcQIRnucThw64xrEefZhqzXpr0xv_Iu81C1-V9kZ6wxKDGuvmVmJCiieMWxJ5_v7vx8JIZL3jkX7O8FaRzNhKftqBuZBLeF_5VaBJIOLOjaT2YcT3M_VR9GTaa__H2ADPdEkatljqBkhzzXt7mahGYWM13cdA" 
+                alt="Counting cows thumbnail" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <!-- Next up badge -->
+              <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-white/90 text-[11px] font-semibold border border-white/15">
+                <span>Next</span>
+              </div>
+
+              <!-- Time tag -->
+              <span class="absolute bottom-2 right-2 bg-black/75 text-white/90 text-[11px] font-medium px-2 py-0.5 rounded backdrop-blur-sm">
+                16:10
+              </span>
+
+              <!-- Step indicator badge -->
+              <span class="absolute bottom-2 left-2 text-[10px] uppercase font-bold text-brand-peach bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">
+                Step 3 • Talk
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-3.5 bg-[#161026]/90 border-t border-white/10 flex items-center justify-between">
+              <div>
+                <h3 class="font-display font-bold text-white text-base group-hover:text-brand-peach transition-colors">
+                  3. Counting cows
+                </h3>
+                <p class="text-xs text-brand-textTertiary font-medium mt-0.5">
+                  Las vacas • 1, 2, 3
+                </p>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60 group-hover:bg-[#9D7BEA] group-hover:text-white transition-all">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 4: Goodbye song (Upcoming) -->
+          <div 
+            tabindex="8"
+            class="tv-card-focus group relative bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/15 transition-all duration-200 cursor-pointer outline-none focus:outline-none"
+          >
+            <!-- 16:9 Thumbnail Container -->
+            <div class="relative aspect-video w-full overflow-hidden bg-black/40">
+              <img 
+                src="https://lh3.googleusercontent.com/aida/AEtjO1Up-xb6b9rklJClAEb8aZ6-mPadW0pvDfTHHLwuUC4vAMD27mkyXdCLT42sXWmW-9M-JWj5rISIjLzEYvQwhNxf9LzTuYksplixed0RYqqvHL1v_m_A_5lbwpfQsFPRMNg09BIPSv7tQe0wI4A2ppf-QxXQEHgYhsZdhAU7sfw5lXwpP0eT9OxgjpQKEsbUetgpnyMmSHY1YPsbFjKy5EeisgqOmBmfQpKzzk5MhzJFXeMNcL1rt2nf7xQ" 
+                alt="Goodbye song thumbnail" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <!-- Chapter tag -->
+              <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-white/90 text-[11px] font-semibold border border-white/15">
+                <span>Final Song</span>
+              </div>
+
+              <!-- Time tag -->
+              <span class="absolute bottom-2 right-2 bg-black/75 text-white/90 text-[11px] font-medium px-2 py-0.5 rounded backdrop-blur-sm">
+                6:40
+              </span>
+
+              <!-- Reward sticker preview tag -->
+              <span class="absolute bottom-2 left-2 text-[10px] uppercase font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded backdrop-blur-sm border border-amber-400/30 flex items-center gap-1">
+                ★ Star reward
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-3.5 bg-[#161026]/90 border-t border-white/10 flex items-center justify-between">
+              <div>
+                <h3 class="font-display font-bold text-white text-base group-hover:text-brand-peach transition-colors">
+                  4. Goodbye song
+                </h3>
+                <p class="text-xs text-brand-textTertiary font-medium mt-0.5">
+                  ¡Adiós amigos! Wave & Sing
+                </p>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60 group-hover:bg-[#9D7BEA] group-hover:text-white transition-all">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bottom Remote / D-Pad Guide Bar (Leanback standard accessibility guidance) -->
+      <footer class="flex items-center justify-between text-xs text-brand-textTertiary pt-3 border-t border-white/10">
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-white/15 text-white font-mono text-[11px] font-bold border border-white/20">OK / SELECT</span>
+            <span class="text-white/80">Play selected</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-white/15 text-white font-mono text-[11px] font-bold border border-white/20">BACK</span>
+            <span class="text-white/80">Episodes list</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-white/15 text-white font-mono text-[11px] font-bold border border-white/20">PLAY / PAUSE</span>
+            <span class="text-white/80">Quick resume</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 text-white/60 text-xs">
+          <span>Watch Play Talk on Google TV</span>
+          <span>•</span>
+          <span class="text-emerald-400 font-medium">COPPA Safe • 100% Ad-Free</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Leanback D-Pad Interaction Simulation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find all focusable elements
+      const focusables = Array.from(document.querySelectorAll('button, .tv-card-focus'));
+      
+      focusables.forEach(el => {
+        el.addEventListener('focus', () => {
+          // Remove custom focused styling from all action buttons if focus moves
+          document.querySelectorAll('#action-buttons-group button').forEach(btn => {
+            btn.classList.remove('tv-focused-btn', 'pulse-glow');
+          });
+          
+          if (el.tagName === 'BUTTON' && el.closest('#action-buttons-group')) {
+            el.classList.add('tv-focused-btn');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

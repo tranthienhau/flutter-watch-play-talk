@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - My Stickers</title>
+<!-- Google Fonts: Readex Pro & Quicksand -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#ded8e2",
+            "primary-fixed": "#eaddff",
+            "inverse-primary": "#d1bcff",
+            "surface-container-high": "#ede6f0",
+            "on-background": "#1d1a21",
+            "on-secondary": "#ffffff",
+            "surface-container": "#f2ecf6",
+            "tertiary-container": "#c5aa2a",
+            "on-primary": "#ffffff",
+            "surface-tint": "#6b49b5",
+            "surface-container-low": "#f8f1fb",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "border-divider": "#E6E1F2",
+            "text-secondary": "#4B4360",
+            "outline": "#7a7483",
+            "inverse-on-surface": "#f5eef8",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-primary-fixed-variant": "#532f9b",
+            "on-secondary-fixed-variant": "#6e3826",
+            "warning": "#D97706",
+            "accent-tint": "#F1ECFC",
+            "text-tertiary": "#857D99",
+            "on-primary-container": "#fffbff",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#24005b",
+            "surface-variant": "#e7e0ea",
+            "primary-container": "#8260cd",
+            "on-tertiary-container": "#4b3f00",
+            "accent-pressed": "#7159A9",
+            "tertiary": "#6f5d00",
+            "on-tertiary-fixed": "#221b00",
+            "surface": "#FFFFFF",
+            "surface-container-highest": "#e7e0ea",
+            "surface-bright": "#fef7ff",
+            "accent-fill": "#8165C0",
+            "primary": "#6947b2",
+            "on-tertiary": "#ffffff",
+            "background": "#F6F4FC",
+            "tertiary-fixed": "#ffe263",
+            "inverse-surface": "#322f37",
+            "success": "#16A34A",
+            "on-secondary-fixed": "#370e02",
+            "tertiary-fixed-dim": "#e2c545",
+            "primary-fixed-dim": "#d1bcff",
+            "on-surface-variant": "#494552",
+            "secondary-container": "#ffb199",
+            "text-primary": "#120C1F",
+            "on-secondary-container": "#7a412f",
+            "secondary": "#8a4e3b",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#534600",
+            "on-error-container": "#93000a",
+            "outline-variant": "#cbc3d4",
+            "on-surface": "#1d1a21",
+            "secondary-fixed": "#ffdbd0",
+            "danger": "#DC2626"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "title": ["Readex Pro"],
+            "label": ["Readex Pro"],
+            "caption": ["Readex Pro"],
+            "display": ["Quicksand"],
+            "body": ["Readex Pro"]
+          },
+          "fontSize": {
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }]
+          },
+          "boxShadow": {
+            "soft-card": "0 2px 6px rgba(18, 12, 31, 0.04), 0 10px 28px rgba(18, 12, 31, 0.06)",
+            "sticker": "0 3px 8px rgba(18, 12, 31, 0.06)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F6F4FC;
+      color: #120C1F;
+      font-family: 'Readex Pro', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Die-cut white border sticker look */
+    .sticker-badge {
+      filter: drop-shadow(0 4px 6px rgba(18, 12, 31, 0.08));
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .sticker-badge:active {
+      transform: scale(0.92);
+    }
+  </style>
+</head>
+<body class="bg-background min-h-screen flex justify-center selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Screen Container (393px width fixed frame emulation for native iPhone 393x852) -->
+<div class="w-full max-w-[393px] min-h-screen bg-background flex flex-col relative pb-[96px] overflow-x-hidden shadow-2xl">
+<!-- Top Safe Area Buffer (Standard iOS ~48-52px) -->
+<div class="h-12 w-full shrink-0"></div>
+<!-- Kid Header (Shared TopAppBar variant) -->
+<header class="flex justify-between items-center w-full px-5 pb-3">
+<!-- Kid Avatar & App Info -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 rounded-full ring-2 ring-border-divider overflow-hidden bg-accent-tint shrink-0 shadow-sm">
+<img alt="Mia toddler avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+</div>
+<div class="flex flex-col">
+<span class="text-caption font-caption text-text-tertiary leading-tight">Watch Play Talk</span>
+<div class="flex items-center gap-1.5">
+<span class="text-label font-label text-text-primary font-bold">Mia</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-accent-tint text-[11px] font-semibold text-accent-fill">¡Hola!</span>
+</div>
+</div>
+</div>
+<!-- Action Pill: Star counter & Parent Lock -->
+<div class="flex items-center gap-2">
+<!-- Star Counter Pill -->
+<div class="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded-full shadow-sm border border-border-divider/50">
+<span class="material-symbols-outlined text-tertiary-fixed-dim material-symbols-fill text-[19px]">stars</span>
+<span class="font-title text-title text-text-primary text-[15px] font-bold">24</span>
+</div>
+<!-- Parent Area Lock Button (Oversized touch target min 44x44px) -->
+<button aria-label="Parent settings lock" class="w-11 h-11 rounded-full bg-surface hover:bg-accent-tint text-text-secondary active:scale-95 transition-all duration-150 flex items-center justify-center border border-border-divider/60 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px] text-text-secondary">lock</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-5 pt-2 flex flex-col gap-5">
+<!-- Page Title & Progress Bar Banner -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-baseline justify-between">
+<h1 class="font-display text-display text-[28px] leading-[34px] font-bold text-text-primary">
+            My Stickers
+          </h1>
+<span class="font-caption text-caption text-accent-fill font-semibold bg-accent-tint px-2.5 py-1 rounded-full text-xs">
+            ¡Mis Pegatinas!
+          </span>
+</div>
+<!-- Progress Header Card -->
+<div class="bg-surface rounded-2xl p-3.5 shadow-soft-card border border-border-divider/40 flex flex-col gap-2">
+<div class="flex justify-between items-center text-xs font-semibold">
+<span class="font-label text-text-secondary text-[13px] flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-accent-fill inline-block"></span>
+              Page 1 • 6 of 12 stickers collected
+            </span>
+<span class="font-body text-text-tertiary text-xs font-medium">50%</span>
+</div>
+<!-- Progress Bar Track -->
+<div class="w-full h-3 rounded-full bg-border-divider/70 overflow-hidden relative p-[2px]">
+<div class="h-full rounded-full bg-gradient-to-r from-[#9D7BEA] to-accent-fill w-1/2 transition-all duration-500 shadow-sm"></div>
+</div>
+</div>
+</section>
+<!-- FOCAL ELEMENT: Hero "Latest Reward" Card -->
+<section class="relative">
+<div class="bg-surface rounded-3xl p-5 shadow-soft-card border border-border-divider/50 relative overflow-hidden flex flex-col gap-3.5">
+<!-- Subtle decorative background blob for soft depth -->
+<div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-accent-tint/40 pointer-events-none blur-xl"></div>
+<div class="absolute -left-10 -bottom-10 w-36 h-36 rounded-full bg-[#FFB199]/20 pointer-events-none blur-lg"></div>
+<!-- Top Row: Badge + Language Chip -->
+<div class="flex items-center justify-between relative z-10">
+<!-- Peach tag pill support chip -->
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary-container text-text-primary font-caption text-caption text-xs font-semibold shadow-sm">
+<span class="material-symbols-outlined text-xs material-symbols-fill">auto_awesome</span>
+              New! • ¡Nuevo!
+            </span>
+<span class="text-caption font-caption text-text-tertiary text-xs">Latest Unlocked</span>
+</div>
+<!-- Center Stage: Hero Graphic (Flat 2D Vector Rainbow) -->
+<div class="relative z-10 flex flex-col items-center justify-center py-2">
+<!-- Flat 2D Vector Illustration of Rainbow & Clouds -->
+<div class="w-40 h-28 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full drop-shadow-sm" fill="none" viewbox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+<!-- White Die-Cut Background Path -->
+<path d="M12 94C12 55.3401 43.3401 24 82 24C120.66 24 152 55.3401 152 94H12Z" fill="white" stroke="#FFFFFF" stroke-linejoin="round" stroke-width="8"></path>
+<!-- Red / Coral Arc -->
+<path d="M22 92C22 58.8629 48.8629 32 82 32C115.137 32 142 58.8629 142 92" stroke="#FF7E79" stroke-linecap="round" stroke-width="12"></path>
+<!-- Peach / Yellow Arc -->
+<path d="M36 92C36 66.5949 56.5949 46 82 46C107.405 46 128 66.5949 128 92" stroke="#FFD166" stroke-linecap="round" stroke-width="12"></path>
+<!-- Mint Arc -->
+<path d="M50 92C50 74.3269 64.3269 60 82 60C99.6731 60 114 74.3269 114 92" stroke="#06D6A0" stroke-linecap="round" stroke-width="12"></path>
+<!-- Purple Arc -->
+<path d="M64 92C64 82.0589 72.0589 74 82 74C91.9411 74 100 82.0589 100 92" stroke="#9D7BEA" stroke-linecap="round" stroke-width="12"></path>
+<!-- Left Soft Cloud (Flat 2D) -->
+<g filter="drop-shadow(0 2px 2px rgba(18,12,31,0.06))">
+<path d="M14 94C10.6863 94 8 91.3137 8 88C8 85.0768 10.0894 82.6416 12.8943 82.1154C13.2573 75.3117 18.8953 70 25.8 70C31.5791 70 36.4952 73.7225 38.2526 78.9691C39.6053 78.3496 41.1121 78 42.7 78C47.284 78 51 81.716 51 86.3C51 87.1402 50.875 87.9515 50.6427 88.7188C52.062 89.8454 53 91.5647 53 93.5C53 97.0899 50.0899 100 46.5 100H18C15.7909 100 14 97.3137 14 94Z" fill="#FFFFFF"></path>
+<circle cx="28" cy="85" fill="#4B4360" r="1.5"></circle>
+<circle cx="36" cy="85" fill="#4B4360" r="1.5"></circle>
+<path d="M30 89C31 90.2 33 90.2 34 89" stroke="#4B4360" stroke-linecap="round" stroke-width="1.2"></path>
+</g>
+<!-- Right Soft Cloud (Flat 2D) -->
+<g filter="drop-shadow(0 2px 2px rgba(18,12,31,0.06))">
+<path d="M112 94C108.686 94 106 91.3137 106 88C106 85.0768 108.089 82.6416 110.894 82.1154C111.257 75.3117 116.895 70 123.8 70C129.579 70 134.495 73.7225 136.253 78.9691C137.605 78.3496 139.112 78 140.7 78C145.284 78 149 81.716 149 86.3C149 87.1402 148.875 87.9515 148.643 88.7188C150.062 89.8454 151 91.5647 151 93.5C151 97.0899 148.09 100 144.5 100H116C113.791 100 112 97.3137 112 94Z" fill="#FFFFFF"></path>
+<circle cx="126" cy="85" fill="#4B4360" r="1.5"></circle>
+<circle cx="134" cy="85" fill="#4B4360" r="1.5"></circle>
+<path d="M128 89C129 90.2 131 90.2 132 89" stroke="#4B4360" stroke-linecap="round" stroke-width="1.2"></path>
+</g>
+</svg>
+</div>
+</div>
+<!-- Bottom Row: Title + Pronunciation Audio Action -->
+<div class="flex items-center justify-between pt-1 border-t border-border-divider/40 relative z-10">
+<div>
+<div class="font-display text-title font-bold text-text-primary text-[20px] leading-tight">
+                Rainbow
+              </div>
+<div class="text-caption font-caption text-accent-fill font-semibold text-[13px]">
+                El arcoíris
+              </div>
+</div>
+<!-- Tap to peel & play action pill button (Kid sized tap target 56px) -->
+<button class="flex items-center gap-2 bg-accent-tint hover:bg-accent-fill hover:text-white text-accent-fill px-4 py-2.5 rounded-full transition-all duration-150 active:scale-95 group font-label text-caption font-semibold text-xs border border-border-divider/50" type="button">
+<span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">volume_up</span>
+<span>Tap to listen</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Sticker Book Grid Section (12 slots: 3 columns x 4 rows) -->
+<section class="flex flex-col gap-3 pb-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-title text-title text-[18px] font-bold text-text-primary">
+            Sticker Album
+          </h2>
+<span class="text-caption font-caption text-text-tertiary text-xs font-medium">
+            Tap sticker to view
+          </span>
+</div>
+<!-- The 12-Slot Grid -->
+<div class="grid grid-cols-3 gap-3">
+<!-- Slot 1: Red Apple (Earned) -->
+<div class="bg-surface rounded-2xl p-2.5 shadow-sm border border-border-divider/60 flex flex-col items-center justify-between aspect-[1/1.18] transition-transform active:scale-95">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+<!-- Flat 2D Vector Apple with die-cut feeling -->
+<div class="w-14 h-14 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- White Die Cut Contour -->
+<path d="M32 18C28 12 18 13 14 22C10 31 12 47 22 53C27 56 30 55 32 55C34 55 37 56 42 53C52 47 54 31 50 22C46 13 36 12 32 18Z" fill="white" stroke="white" stroke-width="4"></path>
+<!-- Stem & Leaf -->
+<path d="M32 20C32 14 34 8 36 6" stroke="#6F5D00" stroke-linecap="round" stroke-width="3"></path>
+<path d="M34 11C40 9 44 12 44 12C44 12 42 16 36 16" fill="#16A34A" stroke="#16A34A" stroke-linejoin="round" stroke-width="1.5"></path>
+<!-- Apple Body -->
+<path d="M32 19C28 14 19 15 15 23C11 31 13 46 22 51C27 54 30 53 32 53C34 53 37 54 42 51C51 46 53 31 49 23C45 15 36 14 32 19Z" fill="#EF4444"></path>
+<!-- Soft highlight spot -->
+<circle cx="24" cy="27" fill="#FCA5A5" r="3"></circle>
+<!-- Smiling face -->
+<circle cx="27" cy="35" fill="#4B4360" r="1.5"></circle>
+<circle cx="37" cy="35" fill="#4B4360" r="1.5"></circle>
+<path d="M30 39C31 40.5 33 40.5 34 39" stroke="#4B4360" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption font-semibold text-text-primary text-[12px] leading-tight truncate">Apple</div>
+<div class="text-caption font-caption text-accent-fill text-[10px] font-medium leading-tight truncate">¡Manzana!</div>
+</div>
+</div>
+<!-- Slot 2: Bright Sun (Earned) -->
+<div class="bg-surface rounded-2xl p-2.5 shadow-sm border border-border-divider/60 flex flex-col items-center justify-between aspect-[1/1.18] transition-transform active:scale-95">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+<!-- Flat 2D Vector Sun -->
+<div class="w-14 h-14 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- Outer Die-Cut White Base -->
+<circle cx="32" cy="32" fill="white" r="26"></circle>
+<!-- Sun Rays (Flat 2D Triangles) -->
+<path d="M32 8L35 15H29L32 8Z" fill="#F59E0B"></path>
+<path d="M32 56L35 49H29L32 56Z" fill="#F59E0B"></path>
+<path d="M8 32L15 29V35L8 32Z" fill="#F59E0B"></path>
+<path d="M56 32L49 29V35L56 32Z" fill="#F59E0B"></path>
+<path d="M15 15L22 17L18 22L15 15Z" fill="#F59E0B"></path>
+<path d="M49 15L42 17L46 22L49 15Z" fill="#F59E0B"></path>
+<path d="M15 49L22 47L18 42L15 49Z" fill="#F59E0B"></path>
+<path d="M49 49L42 47L46 42L49 49Z" fill="#F59E0B"></path>
+<!-- Sun Core -->
+<circle cx="32" cy="32" fill="#FBBF24" r="16"></circle>
+<!-- Cheerful Face -->
+<circle cx="27" cy="30" fill="#4B4360" r="1.5"></circle>
+<circle cx="37" cy="30" fill="#4B4360" r="1.5"></circle>
+<circle cx="24" cy="34" fill="#F87171" opacity="0.6" r="2"></circle>
+<circle cx="40" cy="34" fill="#F87171" opacity="0.6" r="2"></circle>
+<path d="M29 35C30.5 37.5 33.5 37.5 35 35" stroke="#4B4360" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption font-semibold text-text-primary text-[12px] leading-tight truncate">Sun</div>
+<div class="text-caption font-caption text-accent-fill text-[10px] font-medium leading-tight truncate">¡Sol!</div>
+</div>
+</div>
+<!-- Slot 3: Friendly Cat (Earned) -->
+<div class="bg-surface rounded-2xl p-2.5 shadow-sm border border-border-divider/60 flex flex-col items-center justify-between aspect-[1/1.18] transition-transform active:scale-95">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+<!-- Flat 2D Vector Peach/Orange Cat -->
+<div class="w-14 h-14 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- White Die Cut -->
+<path d="M14 20L21 30C24 28 28 27 32 27C36 27 40 28 43 30L50 20L49 34C52 38 52 44 48 48C44 52 38 54 32 54C26 54 20 52 16 48C12 44 12 38 15 34L14 20Z" fill="white" stroke="white" stroke-width="4"></path>
+<!-- Cat Head & Ears -->
+<path d="M16 22L22 31C25 29 28 28 32 28C36 28 39 29 42 31L48 22L47 34C50 38 50 43 46 47C42 51 37 52 32 52C27 52 22 51 18 47C14 43 14 38 17 34L16 22Z" fill="#FFB199"></path>
+<!-- Inner ears -->
+<polygon fill="#FDA4AF" points="20,27 24,32 18,33"></polygon>
+<polygon fill="#FDA4AF" points="44,27 46,33 40,32"></polygon>
+<!-- Eyes -->
+<circle cx="26" cy="38" fill="#120C1F" r="1.8"></circle>
+<circle cx="38" cy="38" fill="#120C1F" r="1.8"></circle>
+<!-- Nose & mouth -->
+<polygon fill="#E11D48" points="32,41 30.5,43 33.5,43"></polygon>
+<path d="M30 44C31 45.5 32 45.5 32 44C32 45.5 33 45.5 34 44" stroke="#120C1F" stroke-linecap="round" stroke-width="1.2"></path>
+<!-- Whiskers -->
+<line stroke="#4B4360" stroke-linecap="round" stroke-width="1.2" x1="18" x2="23" y1="41" y2="42"></line>
+<line stroke="#4B4360" stroke-linecap="round" stroke-width="1.2" x1="18" x2="23" y1="45" y2="44"></line>
+<line stroke="#4B4360" stroke-linecap="round" stroke-width="1.2" x1="46" x2="41" y1="41" y2="42"></line>
+<line stroke="#4B4360" stroke-linecap="round" stroke-width="1.2" x1="46" x2="41" y1="45" y2="44"></line>
+</svg>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption font-semibold text-text-primary text-[12px] leading-tight truncate">Cat</div>
+<div class="text-caption font-caption text-accent-fill text-[10px] font-medium leading-tight truncate">¡Gatito!</div>
+</div>
+</div>
+<!-- Slot 4: Number 3 (Earned) -->
+<div class="bg-surface rounded-2xl p-2.5 shadow-sm border border-border-divider/60 flex flex-col items-center justify-between aspect-[1/1.18] transition-transform active:scale-95">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+<!-- Flat 2D Vector Playful Bubble Number 3 -->
+<div class="w-14 h-14 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- White Die Cut -->
+<path d="M22 17C22 12 28 10 34 10C42 10 46 14 46 20C46 25 41 28 37 29C43 30 47 34 47 41C47 48 41 54 33 54C25 54 21 49 21 44" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"></path>
+<!-- Bubble Number 3 in Soft Purple Accent -->
+<path d="M22 17C22 12 28 10 34 10C42 10 46 14 46 20C46 25 41 28 37 29C43 30 47 34 47 41C47 48 41 54 33 54C25 54 21 49 21 44" stroke="#9D7BEA" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
+<!-- Mini playful dots -->
+<circle cx="34" cy="20" fill="#FFFFFF" r="1.5"></circle>
+<circle cx="37" cy="41" fill="#FFFFFF" r="1.8"></circle>
+</svg>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption font-semibold text-text-primary text-[12px] leading-tight truncate">Number 3</div>
+<div class="text-caption font-caption text-accent-fill text-[10px] font-medium leading-tight truncate">¡Número 3!</div>
+</div>
+</div>
+<!-- Slot 5: Rainbow (Earned - Current Active) -->
+<div class="bg-surface rounded-2xl p-2.5 shadow-sm border-2 border-accent-fill/40 flex flex-col items-center justify-between aspect-[1/1.18] transition-transform active:scale-95 relative">
+<div class="w-full flex justify-between items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-fill"></span>
+<span class="text-[9px] font-bold text-accent-fill uppercase tracking-wider bg-accent-tint px-1.5 py-0.2 rounded-full">New</span>
+</div>
+<!-- Flat 2D Vector Rainbow Arc -->
+<div class="w-14 h-14 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- White Die Cut Outline -->
+<path d="M12 44C12 30 20 20 32 20C44 20 52 30 52 44" stroke="white" stroke-linecap="round" stroke-width="8"></path>
+<!-- Arcs -->
+<path d="M14 44C14 31 22 22 32 22C42 22 50 31 50 44" stroke="#FF7E79" stroke-linecap="round" stroke-width="4"></path>
+<path d="M19 44C19 34 25 27 32 27C39 27 45 34 45 44" stroke="#FFD166" stroke-linecap="round" stroke-width="4"></path>
+<path d="M24 44C24 37 28 32 32 32C36 32 40 37 40 44" stroke="#06D6A0" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="14" cy="44" fill="#FFFFFF" r="3"></circle>
+<circle cx="50" cy="44" fill="#FFFFFF" r="3"></circle>
+</svg>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption font-semibold text-text-primary text-[12px] leading-tight truncate">Rainbow</div>
+<div class="text-caption font-caption text-accent-fill text-[10px] font-medium leading-tight truncate">¡Arcoíris!</div>
+</div>
+</div>
+<!-- Slot 6: Star (Earned) -->
+<div class="bg-surface rounded-2xl p-2.5 shadow-sm border border-border-divider/60 flex flex-col items-center justify-between aspect-[1/1.18] transition-transform active:scale-95">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+</div>
+<!-- Flat 2D Vector Golden Smiling Star -->
+<div class="w-14 h-14 flex items-center justify-center sticker-badge">
+<svg class="w-full h-full" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<!-- White Die Cut -->
+<path d="M32 10L37.5 24.5H53L40.5 34L45 49L32 40L19 49L23.5 34L11 24.5H26.5L32 10Z" fill="white" stroke="white" stroke-linejoin="round" stroke-width="5"></path>
+<!-- Star Core -->
+<path d="M32 12L37.2 25.5H51.5L40 34.2L44.2 47.5L32 39.5L19.8 47.5L24 34.2L12.5 25.5H26.8L32 12Z" fill="#FBBF24" stroke="#F59E0B" stroke-linejoin="round" stroke-width="1.5"></path>
+<!-- Smiling Face -->
+<circle cx="28" cy="30" fill="#4B4360" r="1.3"></circle>
+<circle cx="36" cy="30" fill="#4B4360" r="1.3"></circle>
+<path d="M30 33C31 34.5 33 34.5 34 33" stroke="#4B4360" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption font-semibold text-text-primary text-[12px] leading-tight truncate">Star</div>
+<div class="text-caption font-caption text-accent-fill text-[10px] font-medium leading-tight truncate">¡Estrella!</div>
+</div>
+</div>
+<!-- Slot 7: Locked Silhouette -->
+<div class="bg-surface/60 rounded-2xl p-2.5 border border-dashed border-border-divider flex flex-col items-center justify-between aspect-[1/1.18] opacity-80">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-border-divider"></span>
+</div>
+<div class="w-12 h-12 rounded-full bg-accent-tint/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">lock</span>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption text-text-tertiary text-[11px] font-medium">Locked</div>
+<div class="text-caption font-caption text-text-tertiary/70 text-[10px]">Lesson 7</div>
+</div>
+</div>
+<!-- Slot 8: Locked Silhouette -->
+<div class="bg-surface/60 rounded-2xl p-2.5 border border-dashed border-border-divider flex flex-col items-center justify-between aspect-[1/1.18] opacity-80">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-border-divider"></span>
+</div>
+<div class="w-12 h-12 rounded-full bg-accent-tint/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">lock</span>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption text-text-tertiary text-[11px] font-medium">Locked</div>
+<div class="text-caption font-caption text-text-tertiary/70 text-[10px]">Lesson 8</div>
+</div>
+</div>
+<!-- Slot 9: Locked Silhouette -->
+<div class="bg-surface/60 rounded-2xl p-2.5 border border-dashed border-border-divider flex flex-col items-center justify-between aspect-[1/1.18] opacity-80">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-border-divider"></span>
+</div>
+<div class="w-12 h-12 rounded-full bg-accent-tint/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">lock</span>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption text-text-tertiary text-[11px] font-medium">Locked</div>
+<div class="text-caption font-caption text-text-tertiary/70 text-[10px]">Lesson 9</div>
+</div>
+</div>
+<!-- Slot 10: Locked Silhouette -->
+<div class="bg-surface/60 rounded-2xl p-2.5 border border-dashed border-border-divider flex flex-col items-center justify-between aspect-[1/1.18] opacity-80">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-border-divider"></span>
+</div>
+<div class="w-12 h-12 rounded-full bg-accent-tint/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">lock</span>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption text-text-tertiary text-[11px] font-medium">Locked</div>
+<div class="text-caption font-caption text-text-tertiary/70 text-[10px]">Lesson 10</div>
+</div>
+</div>
+<!-- Slot 11: Locked Silhouette -->
+<div class="bg-surface/60 rounded-2xl p-2.5 border border-dashed border-border-divider flex flex-col items-center justify-between aspect-[1/1.18] opacity-80">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-border-divider"></span>
+</div>
+<div class="w-12 h-12 rounded-full bg-accent-tint/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">lock</span>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption text-text-tertiary text-[11px] font-medium">Locked</div>
+<div class="text-caption font-caption text-text-tertiary/70 text-[10px]">Lesson 11</div>
+</div>
+</div>
+<!-- Slot 12: Locked Silhouette -->
+<div class="bg-surface/60 rounded-2xl p-2.5 border border-dashed border-border-divider flex flex-col items-center justify-between aspect-[1/1.18] opacity-80">
+<div class="w-full flex justify-end">
+<span class="w-2 h-2 rounded-full bg-border-divider"></span>
+</div>
+<div class="w-12 h-12 rounded-full bg-accent-tint/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">lock</span>
+</div>
+<div class="text-center w-full">
+<div class="font-label text-caption text-text-tertiary text-[11px] font-medium">Locked</div>
+<div class="text-caption font-caption text-text-tertiary/70 text-[10px]">Lesson 12</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Supportive Kid Encouragement Banner -->
+<section class="bg-surface-bright rounded-2xl p-4 border border-border-divider/50 flex items-center gap-3.5 mb-2 shadow-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container/40 flex items-center justify-center shrink-0 text-text-primary">
+<span class="material-symbols-outlined text-[22px] material-symbols-fill text-[#D97706]">emoji_events</span>
+</div>
+<div class="flex-1">
+<p class="font-label text-caption font-semibold text-text-primary text-[13px] leading-snug">
+            Play 1 more game to unlock Lesson 7!
+          </p>
+<p class="font-caption text-caption text-text-tertiary text-xs">
+            ¡Juega una vez más para ganar!
+          </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component from JSON) -->
+<!-- Destination count: 3 | Order: Learn, Watch, Stickers (Active) | Exactly 72px tall | Hairline border-t #E6E1F2 -->
+<nav class="fixed bottom-0 left-0 right-0 w-full max-w-[393px] mx-auto z-50 bg-surface border-t border-border-divider h-[72px] px-4 pb-2 flex justify-around items-center">
+<!-- Tab 1: Learn (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-tertiary dark:text-outline gap-1 font-medium hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="map">map</span>
+<span class="text-caption font-caption text-xs">Learn</span>
+</button>
+<!-- Tab 2: Watch (Inactive) -->
+<button class="flex flex-col items-center justify-center text-text-tertiary dark:text-outline gap-1 font-medium hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="play_circle">play_circle</span>
+<span class="text-caption font-caption text-xs">Watch</span>
+</button>
+<!-- Tab 3: Stickers (ACTIVE Tab) -->
+<button class="flex flex-col items-center justify-center text-accent-fill dark:text-inverse-primary font-semibold gap-1 [&amp;&gt;span:first-child]:bg-accent-tint [&amp;&gt;span:first-child]:rounded-full [&amp;&gt;span:first-child]:px-4 [&amp;&gt;span:first-child]:py-1 hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined material-symbols-fill text-[24px]" data-icon="stars">stars</span>
+<span class="text-caption font-caption text-xs">Stickers</span>
+</button>
+</nav>
+<!-- Native iOS Bottom Home Bar Spacer -->
+<div class="h-3 w-full shrink-0"></div>
+</div>
+</body></html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Who is learning? - Watch Play Talk</title>
+<!-- Google Fonts: Readex Pro & Quicksand -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "text-tertiary": "#857D99",
+            "on-secondary-fixed-variant": "#6e3826",
+            "on-background": "#1d1a21",
+            "primary-fixed-dim": "#d1bcff",
+            "inverse-primary": "#d1bcff",
+            "accent-tint": "#F1ECFC",
+            "tertiary-fixed": "#ffe263",
+            "surface": "#FFFFFF",
+            "secondary-container": "#ffb199",
+            "secondary": "#8a4e3b",
+            "surface-bright": "#fef7ff",
+            "inverse-on-surface": "#f5eef8",
+            "surface-container-high": "#ede6f0",
+            "on-tertiary-fixed": "#221b00",
+            "outline-variant": "#cbc3d4",
+            "primary": "#6947b2",
+            "tertiary": "#6f5d00",
+            "surface-container": "#f2ecf6",
+            "text-secondary": "#4B4360",
+            "primary-container": "#8260cd",
+            "tertiary-fixed-dim": "#e2c545",
+            "secondary-fixed": "#ffdbd0",
+            "outline": "#7a7483",
+            "on-secondary-container": "#7a412f",
+            "on-tertiary": "#ffffff",
+            "warning": "#D97706",
+            "text-primary": "#120C1F",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e7e0ea",
+            "surface-container-highest": "#e7e0ea",
+            "danger": "#DC2626",
+            "border-divider": "#E6E1F2",
+            "surface-tint": "#6b49b5",
+            "success": "#16A34A",
+            "on-secondary-fixed": "#370e02",
+            "surface-container-low": "#f8f1fb",
+            "error": "#ba1a1a",
+            "on-primary-fixed-variant": "#532f9b",
+            "on-error": "#ffffff",
+            "surface-dim": "#ded8e2",
+            "background": "#F6F4FC",
+            "on-surface": "#1d1a21",
+            "on-tertiary-fixed-variant": "#534600",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#c5aa2a",
+            "on-surface-variant": "#494552",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#322f37",
+            "on-primary-fixed": "#24005b",
+            "on-tertiary-container": "#4b3f00",
+            "primary-fixed": "#eaddff",
+            "on-primary-container": "#fffbff",
+            "accent-fill": "#8165C0",
+            "secondary-fixed-dim": "#ffb59e",
+            "accent-pressed": "#7159A9"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "title": ["Readex Pro"],
+            "label": ["Readex Pro"],
+            "caption": ["Readex Pro"],
+            "body": ["Readex Pro"],
+            "display": ["Quicksand"]
+          },
+          "fontSize": {
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          },
+          "boxShadow": {
+            "card-soft": "0 1px 2px rgba(18,12,31,.04), 0 8px 24px rgba(18,12,31,.07)",
+            "avatar-ring": "0 2px 8px rgba(129,101,192,0.12)"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F6F4FC] text-text-primary antialiased min-h-screen flex items-center justify-center p-0 md:p-6 select-none font-body">
+<!-- Mobile Frame Container (Strict 393px × 852px Canvas representation) -->
+<div class="w-full max-w-[393px] min-h-[852px] bg-background flex flex-col justify-between shadow-2xl md:rounded-[48px] overflow-hidden relative border border-border-divider/50">
+<!-- Top Structural Safe Area / Status Bar Clearance (~59px) -->
+<div class="w-full pt-12 px-5 flex-shrink-0">
+<!-- Top Bar / Header Section -->
+<header class="flex items-center justify-between h-14">
+<!-- Left: Brand Logo & Title -->
+<div class="flex items-center gap-2.5">
+<img alt="Watch Play Talk Logo" class="w-9 h-9 rounded-full object-cover shadow-sm ring-2 ring-surface" src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg"/>
+<div class="flex flex-col">
+<span class="font-display font-bold text-[17px] leading-tight text-text-primary tracking-tight">Watch Play Talk</span>
+<span class="font-caption text-[11px] font-medium text-text-tertiary">Bilingual Learning</span>
+</div>
+</div>
+<!-- Right: Parent Area Lock Button (Min 44px touch target) -->
+<a aria-label="Parent area" class="min-h-[44px] px-3.5 py-2 bg-surface border border-border-divider rounded-full flex items-center gap-1.5 shadow-sm hover:bg-accent-tint/60 active:scale-95 transition-transform duration-150 text-text-secondary focus:outline-none focus:ring-2 focus:ring-accent-fill" href="#parent-access" role="button">
+<span class="material-symbols-outlined text-[18px] text-text-secondary leading-none select-none">lock</span>
+<span class="font-caption text-caption text-text-secondary font-medium">Parents</span>
+</a>
+</header>
+</div>
+<!-- Main Content Area: Screen Heading & 2x2 Kid Profile Grid -->
+<main class="flex-1 flex flex-col justify-center px-5 py-4 w-full">
+<!-- Screen Heading & Friendly Prompt -->
+<div class="text-center mb-6">
+<h1 class="font-display font-bold text-[28px] leading-[34px] text-text-primary mb-1.5 tracking-tight">
+          Who is learning today?
+        </h1>
+<p class="font-body text-caption text-text-secondary font-normal">
+          Tap your picture to start playing!
+        </p>
+</div>
+<!-- 2x2 Kid Profiles Grid (Oversized touch targets, min 64px interactive element padding) -->
+<div class="grid grid-cols-2 gap-3.5 w-full">
+<!-- Tile 1: Mia -->
+<button class="group bg-surface rounded-[28px] p-4 flex flex-col items-center text-center shadow-card-soft border border-border-divider/70 hover:border-accent-fill/40 active:scale-95 transition-all duration-150 cursor-pointer min-h-[196px] focus:outline-none focus:ring-2 focus:ring-accent-fill" type="button">
+<!-- Kid Avatar with soft accent ring -->
+<div class="relative mb-3">
+<img alt="Mia" class="w-[88px] h-[88px] rounded-full object-cover shadow-avatar-ring ring-4 ring-accent-tint group-hover:ring-[#e2d5fa] transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9nAlCBUrzfKJs30SIbb0_eVPlHB0Fohsg4fohTryo6g8M2Gb60PxstfM36dvDtdKl7pQ2kUbcuzcVMhgLn14nqBZfR2uWsLJHXUQD3HOpKUx7UVeXbkhXW2EeEG395iEWTFc2fRW9nMnMaCrZVqhUPd5Ry2rbjIHauPnvT5mAWbmlgG57pZaySima1JDGGwt3Y9-Yoifm1uTRUKgrMzAFOKh7YjqGPOLAFM5l_Utpv9Bg2SJlViTbrmeTMJh6oKYqs5FsD3RRIZA"/>
+</div>
+<!-- Kid Name -->
+<span class="font-display font-bold text-[20px] leading-tight text-text-primary mb-2">
+            Mia
+          </span>
+<!-- Details Chips -->
+<div class="flex items-center gap-1.5 flex-wrap justify-center">
+<span class="bg-accent-tint text-accent-fill text-[11px] font-caption font-semibold px-2.5 py-0.5 rounded-full">
+              Age 3
+            </span>
+<span class="bg-secondary-container text-text-primary text-[11px] font-caption font-semibold px-2.5 py-0.5 rounded-full">
+              Español
+            </span>
+</div>
+</button>
+<!-- Tile 2: Leo -->
+<button class="group bg-surface rounded-[28px] p-4 flex flex-col items-center text-center shadow-card-soft border border-border-divider/70 hover:border-accent-fill/40 active:scale-95 transition-all duration-150 cursor-pointer min-h-[196px] focus:outline-none focus:ring-2 focus:ring-accent-fill" type="button">
+<!-- Kid Avatar with soft accent ring -->
+<div class="relative mb-3">
+<img alt="Leo" class="w-[88px] h-[88px] rounded-full object-cover shadow-avatar-ring ring-4 ring-accent-tint group-hover:ring-[#e2d5fa] transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkArkLBjRhyv1wwrl_kBs4iIgDWYAobmx6K28jVO3Q_xu3-rFC0LlvoVyw3xJmVuKMDFGNn-FGPsA7ooWXGJSb6shqdwdtW8WAeaflRRQTLIPzVzpoG1CplEuZivzKyVfO6m87WKnnJz6bEKc79Y_GvGcEUwdJixwgf_qImO8_nPMT6Z9MjqxD4VOALhsFAaFZkD0uGh7S-TXlLsf5enneCMa0bLoVB6UdN3ULqtSRDNW2lVaaTTSJ01XJ9a9Lo0KN_XbWYY_ilQY"/>
+</div>
+<!-- Kid Name -->
+<span class="font-display font-bold text-[20px] leading-tight text-text-primary mb-2">
+            Leo
+          </span>
+<!-- Details Chips -->
+<div class="flex items-center gap-1.5 flex-wrap justify-center">
+<span class="bg-accent-tint text-accent-fill text-[11px] font-caption font-semibold px-2.5 py-0.5 rounded-full">
+              Age 5
+            </span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-caption font-semibold px-2.5 py-0.5 rounded-full">
+              Both
+            </span>
+</div>
+</button>
+<!-- Tile 3: Sofia -->
+<button class="group bg-surface rounded-[28px] p-4 flex flex-col items-center text-center shadow-card-soft border border-border-divider/70 hover:border-accent-fill/40 active:scale-95 transition-all duration-150 cursor-pointer min-h-[196px] focus:outline-none focus:ring-2 focus:ring-accent-fill" type="button">
+<!-- Kid Avatar with soft accent ring -->
+<div class="relative mb-3">
+<img alt="Sofia" class="w-[88px] h-[88px] rounded-full object-cover shadow-avatar-ring ring-4 ring-accent-tint group-hover:ring-[#e2d5fa] transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH82GrMTFr2uf918rVyUIqObM2z7IwtthfJhJ4jXixW6h9ZEXPivqRQ2zuGdOZLWKpydS4zdTrpJygSdZd0J0H6Qn5hHYz9nOUzHwYK3QiC8hvTHjqR0mTzA7gmTsr3FX9BImRl-P0cZ-R9shNJXdbafIjGev_K3VlqgObNJQ15gwZPFOittxwy6Hmd6XzHPoH_Bi9uwin-h5hX1a8Fshj8_uE2FsNOuD4YTfT3X3r6s9RbIzIdi9V_hvx6DPwMfHOtsTO5mMtJMo"/>
+</div>
+<!-- Kid Name -->
+<span class="font-display font-bold text-[20px] leading-tight text-text-primary mb-2">
+            Sofia
+          </span>
+<!-- Details Chips -->
+<div class="flex items-center gap-1.5 flex-wrap justify-center">
+<span class="bg-accent-tint text-accent-fill text-[11px] font-caption font-semibold px-2.5 py-0.5 rounded-full">
+              Age 2
+            </span>
+<span class="bg-accent-tint text-accent-fill text-[11px] font-caption font-semibold px-2.5 py-0.5 rounded-full">
+              English
+            </span>
+</div>
+</button>
+<!-- Tile 4: + Add child -->
+<button class="group border-2 border-dashed border-[#D4C7F3] bg-surface/80 rounded-[28px] p-4 flex flex-col items-center justify-center text-center hover:border-accent-fill hover:bg-surface active:scale-95 transition-all duration-150 cursor-pointer min-h-[196px] focus:outline-none focus:ring-2 focus:ring-accent-fill" type="button">
+<!-- Circular Plus Action (Oversized tactile target min 56px) -->
+<div class="w-14 h-14 rounded-full bg-accent-tint flex items-center justify-center text-accent-fill group-hover:bg-accent-fill group-hover:text-surface transition-colors mb-3">
+<span class="material-symbols-outlined text-[28px] leading-none select-none">add</span>
+</div>
+<!-- Label -->
+<span class="font-display font-bold text-[17px] leading-tight text-accent-fill mb-0.5">
+            + Add child
+          </span>
+<!-- Subtitle hint -->
+<span class="font-caption text-[12px] font-medium text-text-tertiary">
+            New profile
+          </span>
+</button>
+</div>
+</main>
+<!-- Bottom Area & Trust Assurance (Safe Area Cleared: ~34px home indicator) -->
+<footer class="w-full px-5 pb-9 pt-2 flex flex-col items-center justify-center flex-shrink-0">
+<!-- Kid Safe Trust Badge -->
+<div class="flex items-center gap-1.5 py-1 px-3 bg-surface/80 border border-border-divider/50 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-success leading-none select-none">verified_user</span>
+<span class="font-caption text-[12px] font-medium text-text-secondary tracking-normal">
+          Ad-free &amp; kid-safe learning space
+        </span>
+</div>
+<!-- Virtual Home Indicator Bar clearance -->
+<div class="w-32 h-1 bg-text-primary/10 rounded-full mt-4"></div>
+</footer>
+</div>
+</body></html>

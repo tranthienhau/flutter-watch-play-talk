@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Apple TV</title>
+<!-- Fonts: Quicksand (display) & Readex Pro (body/title/caption) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#7a412f",
+            "surface-container": "#f2ecf6",
+            "on-tertiary": "#ffffff",
+            "warning": "#D97706",
+            "text-primary": "#120C1F",
+            "secondary": "#8a4e3b",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#6b49b5",
+            "surface-container-high": "#ede6f0",
+            "success": "#16A34A",
+            "accent-fill": "#8165C0",
+            "surface-variant": "#e7e0ea",
+            "primary-fixed-dim": "#d1bcff",
+            "primary-container": "#8260cd",
+            "danger": "#DC2626",
+            "accent-pressed": "#7159A9",
+            "tertiary-container": "#c5aa2a",
+            "on-secondary-fixed": "#370e02",
+            "inverse-primary": "#d1bcff",
+            "primary": "#6947b2",
+            "tertiary-fixed-dim": "#e2c545",
+            "tertiary-fixed": "#ffe263",
+            "on-background": "#1d1a21",
+            "on-primary-container": "#fffbff",
+            "on-tertiary-container": "#4b3f00",
+            "tertiary": "#6f5d00",
+            "inverse-on-surface": "#f5eef8",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#494552",
+            "on-primary": "#ffffff",
+            "surface-dim": "#ded8e2",
+            "secondary-fixed-dim": "#ffb59e",
+            "secondary-fixed": "#ffdbd0",
+            "outline-variant": "#cbc3d4",
+            "error-container": "#ffdad6",
+            "surface": "#FFFFFF",
+            "secondary-container": "#ffb199",
+            "inverse-surface": "#322f37",
+            "on-error": "#ffffff",
+            "text-tertiary": "#857D99",
+            "border-divider": "#E6E1F2",
+            "on-primary-fixed": "#24005b",
+            "on-secondary-fixed-variant": "#6e3826",
+            "accent-tint": "#F1ECFC",
+            "surface-container-highest": "#e7e0ea",
+            "surface-container-low": "#f8f1fb",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#534600",
+            "on-primary-fixed-variant": "#532f9b",
+            "primary-fixed": "#eaddff",
+            "on-tertiary-fixed": "#221b00",
+            "background": "#F6F4FC",
+            "surface-bright": "#fef7ff",
+            "text-secondary": "#4B4360",
+            "outline": "#7a7483",
+            "on-surface": "#1d1a21"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body": ["Readex Pro", "sans-serif"],
+            "title": ["Readex Pro", "sans-serif"],
+            "display": ["Quicksand", "sans-serif"],
+            "caption": ["Readex Pro", "sans-serif"],
+            "label": ["Readex Pro", "sans-serif"]
+          },
+          "fontSize": {
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* tvOS 10-foot smoothness & focus treatments */
+    body {
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      background-color: #F6F4FC;
+    }
+    .tv-focus-glow {
+      box-shadow: 0 16px 40px -10px rgba(129, 101, 192, 0.4), 0 0 0 3px #FFFFFF, 0 0 0 6px rgba(157, 123, 234, 0.45);
+    }
+    .tv-glass-bar {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+    }
+    .tv-card-shadow {
+      box-shadow: 0 8px 24px rgba(18, 12, 31, 0.07), 0 1px 3px rgba(18, 12, 31, 0.04);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary min-h-screen overflow-x-hidden antialiased">
+<!-- 10-foot TV Frame (tvOS Overscan Safe Margins: px-20 / 80px) -->
+<div class="relative w-full min-h-screen pb-24">
+<!-- Top Bar / tvOS Header Navigation -->
+<header class="sticky top-0 z-50 w-full px-20 pt-10 pb-5 flex items-center justify-between transition-all duration-300">
+<!-- Brand Logo / Mark -->
+<div class="flex items-center gap-3">
+<div class="w-14 h-14 rounded-full bg-surface shadow-sm p-1.5 flex items-center justify-center border border-border-divider">
+<img alt="Watch Play Talk Logo" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg"/>
+</div>
+<div class="flex flex-col">
+<span class="font-display text-title text-accent-fill leading-none font-bold tracking-tight">Watch Play Talk</span>
+<span class="font-caption text-caption text-text-tertiary">Bilingual Learning TV</span>
+</div>
+</div>
+<!-- Center: tvOS floating segmented tab bar -->
+<nav class="tv-glass-bar border border-white/60 shadow-sm rounded-full p-1.5 flex items-center gap-2">
+<!-- Tab: Home (Focused tvOS State) -->
+<button class="bg-surface text-accent-fill font-label text-label px-7 py-2.5 rounded-full shadow-md flex items-center gap-2 transition-transform transform scale-100 ring-2 ring-accent-tint">
+<span class="material-symbols-outlined text-accent-fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</button>
+<!-- Tab: Episodes -->
+<button class="text-text-secondary hover:text-accent-fill font-label text-label px-6 py-2.5 rounded-full hover:bg-surface/50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-text-tertiary">video_library</span>
+<span>Episodes</span>
+</button>
+<!-- Tab: Songs -->
+<button class="text-text-secondary hover:text-accent-fill font-label text-label px-6 py-2.5 rounded-full hover:bg-surface/50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-text-tertiary">music_note</span>
+<span>Songs</span>
+</button>
+<!-- Tab: Profiles -->
+<button class="text-text-secondary hover:text-accent-fill font-label text-label px-6 py-2.5 rounded-full hover:bg-surface/50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-text-tertiary">groups</span>
+<span>Profiles</span>
+</button>
+</nav>
+<!-- Right: Child Profile Pill & Adult Lock -->
+<div class="flex items-center gap-3">
+<div class="bg-surface/90 backdrop-blur-md border border-border-divider rounded-full pl-2 pr-5 py-1.5 shadow-sm flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-secondary-container">
+<img alt="Mia avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+</div>
+<div class="flex flex-col text-left">
+<div class="flex items-center gap-1.5">
+<span class="font-label text-label text-text-primary leading-tight">Mia</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-accent-tint text-[10px] font-semibold text-accent-fill">4 yrs</span>
+</div>
+<div class="flex items-center gap-1 text-[12px] font-medium text-warning">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>18 Stars</span>
+</div>
+</div>
+</div>
+<!-- Parent Gate Lock -->
+<button class="w-12 h-12 rounded-full bg-surface/90 border border-border-divider text-text-tertiary hover:text-text-primary hover:bg-surface flex items-center justify-center shadow-sm transition-transform active:scale-95" title="Parental Settings Gate">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</button>
+</div>
+</header>
+<!-- Main TV Content Canvas -->
+<main class="px-20 space-y-12 mt-4">
+<!-- GIANT HERO BANNER (10-Foot UI Focal Anchor) -->
+<section class="relative w-full h-[520px] rounded-[36px] overflow-hidden tv-card-shadow bg-surface group">
+<!-- Hero Background Photographic Asset -->
+<img alt="Maestra Luna singing with preschoolers" class="absolute inset-0 w-full h-full object-cover object-center filter saturate-[1.05]" src="https://lh3.googleusercontent.com/aida/AEtjO1X0QVMBzYt8qqY5j2QGHYHRUWV-2dUHGEQespcn5-9W6L2cHr7RYw51Y_pOD1xmAC4vlb6A2qph30ezFxRYhu9zRpfBOdxMzTfQnTipKEPdz2uJaqaMlZRHT_qt9rjYfvEK3z8KHQRcxfFfaI3FwizzRlBvgD_4TnsSy_iUclhiX1sDqf9gExjw0FOlXu3fRYQLNXl4W1ruNMXQqyPigPIrAJvsjEfS3hxAErPLApjoBDbCK6_o0QHL-Cg"/>
+<!-- High-End Multi-Stage Cinematic TV Gradients for text contrast -->
+<div class="absolute inset-0 bg-gradient-to-r from-text-primary/90 via-text-primary/55 to-transparent w-3/4"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/80 via-transparent to-transparent"></div>
+<div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-text-primary/20 to-transparent"></div>
+<!-- Hero Content Overlay (Positioned for standard 10-foot viewing) -->
+<div class="relative z-10 h-full flex flex-col justify-end p-16 max-w-3xl">
+<!-- Metadata Pill Badges -->
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption font-semibold tracking-wide uppercase">
+              New this week
+            </span>
+<span class="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white font-caption text-caption border border-white/20">
+              48 min
+            </span>
+<span class="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white font-caption text-caption border border-white/20 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">translate</span>
+              Español + English
+            </span>
+<span class="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white font-caption text-caption border border-white/20">
+              Ages 2–6
+            </span>
+<span class="px-3.5 py-1.5 rounded-full bg-success/80 backdrop-blur-md text-white font-caption text-caption font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              Ad-Free
+            </span>
+</div>
+<!-- Title & Subtitle -->
+<h1 class="font-display text-[48px] leading-[54px] font-bold text-white tracking-tight drop-shadow-md mb-2">
+            Episode 42: Colors Everywhere
+          </h1>
+<p class="font-body text-[20px] leading-[28px] text-surface-container font-medium max-w-2xl mb-8 drop-shadow">
+            Sing along with Maestra Luna and discover <span class="text-secondary-fixed-dim font-semibold">rojo</span>, <span class="text-primary-fixed font-semibold">azul</span>, y <span class="text-tertiary-fixed font-semibold">amarillo</span> in this playful rhythm adventure!
+          </p>
+<!-- TV Action Buttons (Focused Couch Navigation) -->
+<div class="flex items-center gap-4">
+<!-- Primary TV Focused Button: Play -->
+<button class="tv-focus-glow scale-105 bg-surface text-accent-fill hover:bg-surface-bright font-title text-title px-9 py-4 rounded-full flex items-center gap-3 transition-transform duration-200">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Play</span>
+</button>
+<!-- Secondary Action Button: Episode Details -->
+<button class="bg-white/25 hover:bg-white/35 backdrop-blur-lg border border-white/40 text-white font-label text-label px-7 py-4 rounded-full flex items-center gap-2.5 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[24px]">info</span>
+<span>Episode details</span>
+</button>
+<!-- Favorite / Love Button -->
+<button class="w-14 h-14 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-lg border border-white/30 text-white flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<!-- TV Live Subtitle / Lesson Indicator Ribbon -->
+<div class="absolute bottom-6 right-12 z-10 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-3.5 flex items-center gap-3 text-white">
+<div class="w-9 h-9 rounded-xl bg-accent-fill/80 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">psychology_alt</span>
+</div>
+<div class="text-left pr-2">
+<div class="font-caption text-[11px] uppercase tracking-wider text-white/80">Lesson Step 1 of 3</div>
+<div class="font-label text-caption font-semibold">Watch • Sing • Discover</div>
+</div>
+</div>
+</section>
+<!-- SHELF 1: Continue Watching -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<h2 class="font-display text-[26px] font-bold text-text-primary tracking-tight">Continue Watching</h2>
+<span class="px-3 py-0.5 rounded-full bg-accent-tint text-accent-fill font-caption text-caption font-semibold">
+              Mia's Path
+            </span>
+</div>
+<span class="font-caption text-caption text-text-tertiary">3 In Progress</span>
+</div>
+<!-- Horizontal Shelf Row -->
+<div class="grid grid-cols-3 gap-7">
+<!-- Shelf Card 1 (Active Focus in shelf) -->
+<div class="group relative bg-surface rounded-[28px] overflow-hidden tv-card-shadow border-2 border-transparent hover:border-accent-fill hover:scale-[1.02] transition-all duration-200 cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container">
+<img alt="Teacher with animal puppets and laughing children" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1V-78kO994EWxww9MKH1tJc9VPgzo5xF4SRHkuz1AHerTOt1WU8jq42jDAVJ3y3VyD-qTyPE_zMn1SDh2Nauha4gmAcyYVaMeHlYHKwqUC8csokOiMU0VNF2hLk1j8qkc5Hz6CD7cTVI88tObShvEpzBFKkJVn-lEDOnxaWK4K-BuQNOnfRdZ6O5HrX3cwnOroxD8AkzGdXv75wAf5JJvhIUMAFUDz6HWwgWH-BU6IgI_7XaKj0Tjsszg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/70 via-transparent to-transparent"></div>
+<!-- Quick play badge -->
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-14 h-14 rounded-full bg-surface/90 text-accent-fill shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<!-- Time remaining pill -->
+<div class="absolute top-3 right-3 bg-text-primary/75 backdrop-blur-md px-2.5 py-1 rounded-full text-white font-caption text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>18 min left</span>
+</div>
+<!-- Progress Bar -->
+<div class="absolute bottom-0 left-0 right-0 h-2 bg-black/40">
+<div class="h-full bg-accent-fill rounded-r-full" style="width: 65%;"></div>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="font-title text-label text-text-primary group-hover:text-accent-fill transition-colors">
+                  Ep 41 • Animal Friends
+                </h3>
+<p class="font-caption text-caption text-text-tertiary">Los Animales del Bosque • 65% Watched</p>
+</div>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-accent-fill">play_circle</span>
+</div>
+</div>
+<!-- Shelf Card 2 -->
+<div class="group relative bg-surface rounded-[28px] overflow-hidden tv-card-shadow border-2 border-transparent hover:border-accent-fill hover:scale-[1.02] transition-all duration-200 cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container">
+<img alt="Preschool teacher guiding students with colored counting blocks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1W6QWYxPd_zGxBrFHxPX5QP2Cfbt-r1UYniDalFWetaQ2xvdaVIf2n-FccB4CRmRMngyDyRqZyZZaCtCgSet9ifZw5brqqcQIRnucThw64xrEefZhqzXpr0xv_Iu81C1-V9kZ6wxKDGuvmVmJCiieMWxJ5_v7vx8JIZL3jkX7O8FaRzNhKftqBuZBLeF_5VaBJIOLOjaT2YcT3M_VR9GTaa__H2ADPdEkatljqBkhzzXt7mahGYWM13cdA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/70 via-transparent to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-14 h-14 rounded-full bg-surface/90 text-accent-fill shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-3 right-3 bg-text-primary/75 backdrop-blur-md px-2.5 py-1 rounded-full text-white font-caption text-[12px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">schedule</span>
+<span>32 min left</span>
+</div>
+<!-- Progress Bar: 20% -->
+<div class="absolute bottom-0 left-0 right-0 h-2 bg-black/40">
+<div class="h-full bg-accent-fill rounded-r-full" style="width: 20%;"></div>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="font-title text-label text-text-primary group-hover:text-accent-fill transition-colors">
+                  Ep 40 • Count With Me
+                </h3>
+<p class="font-caption text-caption text-text-tertiary">Uno, Dos, Tres • 20% Watched</p>
+</div>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-accent-fill">play_circle</span>
+</div>
+</div>
+<!-- Shelf Card 3 (Completed) -->
+<div class="group relative bg-surface rounded-[28px] overflow-hidden tv-card-shadow border-2 border-transparent hover:border-accent-fill hover:scale-[1.02] transition-all duration-200 cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container">
+<img alt="Teacher leading clapping song circle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1Up-xb6b9rklJClAEb8aZ6-mPadW0pvDfTHHLwuUC4vAMD27mkyXdCLT42sXWmW-9M-JWj5rISIjLzEYvQwhNxf9LzTuYksplixed0RYqqvHL1v_m_A_5lbwpfQsFPRMNg09BIPSv7tQe0wI4A2ppf-QxXQEHgYhsZdhAU7sfw5lXwpP0eT9OxgjpQKEsbUetgpnyMmSHY1YPsbFjKy5EeisgqOmBmfQpKzzk5MhzJFXeMNcL1rt2nf7xQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/70 via-transparent to-transparent"></div>
+<!-- Completed badge -->
+<div class="absolute top-3 left-3 bg-success text-white px-3 py-1 rounded-full font-caption text-[12px] font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Completed</span>
+</div>
+<!-- Progress Bar: 100% -->
+<div class="absolute bottom-0 left-0 right-0 h-2 bg-black/40">
+<div class="h-full bg-success rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="font-title text-label text-text-primary group-hover:text-accent-fill transition-colors">
+                  Ep 39 • My Body
+                </h3>
+<p class="font-caption text-caption text-text-tertiary">Cabeza, Hombros y Pies • Rewatch</p>
+</div>
+<span class="material-symbols-outlined text-success">restart_alt</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SHELF 2: Favorite Songs & Sing-Alongs -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<h2 class="font-display text-[26px] font-bold text-text-primary tracking-tight">Favorite Songs &amp; Sing-Alongs</h2>
+<span class="px-3 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption font-semibold">
+              Music &amp; Motion
+            </span>
+</div>
+<button class="font-caption text-caption text-accent-fill hover:underline flex items-center gap-1 font-semibold">
+<span>View All Songs</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- 3 Couch-Readable Song Cards -->
+<div class="grid grid-cols-3 gap-7">
+<!-- Song Card 1: Hello Song (Featured badge) -->
+<div class="group relative bg-surface rounded-[28px] overflow-hidden tv-card-shadow border-2 border-transparent hover:border-accent-fill hover:scale-[1.02] transition-all duration-200 cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container">
+<img alt="Teacher and children singing in preschool movement circle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1W7IyJNv6XX0qzsC9l88f-OaXdCArEb_LQeHVfWBnknZwJ_YJ9js6DnnTsSGDR_n8Bnss2lNo-HN6bfTfbmzGT69SyGTnmMhTvtvpLpEDmT9J14DQsrRL5sSbl4r7a_AXbHJ6dRFdTZO9feATPUH8jyZEB_ZodKZxv-lSKPqquAdcwmXRdlW9aOmOtN2XjFFm5KK31GbAVFJAcYdBChGtYYEz21YAc21t-pZLzyo-oQlS0XeAIiJ14McQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/75 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-caption text-[12px] font-bold shadow-sm">
+                ⭐ Favorite
+              </div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-text-primary font-caption text-[12px] font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-accent-fill text-[14px]">music_note</span>
+<span>Song • 3 min</span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="font-title text-label text-text-primary group-hover:text-accent-fill transition-colors">
+                  Hello Song • ¡Hola!
+                </h3>
+<p class="font-caption text-caption text-text-tertiary">Morning greeting song with puppets</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center group-hover:bg-accent-fill group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Song Card 2: Colors Everywhere Song -->
+<div class="group relative bg-surface rounded-[28px] overflow-hidden tv-card-shadow border-2 border-transparent hover:border-accent-fill hover:scale-[1.02] transition-all duration-200 cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container">
+<img alt="Maestra Luna holding up a red apple in classroom set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1VIWosbwf6kOPgRhq05RFPaPwOXm03rfjiECUmQgekxrbOQmkgysAJApkNYOo0h2rGnxo5JkGB5Id847RRCIiQHHYyyc5V5qKVJ7Vji9Jq5iaDOv-wSHn_k4D2oNM9BrazVtneAEqVCx7Si44H-wL3RfgZgT2TaACuVhxicnExcT_ddaYLdjKkTimyFMW46J-OXZdb8l8jlH7BMi3HLtOn8rFKafdks9gobF-fI0VzkYUGK6HkeGwSxBdc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/75 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-text-primary font-caption text-[12px] font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-accent-fill text-[14px]">music_note</span>
+<span>Song • 4 min</span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="font-title text-label text-text-primary group-hover:text-accent-fill transition-colors">
+                  Colors Everywhere Song
+                </h3>
+<p class="font-caption text-caption text-text-tertiary">Learn primary colors in Spanish</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center group-hover:bg-accent-fill group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Song Card 3: Counting 1 to 5 Song -->
+<div class="group relative bg-surface rounded-[28px] overflow-hidden tv-card-shadow border-2 border-transparent hover:border-accent-fill hover:scale-[1.02] transition-all duration-200 cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden bg-surface-container">
+<img alt="Preschool teacher guiding students with colored counting blocks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1W6QWYxPd_zGxBrFHxPX5QP2Cfbt-r1UYniDalFWetaQ2xvdaVIf2n-FccB4CRmRMngyDyRqZyZZaCtCgSet9ifZw5brqqcQIRnucThw64xrEefZhqzXpr0xv_Iu81C1-V9kZ6wxKDGuvmVmJCiieMWxJ5_v7vx8JIZL3jkX7O8FaRzNhKftqBuZBLeF_5VaBJIOLOjaT2YcT3M_VR9GTaa__H2ADPdEkatljqBkhzzXt7mahGYWM13cdA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/75 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-text-primary font-caption text-[12px] font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-accent-fill text-[14px]">music_note</span>
+<span>Song • 3 min</span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="font-title text-label text-text-primary group-hover:text-accent-fill transition-colors">
+                  Counting 1 to 5 Song
+                </h3>
+<p class="font-caption text-caption text-text-tertiary">Rhythmic finger rhyme &amp; block beats</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-accent-tint text-accent-fill flex items-center justify-center group-hover:bg-accent-fill group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TV Status & Guidance Pill Footer -->
+<footer class="pt-6 pb-4 flex items-center justify-between text-text-tertiary font-caption text-caption">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-success"></span>
+<span>Kids Safe Mode Active</span>
+</div>
+<span>•</span>
+<span>Zero Third-Party Ads</span>
+<span>•</span>
+<span>Teacher-Led Immersion</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 bg-surface px-3 py-1 rounded-full border border-border-divider">
+<span class="material-symbols-outlined text-[16px]">touch_app</span>
+<span>Swipe or click cards to browse</span>
+</div>
+<span>Apple TV 4K</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

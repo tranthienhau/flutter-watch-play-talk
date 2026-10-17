@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roku TV - Episodes Grid</title>
+<!-- Google Fonts: Quicksand & Readex Pro -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#ffe263",
+            "on-primary": "#ffffff",
+            "text-tertiary": "#857D99",
+            "on-secondary-fixed": "#370e02",
+            "surface-bright": "#fef7ff",
+            "inverse-primary": "#d1bcff",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#221b00",
+            "success": "#16A34A",
+            "secondary-fixed": "#ffdbd0",
+            "accent-fill": "#8165C0",
+            "tertiary-container": "#c5aa2a",
+            "on-secondary-container": "#7a412f",
+            "on-background": "#1d1a21",
+            "on-tertiary-container": "#4b3f00",
+            "accent-tint": "#F1ECFC",
+            "surface-container-high": "#ede6f0",
+            "surface": "#FFFFFF",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#e7e0ea",
+            "primary-fixed-dim": "#d1bcff",
+            "surface-container": "#f2ecf6",
+            "primary-fixed": "#eaddff",
+            "secondary-container": "#ffb199",
+            "on-secondary-fixed-variant": "#6e3826",
+            "on-primary-fixed-variant": "#532f9b",
+            "text-primary": "#120C1F",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-tertiary-fixed-variant": "#534600",
+            "background": "#F6F4FC",
+            "surface-dim": "#ded8e2",
+            "danger": "#DC2626",
+            "surface-tint": "#6b49b5",
+            "surface-container-highest": "#e7e0ea",
+            "error": "#ba1a1a",
+            "on-primary-container": "#fffbff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f8f1fb",
+            "tertiary-fixed-dim": "#e2c545",
+            "outline": "#7a7483",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#322f37",
+            "primary": "#6947b2",
+            "border-divider": "#E6E1F2",
+            "primary-container": "#8260cd",
+            "outline-variant": "#cbc3d4",
+            "on-surface-variant": "#494552",
+            "on-error": "#ffffff",
+            "text-secondary": "#4B4360",
+            "warning": "#D97706",
+            "inverse-on-surface": "#f5eef8",
+            "accent-pressed": "#7159A9",
+            "on-secondary": "#ffffff",
+            "tertiary": "#6f5d00",
+            "secondary": "#8a4e3b",
+            "on-surface": "#1d1a21",
+            "on-primary-fixed": "#24005b"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "title": [
+              "Readex Pro"
+            ],
+            "caption": [
+              "Readex Pro"
+            ],
+            "body": [
+              "Readex Pro"
+            ],
+            "label": [
+              "Readex Pro"
+            ],
+            "display": [
+              "Quicksand"
+            ]
+          },
+          "fontSize": {
+            "title": [
+              "22px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "14px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "500"
+              }
+            ],
+            "body": [
+              "17px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "label": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "34px",
+              {
+                "lineHeight": "42px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Fixed 1920x1080 10-foot TV Frame Container */
+    .tv-canvas {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Ambient TV Elevation */
+    .tv-shadow-focus {
+      box-shadow: 0 0 0 4px #9D7BEA, 0 16px 36px rgba(129, 101, 192, 0.35);
+    }
+    .tv-card-shadow {
+      box-shadow: 0 1px 2px rgba(18,12,31,.05), 0 8px 24px rgba(18,12,31,.07);
+    }
+  </style>
+</head>
+<body class="bg-[#120C1F] text-text-primary flex items-center justify-center min-h-screen m-0 p-0 overflow-auto select-none antialiased">
+<!-- 1920x1080 10-Foot Television SceneGraph Canvas -->
+<div class="tv-canvas bg-background flex flex-col justify-between p-0 shadow-2xl relative">
+<!-- Top Safe Area Header (SceneGraph Navigation Bar) -->
+<header class="w-full px-16 pt-10 pb-4 flex items-center justify-between z-20">
+<!-- Left: Brand Logo & Title -->
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-accent-tint flex items-center justify-center p-1.5 shadow-sm border border-border-divider">
+<img alt="Watch Play Talk" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1Vp_hVcgMazSIxIdeqQz0lQSbEdqGhA4BMKpqu15hHvhBjfPw4qD8dKOT7lC0Y5BSmWa0TNvyEbkOLHCC9TqcCXenNfrPVl8WZSl4Yos6jdzvviRd-XaA7QhERfMcfo5T5BFCQ9VsfGAbfFh3yiasq498AiUewgZSCRkM5kahG77cZm-BjOg-HNkwOIn0tFygIxM0fdYi4XP7hVgrtP-a7uGcuke-1t1YDGSnX-VkcXHjfqoQNfpxjMBg"/>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<span class="font-display text-display text-text-primary tracking-tight">Watch Play Talk</span>
+<span class="bg-accent-tint text-accent-fill font-label text-caption px-3 py-1 rounded-full border border-border-divider font-semibold">
+              ROKU TV
+            </span>
+</div>
+<p class="font-body text-caption text-text-secondary">Bilingual Learning TV • Español + English</p>
+</div>
+</div>
+<!-- Right: Active Kid Profile & Settings Shield -->
+<div class="flex items-center gap-6">
+<!-- Kid Profile Chip -->
+<div class="flex items-center gap-3 bg-surface px-4 py-2 rounded-full border border-border-divider tv-card-shadow">
+<img alt="Mia" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary" src="https://lh3.googleusercontent.com/aida/AEtjO1WtJ5lnKbcdbuvYQYbGSMCMdI8WpoCc83S1d1r4-ZP6zDyO4Eho-uXmMcUFRcIgeSyYicBHXYMT9ZlGJOwrDUjq0BsZSB7RuRW8lfShDaVBJOneyKEjqeXqFUCAB_b2ADrqtvrzV4WPBG1XBDoGrQINX-WW2CRGtwBUEBROqZhLjh97o7_XpkhceuVDS4wguUjl5vjZcY6n5t8lRspYYIIoU9OlrIqZkN7D2ApaNTpDDJmSKIOXPy_zK28"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-display font-bold text-text-primary text-base">Mia</span>
+<span class="text-xs text-text-tertiary font-body">(4 yrs)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-warning fill-icon text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-caption text-xs font-semibold text-text-secondary">18 Stars</span>
+</div>
+</div>
+</div>
+<!-- Grown-up Area Shield Lock -->
+<div class="flex items-center gap-2 bg-surface px-3.5 py-2.5 rounded-full border border-border-divider tv-card-shadow text-text-tertiary">
+<span class="material-symbols-outlined text-base">lock</span>
+<span class="font-label text-xs">Parent Zone</span>
+</div>
+</div>
+</header>
+<!-- Main TV Content Area: Left Menu Rail & Right Episode Bento Grid -->
+<main class="flex-1 px-16 py-4 flex gap-12 overflow-hidden z-10">
+<!-- Left Rail: Remote-Navigable Categories (~300px) -->
+<aside class="w-72 flex flex-col justify-between shrink-0">
+<div>
+<span class="font-caption text-caption text-text-tertiary tracking-wider block mb-4">
+            BROWSE BY
+          </span>
+<nav class="flex flex-col gap-3">
+<!-- Active Selected Category: New -->
+<button class="w-full flex items-center justify-between bg-accent-fill text-on-primary px-5 py-4 rounded-2xl shadow-md transition-transform scale-102 font-label text-label">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined fill-icon text-2xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-semibold text-lg">New</span>
+</div>
+<div class="w-2.5 h-2.5 bg-secondary-container rounded-full ring-2 ring-on-primary"></div>
+</button>
+<!-- Inactive Category: Español -->
+<button class="w-full flex items-center gap-3 bg-surface hover:bg-accent-tint text-text-secondary px-5 py-3.5 rounded-2xl border border-transparent hover:border-border-divider transition-all font-label text-label">
+<span class="material-symbols-outlined text-2xl text-text-tertiary">translate</span>
+<span class="font-medium text-base">Español</span>
+</button>
+<!-- Inactive Category: English -->
+<button class="w-full flex items-center gap-3 bg-surface hover:bg-accent-tint text-text-secondary px-5 py-3.5 rounded-2xl border border-transparent hover:border-border-divider transition-all font-label text-label">
+<span class="material-symbols-outlined text-2xl text-text-tertiary">language</span>
+<span class="font-medium text-base">English</span>
+</button>
+<!-- Inactive Category: Songs -->
+<button class="w-full flex items-center gap-3 bg-surface hover:bg-accent-tint text-text-secondary px-5 py-3.5 rounded-2xl border border-transparent hover:border-border-divider transition-all font-label text-label">
+<span class="material-symbols-outlined text-2xl text-text-tertiary">music_note</span>
+<span class="font-medium text-base">Songs</span>
+</button>
+<!-- Inactive Category: Continue Watching -->
+<button class="w-full flex items-center gap-3 bg-surface hover:bg-accent-tint text-text-secondary px-5 py-3.5 rounded-2xl border border-transparent hover:border-border-divider transition-all font-label text-label">
+<span class="material-symbols-outlined text-2xl text-text-tertiary">history</span>
+<span class="font-medium text-base">Continue watching</span>
+</button>
+</nav>
+</div>
+<!-- Level Indicator Chip at rail foot -->
+<div class="bg-accent-tint p-4 rounded-2xl border border-border-divider flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-accent-fill font-bold text-sm shadow-sm">
+            1
+          </div>
+<div>
+<span class="font-label text-xs font-semibold text-accent-fill block">Mia's Learning Path</span>
+<span class="font-body text-xs text-text-secondary">Level 1 • Curious Seed</span>
+</div>
+</div>
+</aside>
+<!-- Right Column: 3-Column Episode Grid (2 Rows of 3 = 6 Cards) -->
+<section class="flex-1 flex flex-col justify-start overflow-hidden">
+<!-- Grid Header -->
+<div class="flex items-center justify-between mb-5">
+<div class="flex items-center gap-4">
+<h1 class="font-display text-display text-text-primary font-bold">New Episodes</h1>
+<span class="bg-secondary-container text-text-primary px-3.5 py-1 rounded-full font-label text-xs font-semibold">
+              6 episodes available
+            </span>
+</div>
+<div class="flex items-center gap-2 text-text-tertiary font-body text-caption">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>All episodes under 55 min</span>
+</div>
+</div>
+<!-- 3x2 Grid for 10-foot Television Display -->
+<div class="grid grid-cols-3 gap-6 flex-1 items-stretch">
+<!-- Episode 1: FOCUSED CARD (Roku Remote Active Focus) -->
+<div class="bg-surface rounded-2xl p-3 tv-shadow-focus border-2 border-primary-container relative flex flex-col justify-between scale-102 transform transition duration-200">
+<!-- Thumbnail 16:9 -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-surface-container">
+<img alt="Maestra Luna with Red Apple" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VIWosbwf6kOPgRhq05RFPaPwOXm03rfjiECUmQgekxrbOQmkgysAJApkNYOo0h2rGnxo5JkGB5Id847RRCIiQHHYyyc5V5qKVJ7Vji9Jq5iaDOv-wSHn_k4D2oNM9BrazVtneAEqVCx7Si44H-wL3RfgZgT2TaACuVhxicnExcT_ddaYLdjKkTimyFMW46J-OXZdb8l8jlH7BMi3HLtOn8rFKafdks9gobF-fI0VzkYUGK6HkeGwSxBdc"/>
+<!-- Focus Play Badge -->
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[1px] flex items-center justify-center">
+<div class="bg-accent-fill text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg transform scale-110">
+<span class="material-symbols-outlined text-3xl fill-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2.5 left-2.5 bg-accent-fill/95 text-on-primary font-label text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+<span class="material-symbols-outlined text-xs">videocam</span>
+<span>Press OK to Play</span>
+</div>
+<div class="absolute top-2.5 right-2.5 bg-surface/90 text-text-primary font-caption text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                Ep 42 • 48 min
+              </div>
+</div>
+<!-- Episode Metadata -->
+<div class="pt-3 px-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-xs font-bold text-accent-fill uppercase tracking-wide">Los Colores</span>
+<span class="bg-accent-tint text-accent-fill font-label text-[11px] px-2 py-0.5 rounded-full font-semibold">Bilingual</span>
+</div>
+<h2 class="font-display font-bold text-text-primary text-xl truncate">Ep 42 Colors Everywhere</h2>
+<p class="font-body text-xs text-text-secondary mt-1">Interactive naming in Spanish &amp; English with Maestra Luna</p>
+</div>
+</div>
+<!-- Episode 2: Unfocused Standard Card -->
+<div class="bg-surface rounded-2xl p-3 tv-card-shadow border border-border-divider flex flex-col justify-between hover:border-accent-fill transition">
+<!-- Thumbnail 16:9 -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-surface-container">
+<img alt="Teacher and children with puppet animals" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1V-78kO994EWxww9MKH1tJc9VPgzo5xF4SRHkuz1AHerTOt1WU8jq42jDAVJ3y3VyD-qTyPE_zMn1SDh2Nauha4gmAcyYVaMeHlYHKwqUC8csokOiMU0VNF2hLk1j8qkc5Hz6CD7cTVI88tObShvEpzBFKkJVn-lEDOnxaWK4K-BuQNOnfRdZ6O5HrX3cwnOroxD8AkzGdXv75wAf5JJvhIUMAFUDz6HWwgWH-BU6IgI_7XaKj0Tjsszg"/>
+<div class="absolute top-2.5 right-2.5 bg-surface/90 text-text-primary font-caption text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                Ep 41 • 52 min
+              </div>
+</div>
+<!-- Episode Metadata -->
+<div class="pt-3 px-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-xs font-bold text-text-tertiary uppercase tracking-wide">Los Animales</span>
+<span class="bg-accent-tint text-accent-fill font-label text-[11px] px-2 py-0.5 rounded-full font-semibold">Bilingual</span>
+</div>
+<h2 class="font-display font-bold text-text-primary text-xl truncate">Ep 41 Animal Friends</h2>
+<p class="font-body text-xs text-text-secondary mt-1">Puppet play, forest sounds, and friendly farm creatures</p>
+</div>
+</div>
+<!-- Episode 3: Unfocused Standard Card -->
+<div class="bg-surface rounded-2xl p-3 tv-card-shadow border border-border-divider flex flex-col justify-between hover:border-accent-fill transition">
+<!-- Thumbnail 16:9 -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-surface-container">
+<img alt="Children counting colorful blocks with teacher" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1W6QWYxPd_zGxBrFHxPX5QP2Cfbt-r1UYniDalFWetaQ2xvdaVIf2n-FccB4CRmRMngyDyRqZyZZaCtCgSet9ifZw5brqqcQIRnucThw64xrEefZhqzXpr0xv_Iu81C1-V9kZ6wxKDGuvmVmJCiieMWxJ5_v7vx8JIZL3jkX7O8FaRzNhKftqBuZBLeF_5VaBJIOLOjaT2YcT3M_VR9GTaa__H2ADPdEkatljqBkhzzXt7mahGYWM13cdA"/>
+<div class="absolute top-2.5 right-2.5 bg-surface/90 text-text-primary font-caption text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                Ep 40 • 45 min
+              </div>
+</div>
+<!-- Episode Metadata -->
+<div class="pt-3 px-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-xs font-bold text-text-tertiary uppercase tracking-wide">Los Números 1 a 5</span>
+<span class="bg-accent-tint text-accent-fill font-label text-[11px] px-2 py-0.5 rounded-full font-semibold">Math Steps</span>
+</div>
+<h2 class="font-display font-bold text-text-primary text-xl truncate">Ep 40 Count With Me</h2>
+<p class="font-body text-xs text-text-secondary mt-1">Wooden block stacking, rhyming numbers, and counting games</p>
+</div>
+</div>
+<!-- Episode 4: Unfocused Standard Card (Row 2) -->
+<div class="bg-surface rounded-2xl p-3 tv-card-shadow border border-border-divider flex flex-col justify-between hover:border-accent-fill transition">
+<!-- Thumbnail 16:9 -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-surface-container">
+<img alt="Children smiling and singing movement song" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Up-xb6b9rklJClAEb8aZ6-mPadW0pvDfTHHLwuUC4vAMD27mkyXdCLT42sXWmW-9M-JWj5rISIjLzEYvQwhNxf9LzTuYksplixed0RYqqvHL1v_m_A_5lbwpfQsFPRMNg09BIPSv7tQe0wI4A2ppf-QxXQEHgYhsZdhAU7sfw5lXwpP0eT9OxgjpQKEsbUetgpnyMmSHY1YPsbFjKy5EeisgqOmBmfQpKzzk5MhzJFXeMNcL1rt2nf7xQ"/>
+<div class="absolute top-2.5 right-2.5 bg-surface/90 text-text-primary font-caption text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                Ep 39 • 50 min
+              </div>
+</div>
+<!-- Episode Metadata -->
+<div class="pt-3 px-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-xs font-bold text-text-tertiary uppercase tracking-wide">Mi Cuerpo</span>
+<span class="bg-accent-tint text-accent-fill font-label text-[11px] px-2 py-0.5 rounded-full font-semibold">Movement</span>
+</div>
+<h2 class="font-display font-bold text-text-primary text-xl truncate">Ep 39 My Body</h2>
+<p class="font-body text-xs text-text-secondary mt-1">Head, shoulders, knees &amp; toes with joyful circle dance</p>
+</div>
+</div>
+<!-- Episode 5: Unfocused Standard Card (Row 2) -->
+<div class="bg-surface rounded-2xl p-3 tv-card-shadow border border-border-divider flex flex-col justify-between hover:border-accent-fill transition">
+<!-- Thumbnail 16:9 -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-surface-container">
+<img alt="Teacher dancing and singing with kids" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WIEhw7VOGZjLf_Jbal6OHPwqPya8f5QOEQdytWQVhf7xyl6TnZkVw0pU8qoT-pzSonbk8s73Abar5q4ZGUaBckOFvfzJlcAkcBExlbWhnS7RLv5uH_5LGE7xeOPcGMx_BnjELy_FWgK_x_3OQCGJt4F9nPtqFJ1VuHTQ7uVZeuAG04YukfQV8jNELdG2rEs_agPEByO7ymWipI4W7FGbqeY0wIRiYB6aj8pklatExlK3L8gfnq-_nwMPc"/>
+<div class="absolute top-2.5 right-2.5 bg-surface/90 text-text-primary font-caption text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                Ep 38 • 44 min
+              </div>
+</div>
+<!-- Episode Metadata -->
+<div class="pt-3 px-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-xs font-bold text-text-tertiary uppercase tracking-wide">El Clima y la Lluvia</span>
+<span class="bg-accent-tint text-accent-fill font-label text-[11px] px-2 py-0.5 rounded-full font-semibold">Nature</span>
+</div>
+<h2 class="font-display font-bold text-text-primary text-xl truncate">Ep 38 Weather Fun</h2>
+<p class="font-body text-xs text-text-secondary mt-1">Sun, clouds, rainbow songs, and gentle rain taps</p>
+</div>
+</div>
+<!-- Episode 6: Unfocused Standard Card (Row 2) -->
+<div class="bg-surface rounded-2xl p-3 tv-card-shadow border border-border-divider flex flex-col justify-between hover:border-accent-fill transition">
+<!-- Thumbnail 16:9 -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-surface-container">
+<img alt="Maestra Luna playing guitar and singing" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X0QVMBzYt8qqY5j2QGHYHRUWV-2dUHGEQespcn5-9W6L2cHr7RYw51Y_pOD1xmAC4vlb6A2qph30ezFxRYhu9zRpfBOdxMzTfQnTipKEPdz2uJaqaMlZRHT_qt9rjYfvEK3z8KHQRcxfFfaI3FwizzRlBvgD_4TnsSy_iUclhiX1sDqf9gExjw0FOlXu3fRYQLNXl4W1ruNMXQqyPigPIrAJvsjEfS3hxAErPLApjoBDbCK6_o0QHL-Cg"/>
+<div class="absolute top-2.5 right-2.5 bg-surface/90 text-text-primary font-caption text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                Ep 37 • 46 min
+              </div>
+</div>
+<!-- Episode Metadata -->
+<div class="pt-3 px-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-caption text-xs font-bold text-text-tertiary uppercase tracking-wide">En el Parque</span>
+<span class="bg-accent-tint text-accent-fill font-label text-[11px] px-2 py-0.5 rounded-full font-semibold">Acoustic</span>
+</div>
+<h2 class="font-display font-bold text-text-primary text-xl truncate">Ep 37 At the Park</h2>
+<p class="font-body text-xs text-text-secondary mt-1">Acoustic guitar sing-along exploring outdoors and friendships</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Safe Area: Roku 10-Foot Remote Navigation Bar -->
+<footer class="w-full px-16 py-5 bg-surface border-t border-border-divider flex items-center justify-between z-20">
+<!-- Remote Navigation Hints -->
+<div class="flex items-center gap-8">
+<!-- OK Button -->
+<div class="flex items-center gap-2">
+<span class="bg-accent-tint text-accent-fill font-label text-xs font-bold px-2.5 py-1 rounded-md border border-border-divider shadow-xs">
+            OK
+          </span>
+<span class="font-label text-caption text-text-secondary">to Play Episode</span>
+</div>
+<!-- Star / Options Button -->
+<div class="flex items-center gap-2">
+<span class="bg-accent-tint text-accent-fill font-label text-xs font-bold px-2.5 py-1 rounded-md border border-border-divider shadow-xs">
+            ✱
+          </span>
+<span class="font-label text-caption text-text-secondary">for Audio &amp; Subtitles</span>
+</div>
+<!-- Directional Arrows -->
+<div class="flex items-center gap-2">
+<span class="bg-surface-container text-text-secondary font-label text-xs font-bold px-2.5 py-1 rounded-md border border-border-divider shadow-xs">
+            ◀ ▶ ▲ ▼
+          </span>
+<span class="font-label text-caption text-text-secondary">Browse Episodes</span>
+</div>
+<!-- Back Button -->
+<div class="flex items-center gap-2">
+<span class="bg-surface-container text-text-secondary font-label text-xs font-bold px-2 py-1 rounded-md border border-border-divider shadow-xs">
+            BACK
+          </span>
+<span class="font-label text-caption text-text-secondary">Return to Menu</span>
+</div>
+</div>
+<!-- Safe Mode / Ad-Free Badge -->
+<div class="flex items-center gap-3 bg-accent-tint/60 px-4 py-1.5 rounded-full border border-border-divider">
+<span class="material-symbols-outlined text-success fill-icon text-base" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label text-xs font-semibold text-text-secondary">
+          Kids Safe Mode Active • 100% Ad-Free
+        </span>
+</div>
+</footer>
+</div>
+</body></html>

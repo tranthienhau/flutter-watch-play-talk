@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Parent Settings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Readex Pro & Quicksand -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#6f5d00",
+            "surface": "#FFFFFF",
+            "primary-container": "#8260cd",
+            "inverse-surface": "#322f37",
+            "text-secondary": "#4B4360",
+            "surface-bright": "#fef7ff",
+            "surface-tint": "#6b49b5",
+            "primary-fixed-dim": "#d1bcff",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "success": "#16A34A",
+            "surface-container-low": "#f8f1fb",
+            "on-tertiary-container": "#4b3f00",
+            "on-tertiary-fixed": "#221b00",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#ffb199",
+            "inverse-on-surface": "#f5eef8",
+            "tertiary-fixed-dim": "#e2c545",
+            "tertiary-fixed": "#ffe263",
+            "on-primary-fixed": "#24005b",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#532f9b",
+            "primary": "#6947b2",
+            "outline": "#7a7483",
+            "inverse-primary": "#d1bcff",
+            "primary-fixed": "#eaddff",
+            "surface-container": "#f2ecf6",
+            "on-secondary-fixed-variant": "#6e3826",
+            "warning": "#D97706",
+            "danger": "#DC2626",
+            "surface-variant": "#e7e0ea",
+            "secondary": "#8a4e3b",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ede6f0",
+            "on-primary": "#ffffff",
+            "text-primary": "#120C1F",
+            "surface-dim": "#ded8e2",
+            "tertiary-container": "#c5aa2a",
+            "text-tertiary": "#857D99",
+            "secondary-fixed": "#ffdbd0",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-background": "#1d1a21",
+            "surface-container-highest": "#e7e0ea",
+            "on-secondary-fixed": "#370e02",
+            "accent-tint": "#F1ECFC",
+            "on-surface": "#1d1a21",
+            "on-tertiary-fixed-variant": "#534600",
+            "on-primary-container": "#fffbff",
+            "background": "#F6F4FC",
+            "accent-pressed": "#7159A9",
+            "on-secondary-container": "#7a412f",
+            "border-divider": "#E6E1F2",
+            "outline-variant": "#cbc3d4",
+            "on-surface-variant": "#494552",
+            "accent-fill": "#8165C0"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "space-xl": "2rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "title": ["Readex Pro"],
+            "label": ["Readex Pro"],
+            "body": ["Readex Pro"],
+            "caption": ["Readex Pro"],
+            "display": ["Quicksand"]
+          },
+          "fontSize": {
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          },
+          "boxShadow": {
+            "soft-ambient": "0 1px 2px rgba(18,12,31,.05), 0 8px 24px rgba(18,12,31,.07)",
+            "focal-ambient": "0 2px 4px rgba(18,12,31,.04), 0 12px 28px rgba(129,101,192,.12)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased font-body flex justify-center min-h-screen selection:bg-accent-tint selection:text-accent-fill">
+<!-- Mobile Screen Container (393px width constraint on larger screens) -->
+<main class="w-full max-w-[393px] min-h-screen bg-background relative flex flex-col pb-10">
+<!-- Top App Bar (Shared Component Anchor) -->
+<header class="fixed top-0 left-0 right-0 max-w-[393px] mx-auto w-full z-50 flex items-center justify-between px-space-md h-14 bg-surface dark:bg-inverse-surface border-b border-border-divider dark:border-outline-variant shadow-sm">
+<!-- Leading Back Action -->
+<button aria-label="Go back to dashboard" class="w-11 h-11 flex items-center justify-center rounded-full text-accent-fill dark:text-inverse-primary hover:bg-accent-tint dark:hover:bg-surface-variant active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Center Headline -->
+<h1 class="text-title font-title text-text-primary dark:text-inverse-on-surface tracking-tight">
+        Settings
+      </h1>
+<!-- Trailing Action: Balanced Lock / Parental Exit Icon -->
+<div class="w-11 h-11 flex items-center justify-center rounded-full text-text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</header>
+<!-- Safe Area / Header Spacer (56px bar + 16px safe margin) -->
+<div aria-hidden="true" class="h-[72px] shrink-0"></div>
+<!-- Scrollable Content Canvas -->
+<div class="px-5 space-y-6 pt-2">
+<!-- SECTION 1: LEARNING -->
+<section aria-labelledby="heading-learning">
+<h2 class="text-caption font-caption text-text-tertiary font-semibold tracking-wider px-1 mb-2" id="heading-learning">
+          LEARNING
+        </h2>
+<div class="bg-surface rounded-[24px] p-5 shadow-soft-ambient space-y-5">
+<!-- Row 1: Lesson Language -->
+<div>
+<div class="mb-3">
+<span class="text-label font-label text-text-primary block">Lesson language</span>
+<span class="text-caption font-caption text-text-secondary block mt-0.5">Primary instruction language for audio &amp; prompts</span>
+</div>
+<!-- Segmented Pill Control -->
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-[#F1ECFC]/60 rounded-full">
+<button class="min-h-[44px] py-2 rounded-full text-center text-caption font-label text-text-secondary hover:text-text-primary active:scale-95 transition-all" type="button">
+                Español
+              </button>
+<button class="min-h-[44px] py-2 rounded-full text-center text-caption font-label text-text-secondary hover:text-text-primary active:scale-95 transition-all" type="button">
+                English
+              </button>
+<button class="min-h-[44px] py-2 rounded-full text-center text-caption font-label bg-accent-fill text-surface font-semibold shadow-sm active:scale-95 transition-all" type="button">
+                Both
+              </button>
+</div>
+</div>
+<!-- Divider hairline -->
+<hr class="border-t border-border-divider"/>
+<!-- Row 2: Daily time limit -->
+<div class="flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity">
+<div class="pr-3">
+<div class="text-label font-label text-text-primary group-hover:text-accent-fill transition-colors">Daily time limit</div>
+<div class="text-caption font-caption text-text-secondary mt-0.5">App locks gently when time is reached</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="bg-accent-tint text-accent-fill font-label text-caption px-3.5 py-1.5 rounded-full font-semibold">
+                30 min
+              </span>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-accent-fill transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: TALK & MICROPHONE (FOCAL CARD) -->
+<section aria-labelledby="heading-talk">
+<h2 class="text-caption font-caption text-text-tertiary font-semibold tracking-wider px-1 mb-2" id="heading-talk">
+          TALK &amp; MICROPHONE
+        </h2>
+<!-- Prominent Focal Feature Card -->
+<div class="bg-gradient-to-b from-[#FAF8FF] to-surface rounded-[24px] p-5 shadow-focal-ambient border-[1.5px] border-[#9D7BEA]/30 space-y-4">
+<!-- Top Row: Interactive Mic Toggle -->
+<div class="flex items-center justify-between gap-3 min-h-[48px]">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-full bg-accent-tint flex items-center justify-center shrink-0 text-accent-fill">
+<span class="material-symbols-outlined text-[24px]" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<div>
+<span class="text-label font-label text-text-primary block">Use microphone for Talk</span>
+<span class="text-caption font-caption text-text-secondary block">Allows playful verbal mini-games</span>
+</div>
+</div>
+<!-- iOS style toggle switch (ON state) -->
+<button aria-checked="true" aria-label="Toggle microphone access" class="relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full bg-accent-fill p-1 transition-colors duration-200 ease-in-out focus:outline-none" role="switch" type="button">
+<span class="pointer-events-none inline-block h-6 w-6 translate-x-6 transform rounded-full bg-surface shadow-md ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Bottom Child-Safety & Privacy Note -->
+<div class="bg-[#F8F5FE] rounded-2xl p-3.5 border border-border-divider/60 flex items-start gap-3">
+<div class="mt-0.5 text-accent-fill shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="verified_user" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="space-y-0.5">
+<p class="text-caption font-label text-text-primary font-semibold leading-tight">
+                Speech is checked on this device and never saved or sent.
+              </p>
+<p class="text-caption font-caption text-text-secondary text-[13px] leading-relaxed">
+                Kid voice data never leaves your phone. Protected by on-device recognition models.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: ACCOUNT -->
+<section aria-labelledby="heading-account">
+<h2 class="text-caption font-caption text-text-tertiary font-semibold tracking-wider px-1 mb-2" id="heading-account">
+          ACCOUNT
+        </h2>
+<div class="bg-surface rounded-[24px] p-5 shadow-soft-ambient space-y-4">
+<!-- Row 1: Subscription Status -->
+<div class="flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity">
+<div>
+<div class="text-label font-label text-text-primary group-hover:text-accent-fill transition-colors">Subscription: Annual</div>
+<div class="text-caption font-caption text-text-secondary mt-0.5">Renews Nov 12, 2025</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 bg-[#DCFCE7] text-success text-[12px] font-label font-semibold px-2.5 py-1 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                Active
+              </span>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-accent-fill transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<hr class="border-t border-border-divider"/>
+<!-- Row 2: Restore Purchases -->
+<div class="flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity">
+<span class="text-label font-label text-text-primary group-hover:text-accent-fill transition-colors">
+              Restore purchases
+            </span>
+<div class="flex items-center gap-1 text-text-tertiary group-hover:text-accent-fill transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync">sync</span>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<hr class="border-t border-border-divider"/>
+<!-- Row 3: Manage Children -->
+<div class="flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity">
+<div>
+<div class="text-label font-label text-text-primary group-hover:text-accent-fill transition-colors">Manage children</div>
+<div class="text-caption font-caption text-text-secondary mt-0.5">3 active learner profiles</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<!-- Mini Learner Avatars -->
+<div class="flex -space-x-2 overflow-hidden items-center py-1">
+<div class="inline-block h-7 w-7 rounded-full bg-[#FFD6A5] ring-2 ring-surface flex items-center justify-center text-xs font-bold text-[#8A4E3B]">M</div>
+<div class="inline-block h-7 w-7 rounded-full bg-[#CAFFBF] ring-2 ring-surface flex items-center justify-center text-xs font-bold text-[#2A6A2C]">L</div>
+<div class="inline-block h-7 w-7 rounded-full bg-[#9BF6FF] ring-2 ring-surface flex items-center justify-center text-xs font-bold text-[#185366]">S</div>
+</div>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-accent-fill transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: PRIVACY & SECURITY -->
+<section aria-labelledby="heading-privacy">
+<h2 class="text-caption font-caption text-text-tertiary font-semibold tracking-wider px-1 mb-2" id="heading-privacy">
+          PRIVACY &amp; SECURITY
+        </h2>
+<div class="bg-surface rounded-[24px] p-5 shadow-soft-ambient space-y-4">
+<!-- Row 1: Privacy policy -->
+<a class="flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity" href="#privacy">
+<span class="text-label font-label text-text-primary group-hover:text-accent-fill transition-colors">
+              Privacy policy
+            </span>
+<div class="flex items-center text-text-tertiary group-hover:text-accent-fill transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="open_in_new">open_in_new</span>
+</div>
+</a>
+<hr class="border-t border-border-divider"/>
+<!-- Row 2: Download my data -->
+<div class="flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]" data-icon="download">download</span>
+<span class="text-label font-label text-text-primary group-hover:text-accent-fill transition-colors">Download my data</span>
+</div>
+<span class="material-symbols-outlined text-text-tertiary group-hover:text-accent-fill transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<hr class="border-t border-border-divider"/>
+<!-- Row 3: Delete Account (Danger) -->
+<button class="w-full flex items-center justify-between min-h-[44px] cursor-pointer group active:opacity-80 transition-opacity text-left" type="button">
+<div class="flex items-center gap-2 text-danger">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+<span class="text-label font-label font-semibold">Delete account</span>
+</div>
+<span class="material-symbols-outlined text-danger/70 group-hover:text-danger transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- FOOTER INFO -->
+<footer class="pt-3 pb-8 text-center space-y-1">
+<div class="flex items-center justify-center gap-1.5 text-text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="text-caption font-caption text-xs font-medium">Watch Play Talk v1.4.2 (Parental verification enabled)</span>
+</div>
+<p class="text-caption font-caption text-[11px] text-text-tertiary/80">
+          COPPA &amp; GDPR-K Compliant • Safe Bilingual Learning
+        </p>
+</footer>
+</div>
+<!-- Home Indicator spacer (Strict iOS safe-zone clearance, no tab bar) -->
+<div aria-hidden="true" class="h-8 shrink-0 flex items-center justify-center">
+<div class="w-32 h-1 bg-text-tertiary/30 rounded-full"></div>
+</div>
+</main>
+</body></html>

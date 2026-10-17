@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watch Play Talk - Gentle Correction</title>
+<!-- Google Fonts: Readex Pro & Quicksand -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "text-primary": "#120C1F",
+            "on-primary": "#ffffff",
+            "primary-container": "#8260cd",
+            "on-surface": "#1d1a21",
+            "danger": "#DC2626",
+            "tertiary": "#6f5d00",
+            "border-divider": "#E6E1F2",
+            "surface-tint": "#6b49b5",
+            "primary-fixed-dim": "#d1bcff",
+            "on-surface-variant": "#494552",
+            "inverse-surface": "#322f37",
+            "surface-container-highest": "#e7e0ea",
+            "outline": "#7a7483",
+            "surface-variant": "#e7e0ea",
+            "accent-pressed": "#7159A9",
+            "surface-bright": "#fef7ff",
+            "on-tertiary": "#ffffff",
+            "on-background": "#1d1a21",
+            "background": "#F6F4FC",
+            "success": "#16A34A",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#c5aa2a",
+            "on-tertiary-container": "#4b3f00",
+            "tertiary-fixed": "#ffe263",
+            "on-secondary-fixed": "#370e02",
+            "on-primary-fixed-variant": "#532f9b",
+            "accent-tint": "#F1ECFC",
+            "on-error-container": "#93000a",
+            "text-tertiary": "#857D99",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "surface-container": "#f2ecf6",
+            "text-secondary": "#4B4360",
+            "surface-container-high": "#ede6f0",
+            "on-tertiary-fixed-variant": "#534600",
+            "secondary-fixed-dim": "#ffb59e",
+            "surface-container-low": "#f8f1fb",
+            "on-primary-container": "#fffbff",
+            "surface-dim": "#ded8e2",
+            "tertiary-fixed-dim": "#e2c545",
+            "inverse-primary": "#d1bcff",
+            "inverse-on-surface": "#f5eef8",
+            "secondary": "#8a4e3b",
+            "on-secondary-container": "#7a412f",
+            "accent-fill": "#8165C0",
+            "secondary-container": "#ffb199",
+            "on-tertiary-fixed": "#221b00",
+            "on-secondary-fixed-variant": "#6e3826",
+            "secondary-fixed": "#ffdbd0",
+            "primary": "#6947b2",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#FFFFFF",
+            "outline-variant": "#cbc3d4",
+            "warning": "#D97706",
+            "primary-fixed": "#eaddff",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#24005b"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "card": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem"
+          },
+          fontFamily: {
+            "body": ["Readex Pro", "sans-serif"],
+            "caption": ["Readex Pro", "sans-serif"],
+            "title": ["Readex Pro", "sans-serif"],
+            "display": ["Quicksand", "sans-serif"],
+            "label": ["Readex Pro", "sans-serif"]
+          },
+          fontSize: {
+            "body": ["17px", { lineHeight: "24px", fontWeight: "400" }],
+            "caption": ["14px", { lineHeight: "18px", fontWeight: "500" }],
+            "title": ["22px", { lineHeight: "28px", fontWeight: "600" }],
+            "display": ["34px", { lineHeight: "42px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label": ["16px", { lineHeight: "22px", fontWeight: "600" }]
+          },
+          boxShadow: {
+            "ambient": "0 1px 2px rgba(18, 12, 31, 0.05), 0 8px 24px rgba(18, 12, 31, 0.07)",
+            "subtle": "0 2px 8px rgba(18, 12, 31, 0.04)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Gentle gentle floating wave animation for speech bubble */
+    @keyframes gentle-bob {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-3px) scale(1.02); }
+    }
+    .animate-gentle-bob {
+      animation: gentle-bob 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary font-body antialiased min-h-screen flex items-center justify-center p-0 sm:p-4">
+<!-- Mobile Screen Container (iPhone 393 x 852 ratio) -->
+<main class="w-full max-w-[393px] min-h-[852px] bg-background relative flex flex-col justify-between overflow-hidden shadow-2xl sm:rounded-[40px] border border-border-divider/50">
+<!-- Top Safe Area & Interactive App Header -->
+<header class="pt-12 px-5 pb-2">
+<div class="flex items-center justify-between">
+<!-- Close Button (44px min tap target) -->
+<button aria-label="Close lesson" class="w-11 h-11 rounded-full bg-surface shadow-subtle flex items-center justify-center text-text-secondary active:scale-95 hover:bg-accent-tint transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+<!-- Topic Pill -->
+<div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface shadow-subtle border border-border-divider">
+<span class="material-symbols-outlined text-accent-fill text-[18px] filled">palette</span>
+<span class="font-label text-caption text-text-primary font-semibold">Colors • Los Colores</span>
+</div>
+<!-- Sound / Audio Toggle Button (44px min tap target) -->
+<button aria-label="Toggle lesson audio" class="w-11 h-11 rounded-full bg-surface shadow-subtle flex items-center justify-center text-accent-fill active:scale-95 hover:bg-accent-tint transition-all" type="button">
+<span class="material-symbols-outlined text-[22px] filled">volume_up</span>
+</button>
+</div>
+<!-- Lesson Step Pills (Watch, Play, Talk) -->
+<nav aria-label="Lesson Progress Steps" class="mt-4 flex items-center justify-center gap-2">
+<!-- Step 1: Watch (Completed) -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border-divider text-text-secondary shadow-subtle">
+<div class="w-5 h-5 rounded-full bg-[#16A34A]/10 text-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</div>
+<span class="font-caption text-caption font-medium">Watch</span>
+</div>
+<!-- Step 2: Play (Completed) -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border-divider text-text-secondary shadow-subtle">
+<div class="w-5 h-5 rounded-full bg-[#16A34A]/10 text-success flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</div>
+<span class="font-caption text-caption font-medium">Play</span>
+</div>
+<!-- Step 3: Talk (Active) -->
+<div class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-accent-fill text-on-primary shadow-subtle">
+<span class="material-symbols-outlined text-[16px] filled">mic</span>
+<span class="font-label text-caption font-bold tracking-wide">Talk</span>
+</div>
+</nav>
+<!-- Try Counter Indicators -->
+<div class="flex items-center justify-center gap-2 mt-2.5">
+<span class="font-caption text-[12px] text-text-tertiary font-medium">Try 1 of 2</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-accent-fill"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-border-divider"></span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 px-5 flex flex-col justify-start gap-3 mt-1">
+<!-- Teacher Portrait Area (Maestra Luna) -->
+<section aria-label="Teacher Guidance" class="relative flex flex-col items-center justify-center pt-1">
+<div class="relative">
+<!-- Soft aura ring behind teacher -->
+<div class="absolute -inset-1.5 bg-gradient-to-tr from-[#9D7BEA]/30 to-[#FFB199]/40 rounded-full blur-[2px]"></div>
+<!-- Teacher Circular Photo -->
+<div class="relative w-28 h-28 rounded-full overflow-hidden border-[3px] border-surface shadow-ambient bg-surface">
+<img alt="Maestra Luna, bilingual teacher smiling encouragingly" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida/AEtjO1X8fbnTMhvt0pVD7nKdyspJ6JOxPSAkeyssxPtwojpOeZC9xiIU6Z2MP8j2PM-qDEgOUGdEVo4BfhvUQ7dLb3fVT9_RRnHJHm3Xg7xjA5oqKJ5iJmstoa6VDGl3FRBgPW759BSDDrOfjotYs4Mv5ZzsdDA8EhjpL3RzcSBj7PfcnU5Au2dukGJmqIocLh73X5LxYtRyuMLSZLNjJDbO_dEcX50kn6TWoOHh3E-IoPXvjiph1hbh5wqN7K0"/>
+</div>
+<!-- Encouraging Floating Speech Tag -->
+<div class="absolute -bottom-2 -right-6 animate-gentle-bob bg-surface border border-border-divider shadow-ambient rounded-full px-3.5 py-1.5 flex items-center gap-1.5">
+<span class="text-base">👋</span>
+<span class="font-display text-[13px] font-bold text-accent-fill whitespace-nowrap">¡Casi! Almost there!</span>
+</div>
+</div>
+</section>
+<!-- Central Encouragement Card -->
+<section class="bg-surface rounded-card p-5 shadow-ambient flex flex-col items-center text-center relative border border-border-divider/40 mt-2">
+<!-- Nurturing Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFB199]/20 border border-secondary-container/40">
+<span class="material-symbols-outlined text-[16px] text-secondary filled">favorite</span>
+<span class="font-caption text-caption text-secondary font-semibold">Great try! • ¡Buen intento!</span>
+</div>
+<!-- Supportive Prompt -->
+<p class="font-title text-caption text-text-secondary mt-2.5 font-medium">
+          Let's say it together:
+        </p>
+<!-- Big Bold Target Word -->
+<div class="mt-1 flex flex-col items-center">
+<h1 class="font-display text-[44px] leading-tight font-bold text-[#8165C0] tracking-tight">
+            ROJO
+          </h1>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-body text-caption text-text-tertiary font-medium">(Roh-ho)</span>
+<span class="w-1 h-1 rounded-full bg-text-tertiary/40"></span>
+<span class="font-body text-caption text-text-secondary font-semibold">"Red"</span>
+</div>
+</div>
+<!-- Speaker Replay Audio Button + Target Item Mini Card -->
+<div class="w-full flex items-center justify-center gap-4 mt-4 pt-3 border-t border-border-divider/50">
+<!-- Replay Pronunciation Button (56px) -->
+<button aria-label="Listen to pronunciation of Rojo" class="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-accent-tint text-accent-fill hover:bg-[#8165C0] hover:text-on-primary transition-all active:scale-95 shadow-subtle" type="button">
+<span class="w-8 h-8 rounded-full bg-surface text-accent-fill flex items-center justify-center group-hover:bg-surface/20 group-hover:text-on-primary">
+<span class="material-symbols-outlined text-[20px] filled">volume_up</span>
+</span>
+<span class="font-label text-caption font-semibold">Hear Luna</span>
+</button>
+<!-- Visual Target Object Reference Thumbnail -->
+<div class="flex items-center gap-2.5 px-3 py-1.5 rounded-2xl bg-surface-container-low border border-border-divider">
+<div class="w-10 h-10 rounded-xl overflow-hidden shadow-sm flex-shrink-0 bg-surface">
+<img alt="Ripe red apple illustration reference" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VCM6HdlZGHUFByFxwe8XRM5jS3yq0X5-XJNUpZTp8IyZB7IMD5tCLYVCNg1wNockx-bUikhz7gjKqVXHWSrfTF0nAvAlJM-o9dd2l4ZiBCoiks549VqfD4VfwflpG9ycMZTIa--5MPsujB-D2fgsrsZJnno63LEz5Irsfc5iju8nNEHN4hCdeCv3qiuJSjBETCA6S9KeMh__ZW5DiCcpdTgm4k23ScnaA61IsWDQ3dOPdDp8U9DTaktLU"/>
+</div>
+<div class="text-left pr-1">
+<p class="font-display text-[12px] font-bold text-text-primary leading-tight">La manzana</p>
+<p class="font-caption text-[11px] text-text-tertiary">Red apple</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Action Area (Child-Optimized Touch Targets >= 64px) -->
+<footer class="px-5 pb-9 pt-3 flex flex-col gap-2.5">
+<!-- Primary Action: "Say it again" (64px height, soft inviting gradient) -->
+<button class="w-full h-16 rounded-full bg-gradient-to-r from-[#9D7BEA] to-[#FFB199] text-on-primary shadow-ambient flex items-center justify-center gap-3 active:scale-[0.98] active:brightness-95 transition-all duration-150" type="button">
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px] text-on-primary filled">mic</span>
+</div>
+<span class="font-display text-title font-bold tracking-wide">Say it again</span>
+</button>
+<!-- Secondary Action: "Keep going" (56px height, soft outline) -->
+<button class="w-full h-14 rounded-full bg-surface border-2 border-[#9D7BEA] text-accent-fill shadow-subtle flex items-center justify-center gap-2 active:scale-[0.98] hover:bg-accent-tint/40 transition-all duration-150" type="button">
+<span class="font-label text-label font-semibold">Keep going</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Reassuring Encouragement Note -->
+<div class="flex items-center justify-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-warning filled">star</span>
+<p class="font-caption text-caption text-text-tertiary text-center">
+          Every try earns a star! Take your time, Leo!
+        </p>
+</div>
+<!-- Safe Area Home Indicator Bar -->
+<div class="w-32 h-1 bg-text-primary/20 rounded-full mx-auto mt-2"></div>
+</footer>
+</main>
+<script>
+    // Lightweight micro-interaction for child feedback
+    document.addEventListener('DOMContentLoaded', () => {
+      const micBtn = document.querySelector('button:has(.material-symbols-outlined[data-mic])') || document.querySelector('button.bg-gradient-to-r');
+      if (micBtn) {
+        micBtn.addEventListener('click', () => {
+          micBtn.classList.add('scale-95');
+          setTimeout(() => micBtn.classList.remove('scale-95'), 150);
+        });
+      }
+    });
+  </script>
+</body></html>

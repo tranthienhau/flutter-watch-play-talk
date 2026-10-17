@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Watch Play Talk - Lesson Intro</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Readex+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "success": "#16A34A",
+            "on-primary-container": "#fffbff",
+            "tertiary-fixed-dim": "#e2c545",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#ffdbd0",
+            "secondary-container": "#ffb199",
+            "on-primary": "#ffffff",
+            "danger": "#DC2626",
+            "text-tertiary": "#857D99",
+            "secondary": "#8a4e3b",
+            "surface-bright": "#fef7ff",
+            "tertiary": "#6f5d00",
+            "error-container": "#ffdad6",
+            "border-divider": "#E6E1F2",
+            "inverse-on-surface": "#f5eef8",
+            "background": "#F6F4FC",
+            "text-primary": "#120C1F",
+            "tertiary-container": "#c5aa2a",
+            "outline": "#7a7483",
+            "primary": "#6947b2",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#534600",
+            "on-secondary-container": "#7a412f",
+            "primary-fixed-dim": "#d1bcff",
+            "tertiary-fixed": "#ffe263",
+            "on-background": "#1d1a21",
+            "warning": "#D97706",
+            "primary-container": "#8260cd",
+            "surface-container-low": "#f8f1fb",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#d1bcff",
+            "primary-fixed": "#eaddff",
+            "surface-container-highest": "#e7e0ea",
+            "on-secondary-fixed": "#370e02",
+            "on-primary-fixed": "#24005b",
+            "surface-container": "#f2ecf6",
+            "surface-container-high": "#ede6f0",
+            "outline-variant": "#cbc3d4",
+            "on-secondary-fixed-variant": "#6e3826",
+            "surface-tint": "#6b49b5",
+            "text-secondary": "#4B4360",
+            "surface-dim": "#ded8e2",
+            "on-tertiary-fixed": "#221b00",
+            "surface": "#FFFFFF",
+            "on-surface": "#1d1a21",
+            "accent-tint": "#F1ECFC",
+            "on-tertiary-container": "#4b3f00",
+            "on-primary-fixed-variant": "#532f9b",
+            "on-surface-variant": "#494552",
+            "surface-container-lowest": "#ffffff",
+            "accent-pressed": "#7159A9",
+            "inverse-surface": "#322f37",
+            "surface-variant": "#e7e0ea",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "accent-fill": "#8165C0",
+            "brand-lavender": "#9D7BEA",
+            "brand-peach": "#FFB199"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "1.25rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label": ["Readex Pro", "sans-serif"],
+            "display": ["Quicksand", "sans-serif"],
+            "title": ["Readex Pro", "sans-serif"],
+            "body": ["Readex Pro", "sans-serif"],
+            "caption": ["Readex Pro", "sans-serif"]
+          },
+          "fontSize": {
+            "label": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "display": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body": ["17px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "caption": ["14px", { "lineHeight": "18px", "fontWeight": "500" }]
+          },
+          "boxShadow": {
+            "soft-card": "0 1px 2px rgba(18,12,31,0.04), 0 8px 24px rgba(18,12,31,0.06)",
+            "button-glow": "0 8px 20px -4px rgba(157, 123, 234, 0.45)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Safe-area insets */
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 34px);
+    }
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 59px);
+    }
+  </style>
+</head>
+<body class="h-full bg-background font-body text-text-primary antialiased selection:bg-accent-tint selection:text-accent-fill flex justify-center">
+<!-- Mobile Canvas Frame: 393 x 852 (iPhone 16/17 proportions) -->
+<main class="w-full max-w-[393px] min-h-screen bg-background relative flex flex-col justify-between overflow-x-hidden shadow-2xl">
+<!-- TOP SAFE AREA & HEADER -->
+<header class="w-full px-5 pt-safe pt-12 pb-2 flex items-center justify-between z-20">
+<!-- Back Arrow Pill Touch Target (Min 44x44 parent / 48x48 rounded) -->
+<button aria-label="Go back" class="w-12 h-12 rounded-full bg-surface shadow-soft-card flex items-center justify-center text-text-primary active:scale-95 transition-transform duration-150 hover:bg-surface-container-low" type="button">
+<span class="material-symbols-outlined text-text-primary text-[24px]">arrow_back</span>
+</button>
+<!-- Unit / Track Indicator -->
+<div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface shadow-soft-card">
+<span class="material-symbols-outlined text-accent-fill text-[18px]" style="font-variation-settings: 'FILL' 1;">palette</span>
+<span class="font-caption text-caption text-text-secondary font-semibold">Lección 1</span>
+</div>
+<!-- Balanced spacer (or sound toggle if needed) -->
+<button aria-label="Audio settings" class="w-12 h-12 rounded-full bg-surface shadow-soft-card flex items-center justify-center text-text-primary active:scale-95 transition-transform duration-150 hover:bg-surface-container-low" type="button">
+<span class="material-symbols-outlined text-text-secondary text-[22px]">volume_up</span>
+</button>
+</header>
+<!-- SCROLLABLE LESSON CANVAS -->
+<section class="flex-1 px-5 pt-2 pb-32 flex flex-col gap-5 overflow-y-auto">
+<!-- HERO CARD -->
+<article class="w-full bg-surface rounded-[24px] shadow-soft-card p-3.5 flex flex-col border border-border-divider/50">
+<!-- Hero Image Asset Container -->
+<div class="w-full aspect-[16/9] rounded-[18px] overflow-hidden bg-surface-container-high relative">
+<img alt="Colorful red, blue, and yellow wax crayons placed neatly on a natural wooden learning table" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWI02EvnGDNjHoZW_-taYs3BxtCfArzO6knKASNm_hEKjtLdvBAZkVmDvqRTMTtA65u-ax74UZp8ocZdTiO54Fvyperqycb2_JtLPBXSngl_M0kGYP3D61F32vcEYEaC3CNGBg0OpO-7rucLrmcZB_UceN0g2dqhmGJPnN5UqsHkYT3efaA-NO9kjvUoCe_xK5FPU1OxdFOwRpm9wdSUXqx_kMyTlt6HVG5KGHmVHEUidQh9l8SO_0SSLxL4oX059hPTjQHYmxhBk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-text-primary/20 to-transparent pointer-events-none"></div>
+</div>
+<!-- Hero Content Meta -->
+<div class="px-2 pt-3.5 pb-2 flex flex-col gap-2">
+<!-- Chips Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<!-- Language Support Chip -->
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary-container text-text-primary font-caption text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#E57351]"></span>
+                Español
+              </span>
+<!-- Lesson Duration -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent-tint text-accent-fill font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                4 min
+              </span>
+</div>
+<div class="flex items-center text-text-tertiary">
+<span class="font-caption text-caption font-medium">3 partes</span>
+</div>
+</div>
+<!-- Lesson Title -->
+<h1 class="font-display text-[26px] leading-[32px] font-bold text-text-primary tracking-tight mt-1">
+            Colors: rojo, azul, amarillo
+          </h1>
+<!-- Kid-Friendly Prompt -->
+<p class="font-body text-body text-text-secondary text-[15px] leading-[21px]">
+            Learn colors with Maestra Luna through 3 fun activities!
+          </p>
+</div>
+</article>
+<!-- THREE STACKED STEP CARDS -->
+<section aria-label="Lesson Steps" class="flex flex-col gap-3">
+<h2 class="sr-only">Lesson Roadmap</h2>
+<!-- STEP 1: WATCH (ACTIVE / NEXT UP) -->
+<article class="w-full bg-white rounded-[24px] border-2 border-brand-lavender shadow-soft-card p-4 flex items-center justify-between gap-3 min-h-[76px] transition-transform active:scale-[0.99] relative overflow-hidden">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<!-- Step Badge: Solid Violet Circle -->
+<div class="w-11 h-11 rounded-full bg-accent-fill flex items-center justify-center shrink-0 shadow-sm">
+<span class="font-display font-bold text-on-primary text-[17px]">1</span>
+</div>
+<!-- Content -->
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent-fill text-[20px]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<h3 class="font-display font-bold text-[18px] leading-tight text-text-primary">Watch</h3>
+</div>
+<p class="font-caption text-caption text-text-secondary truncate mt-0.5">
+                2 min • Video story with Maestra Luna
+              </p>
+</div>
+</div>
+<!-- Highlight Pill Badge -->
+<div class="shrink-0">
+<span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent-tint text-accent-fill font-label text-[13px] font-bold tracking-wide">
+              Start here
+            </span>
+</div>
+</article>
+<!-- STEP 2: PLAY -->
+<article class="w-full bg-surface rounded-[24px] border border-border-divider shadow-soft-card p-4 flex items-center justify-between gap-3 min-h-[76px] transition-transform active:scale-[0.99]">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<!-- Step Badge: Soft Tint Circle -->
+<div class="w-11 h-11 rounded-full bg-surface-container-high border border-border-divider flex items-center justify-center shrink-0">
+<span class="font-display font-bold text-text-secondary text-[17px]">2</span>
+</div>
+<!-- Content -->
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">sports_esports</span>
+<h3 class="font-display font-bold text-[18px] leading-tight text-text-primary">Play</h3>
+</div>
+<p class="font-caption text-caption text-text-secondary truncate mt-0.5">
+                Catch the colors
+              </p>
+</div>
+</div>
+<!-- Icon Indicator -->
+<div class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline-variant text-[20px]">lock</span>
+</div>
+</article>
+<!-- STEP 3: TALK -->
+<article class="w-full bg-surface rounded-[24px] border border-border-divider shadow-soft-card p-4 flex items-center justify-between gap-3 min-h-[76px] transition-transform active:scale-[0.99]">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<!-- Step Badge: Soft Tint Circle -->
+<div class="w-11 h-11 rounded-full bg-surface-container-high border border-border-divider flex items-center justify-center shrink-0">
+<span class="font-display font-bold text-text-secondary text-[17px]">3</span>
+</div>
+<!-- Content -->
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-text-tertiary text-[20px]">mic</span>
+<h3 class="font-display font-bold text-[18px] leading-tight text-text-primary">Talk</h3>
+</div>
+<p class="font-caption text-caption text-text-secondary truncate mt-0.5">
+                Say the colors
+              </p>
+</div>
+</div>
+<!-- Icon Indicator -->
+<div class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline-variant text-[20px]">lock</span>
+</div>
+</article>
+</section>
+</section>
+<!-- DOCKED BOTTOM CTA CONTAINER (Clear of tab bar, with frosted gradient fade) -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[393px] px-5 pt-5 pb-safe pb-6 bg-gradient-to-t from-background via-background/95 to-transparent z-30 pointer-events-auto">
+<button class="w-full h-16 rounded-full bg-gradient-to-r from-brand-lavender to-brand-peach text-on-primary shadow-button-glow flex items-center justify-center gap-3 active:scale-[0.98] active:brightness-95 transition-all duration-150" type="button">
+<span class="font-display font-bold text-[20px] tracking-wide text-white drop-shadow-sm">
+          Start
+        </span>
+<span class="material-symbols-outlined text-white text-[24px] font-bold">
+          arrow_forward
+        </span>
+</button>
+<!-- iOS Home Indicator Pill spacing -->
+<div class="w-32 h-1 bg-text-primary/10 rounded-full mx-auto mt-3"></div>
+</div>
+</main>
+</body></html>
